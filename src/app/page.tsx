@@ -1,68 +1,40 @@
 import { PostCard } from '@/components/PostCard'
 import { Button } from '@/components/ui/button'
+import { Dipsyland } from '@/components/v2/Dipsyland'
+import { NameCard } from '@/components/v2/NameCard'
+import { NavBar } from '@/components/v2/NavBar'
+import { PhotoBanner } from '@/components/v2/PhotoBanner'
+import { Works } from '@/components/v2/Works'
+import { getWorks } from '@/lib/getWorks'
 import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 import { Github } from 'lucide-react'
 import Link from 'next/link'
 
-export default function Home() {
+export default async function Home() {
   const posts = allPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   )
+  const { allWorks, meta } = await getWorks('works')
+  const { allWorks: allBlog, meta: blogMeta } = await getWorks('blog')
 
   return (
-    <div>
-      <div className="space-y-7">
-        <h1>Home Page</h1>
-        <p>
-          Next.js starter template for your next blog or personal site. Built
-          with:
-        </p>
-        <ul className="my-6 list-disc space-y-2 pl-4">
-          <li>
-            <Link className="link" href="https://nextjs.org/docs/app">
-              Next.js - App Router
-            </Link>
-          </li>
-          <li>
-            <Link className="link" href="https://www.contentlayer.dev/">
-              Contentlayer
-            </Link>
-          </li>
-          <li>
-            <Link className="link" href="https://mdxjs.com/">
-              MDX
-            </Link>
-          </li>
-          <li>
-            <Link className="link" href="https://ui.shadcn.com/">
-              shadcn-ui
-            </Link>
-          </li>
-          <li>
-            <Link className="link" href="https://tailwindcss.com/">
-              Tailwind CSS
-            </Link>
-          </li>
-        </ul>
-
-        <Button asChild>
-          <a href="https://github.com/ChangoMan/nextjs-mdx-blog">
-            <Github className="mr-1" /> Get the source code!
-          </a>
-        </Button>
+    <div id='app'>
+      <div id='head'>
+        <NavBar />
       </div>
-
-      <div className="mt-16">
-        <h2>From the blog</h2>
-        <p className="mt-2 leading-8">
-          Blog posts are written with MDX and processed through Contentlayer.
-        </p>
-      </div>
-      <div className="mt-10 space-y-12 border-t border-gray-200 pt-10 dark:border-gray-700">
-        {posts.map((post, idx) => (
-          <PostCard key={idx} {...post} />
-        ))}
+      <div id='content'>
+        <div id='home' />
+        <Dipsyland />
+        <PhotoBanner src='/img/banners/game.jpg' />
+        <div id='about' />
+        <NameCard />
+        <PhotoBanner src='/img/banners/oscon.jpg' />
+        <div id='works' />
+        <Works allWorks={allWorks} meta={meta} category='works' defaultFilters={['featured']} />
+        <PhotoBanner src='/img/banners/success.jpg' />
+        <div id='blog' />
+        <Works allWorks={allBlog} meta={blogMeta} category='blog' defaultFilters={[]} />
       </div>
     </div>
   )

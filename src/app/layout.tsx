@@ -8,16 +8,16 @@ import Link from 'next/link'
 import './global.css'
 
 const meta = {
-  title: 'Hunter Chang - Website',
+  title: 'Dipsyland',
   description:
-    'Sleep deprived father. FE Engineer in China. Lover of Ramen and Kpop',
+    'Welcome to Dipsyland, the portfolio and technical blog of Dipsy Wong, a random hacky programmer who loves building interesting software and games for fun. I hope you find them interesting too.',
   image: `${WEBSITE_HOST_URL}/og-preview.jpg`,
 }
 
 export const metadata: Metadata = {
   title: {
     default: meta.title,
-    template: '%s | Hunter Chang',
+    template: '%s | Dipsyland',
   },
   description: meta.description,
   openGraph: {
@@ -52,7 +52,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeProvider attribute="class" defaultTheme="dark">
+        {children}
+        {/* <ThemeProvider attribute="class" defaultTheme="dark">
           <header className="py-4">
             <Container>
               <div className="flex items-center justify-between py-6">
@@ -67,14 +68,11 @@ export default function RootLayout({
           <footer className="py-16">
             <Container>
               <p>
-                Built by{' '}
-                <Link className="link" href="https://twitter.com/hunterhchang">
-                  Hunter Chang
-                </Link>
+                Make with love by Dipsy, Copyright© 2024 All Right Reserved
               </p>
             </Container>
           </footer>
-        </ThemeProvider>
+        </ThemeProvider> */}
       </body>
     </html>
   )
