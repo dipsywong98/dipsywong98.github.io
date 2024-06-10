@@ -84,7 +84,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     <>
       <Dipsyland />
       <div className='post card'>
-        <div className='container'>
+        <div className='container-el'>
           <div className='my-work'>
             <h1>{post.title}</h1>
             <time className="my-4 block text-sm text-zinc-400" dateTime={post.date}>

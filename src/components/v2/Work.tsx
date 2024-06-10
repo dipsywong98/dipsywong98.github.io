@@ -59,9 +59,9 @@ const WorkComponent: React.FC<Props> = forwardRef(function WorkComponent ({ work
         transition={{ duration: 0.3 }}
         >
         <div className="work-ripple-outside">
-          <motion.h4 className="title">
+          <motion.h5 className="title">
           <motion.a className="title prevent-ripple-full-screen" href={`/posts/${work.title}`}>{work.title}</motion.a>
-          </motion.h4>
+          </motion.h5>
           <motion.small className="prevent-ripple-full-screen" onClick={() => { onTagClick(work.time) }}>
             <i>{work.time}</i>
           </motion.small>

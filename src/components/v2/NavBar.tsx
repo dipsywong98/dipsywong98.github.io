@@ -13,10 +13,10 @@ export const NavBar = (): React.ReactNode => {
             <a href="/#home" className="nav-item title anim">Dipsyland</a>
             {screenWidth > 768
               ? <div style={{ display: 'inherit' }}>
-                <a href="#about" className="nav-item anim">About Me</a>
-                <a href="#works" className="nav-item anim">Works</a>
-                <a href="#blog" className="nav-item anim">Blog</a>
-                <a href="#about" className="nav-item anim">Contact</a>
+                <a href="/#about" className="nav-item anim">About Me</a>
+                <a href="/#works" className="nav-item anim">Works</a>
+                <a href="/#blog" className="nav-item anim">Blog</a>
+                <a href="/#about" className="nav-item anim">Contact</a>
               </div>
               : <a style={{ display: 'inherit' }} className="nav-item anim">menu</a>}
 
