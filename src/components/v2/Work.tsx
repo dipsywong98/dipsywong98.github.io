@@ -4,8 +4,6 @@ import { type IWork } from '../../lib/getWorks'
 import './Work.scss'
 import { motion } from 'framer-motion'
 import { LiveLink } from './LiveLink'
-import { RippleFullScreen } from './RippleFullScreen'
-import { Markdown } from './Markdown'
 
 interface Props {
   work: IWork
@@ -62,7 +60,7 @@ const WorkComponent: React.FC<Props> = forwardRef(function WorkComponent ({ work
         >
         <div className="work-ripple-outside">
           <motion.h4 className="title">
-            <motion.a className="title prevent-ripple-full-screen">{work.title}</motion.a>
+          <motion.a className="title prevent-ripple-full-screen" href={`/posts/${work.title}`}>{work.title}</motion.a>
           </motion.h4>
           <motion.small className="prevent-ripple-full-screen" onClick={() => { onTagClick(work.time) }}>
             <i>{work.time}</i>

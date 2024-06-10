@@ -1,14 +1,16 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeHighlight from 'rehype-highlight'
 import rehypeKatex from 'rehype-katex'
 import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: `**/*.md*`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -52,6 +54,9 @@ const Post = defineDocumentType(() => ({
     more: {
       type: 'boolean'
     },
+    noMdx: {
+      type: 'boolean'
+    }
   },
   computedFields: {
     url: {

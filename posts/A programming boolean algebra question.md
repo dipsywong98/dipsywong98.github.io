@@ -4,6 +4,7 @@ story: //hackmd.io/B7b51hYJRCOycNTbhWqZLQ/download
 tags:
   - math
   - question
+noMdx: true
 id: A%20programming%20boolean%20algebra%20question
 
 ---

@@ -1,3 +1,4 @@
+import { PostCard } from '@/components/PostCard'
 import { Dipsyland } from '@/components/v2/Dipsyland'
 import { NameCard } from '@/components/v2/NameCard'
 import { NavBar } from '@/components/v2/NavBar'

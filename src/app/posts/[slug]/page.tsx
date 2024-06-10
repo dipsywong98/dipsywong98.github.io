@@ -11,23 +11,18 @@ import { notFound } from 'next/navigation'
 import { compileMDX } from "next-mdx-remote/rsc";
 import './page.scss'
 import { Dipsyland } from '@/components/v2/Dipsyland'
+// import { Markdown } from '@/components/v2/Markdown'
+import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS for you
 
 export async function generateStaticParams() {
-  const { allWorks } = getWorks('works')
-  const { allWorks: allBlog } = getWorks('blog')
-  return [
-    ...allPosts.map((post) => ({
-      slug: post._raw.flattenedPath,
-    })),
-    ...allWorks.map(work => work.title),
-    ...allBlog.map(work => work.title)
-  ]
+  return allPosts.map((post) => ({
+      slug: encodeURI(post._raw.flattenedPath),
+    }))
 }
 
 const findPost = (slug: string) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === slug)
-    ?? (getWorks('works')).allWorks.find(work => work.title === slug)
-    ?? (getWorks('blog')).allWorks.find(work => work.title === slug)
+  const escaped = decodeURI(slug)
+  const post = allPosts.find((post) => post._raw.flattenedPath === escaped)
   return post
 }
 
@@ -70,46 +65,20 @@ const mdxComponents: MDXComponents = {
   Image: (props) => <NextImage className="rounded-lg" {...props} />,
 }
 
-const fetchPostContent = async (post: IWork | Post) => {
-  if ('body' in post) {
-    return post.body.raw
-  }
-  if ('story' in post) {
-    const res = await fetch(post.story.replace('//', 'https://'))
-    const text = await res.text()
-    const markdown = text.replace(/^---(\n.*?)*?---/gm, '')
-    return markdown
-  }
-  return undefined
-}
-
-const getContent = async (fileContent: string) => {
-  const { frontmatter, content } = await compileMDX({
-    source: fileContent,
-    options: {
-      parseFrontmatter: true,
-    },
-    components: mdxComponents,
-  });
-  return { content }
-}
-
-const PostLayout = async ({ params }: { params: { slug: string } }) => {
-  const post = await findPost(params.slug)
+const PostLayout = ({ params }: { params: { slug: string } }) => {
+  const post = findPost(params.slug)
 
   if (!post) {
     notFound()
   }
 
-  const markdown = await fetchPostContent(post)
+  const markdown = post.body.code
 
   if (!markdown) {
     notFound()
   }
 
-  // const MDXContent = useMDXComponent(markdown, {})
-  // const MDXContent = getMDXComponent(markdown, {})
-  const { content } = await getContent(markdown)
+  const MDXContent = useMDXComponent(markdown, {})
 
   return (
     <>
@@ -122,14 +91,12 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
               {post.date && format(parseISO(post.date), 'LLLL d, yyyy')}
             </time>
             <article className="prose dark:prose-invert">
-              {content}
-              {/* <MDXContent components={mdxComponents} /> */}
+              <MDXContent components={mdxComponents} />
             </article>
           </div>
         </div>
       </div>
     </>
-
   )
 }
 

@@ -7,7 +7,7 @@ export function PostCard(post: Post) {
     <article className="flex flex-col items-start justify-between">
       <div className="flex items-center gap-x-4 text-xs">
         <time dateTime={post.date}>
-          {format(parseISO(post.date), 'LLLL d, yyyy')}
+          {/* {format(parseISO(post.date), 'LLLL d, yyyy')} */}
         </time>
       </div>
       <div className="group relative">
