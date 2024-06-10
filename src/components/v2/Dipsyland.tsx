@@ -37,11 +37,12 @@ export const Dipsyland = (): React.ReactNode => {
       setState({ w: innerWidth, h: innerHeight })
     }
     const handleMouseMove = (event: MouseEvent): void => {
-      const { screenY: y } = event
+      const { screenY: yRaw } = event
       const { clientWidth: w, clientHeight: h } = backgroundDiv
       // this.x = (x - w / 2) / w - 0.3;
+      const y = -yRaw / h / 2
       setState({
-        y: -y / h / 2,
+        y,
         w,
         h
       })
@@ -56,12 +57,12 @@ export const Dipsyland = (): React.ReactNode => {
   }, [])
 
   return (
-    <div className='dipsyland root'>
-      <div className='container' ref={background}>
-        <div className="background sky" ref={sky}></div>
-        <div className="background cloud" ref={cloud} style={{ marginLeft: `${x * 5 - w}px`, bottom: `${y * 10 - 50}px` }}></div>
-        <div className="background city" ref={city} style={{ marginLeft: `${x * 40 - w}px`, bottom: `${y * 50 - 50}px` }}></div>
-        <div className="background grass" ref={grass} style={{ marginLeft: `${x * 80 - w}px`, bottom: `${y * 100 - 50}px` }}></div>
+    <div className='dipsyland root-el relative'>
+      <div className='container-el fixed w-full overflow-hidden' ref={background}>
+        <div className="background-img sky" ref={sky}></div>
+        <div className="background-img cloud" ref={cloud} style={{ marginLeft: `${x * 5 - w}px`, bottom: `${y * 10 - 50}px` }}></div>
+        <div className="background-img city" ref={city} style={{ marginLeft: `${x * 40 - w}px`, bottom: `${y * 50 - 50}px` }}></div>
+        <div className="background-img grass" ref={grass} style={{ marginLeft: `${x * 80 - w}px`, bottom: `${y * 100 - 50}px` }}></div>
       </div>
     </div>
   )

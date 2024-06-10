@@ -16,7 +16,9 @@
   .color {
     display: inline-block;
     min-width: 10px;
+    max-width: 10px;
     min-height: 10px;
+    max-height: 10px;
     border-radius: 50%;
     margin-right: 6px;
   }
@@ -27,5 +29,9 @@
 
   .cross {
     margin-left: 6px;
+    min-width: 10px;
+    max-width: 10px;
+    min-height: 10px;
+    max-height: 10px;
   }
 }

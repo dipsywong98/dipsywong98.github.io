@@ -7,7 +7,7 @@ export const NavBar = (): React.ReactNode => {
   const screenWidth = useScreenWidth()
   return (
     <header>
-      <div className="navbar-fixed">
+      <div className="shadow-lg navbar-fixed">
         <nav>
           <div className="nav-wrapper">
             <a href="/#home" className="nav-item title anim">Dipsyland</a>

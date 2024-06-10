@@ -17,9 +17,9 @@ export const Tag: React.FC<Props> = ({ tag, removable = false, onClick }) => {
 
   return (
     <a className="tag" onClick={onClick} title={title}>
-      <div className="flex">
+      <div className="flex items-center align-center justify-center">
         {_tag in ghcolors && (
-          <span className="color" style={{ backgroundColor: ghcolors[_tag] }} />
+          <div className="color rounded-full" style={{ backgroundColor: ghcolors[_tag] }} />
         )}
         <div>{_tag}</div>
         {removable && (

@@ -1,9 +1,9 @@
-.dipsyland.root {
+.dipsyland.root-el {
   position: relative;
   width: 100%;
   // height: var(--section-height);
 
-  .container {
+  .container-el {
     position: fixed;
     width: 100%;
     height: var(--section-height);
@@ -12,7 +12,7 @@
     z-index: -1;
   }
 
-  .background {
+  .background-img {
     /*position: absolute;*/
     background-position: bottom;
     background-size: auto 1024px;

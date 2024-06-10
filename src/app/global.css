@@ -1,4 +1,4 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -97,7 +97,7 @@
   .link {
     @apply text-primary hover:text-primary/90;
   }
-} */
+}
 
 @font-face {
   font-family: "flappy";

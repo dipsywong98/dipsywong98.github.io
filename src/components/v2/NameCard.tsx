@@ -31,13 +31,13 @@ interface My {
 
 export function NameCard (): React.JSX.Element {
   return (
-    <div className="namecard card">
-      <div className="field">
+    <div className="namecard card flex space-x-3">
+      <div>
         <NextImage src={'/img/icon.png'} width={204} height={204} alt='icon' />
       </div>
-      <div className="field">
-        <h1>{my.name}</h1>
-        <h3>{my.position}</h3>
+      <div className="flex flex-col space-y-2">
+        <h2>{my.name}</h2>
+        <h4>{my.position}</h4>
         <h5>{my.tagLine}</h5>
         <div className="links">
           {my.media.map(medium => <SvgLink key={medium.title} href={medium.href} icon={medium.icon} color={medium.color} title={medium.title}></SvgLink>)}

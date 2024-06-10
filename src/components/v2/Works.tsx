@@ -87,7 +87,7 @@ export function Works ({ allWorks, category, defaultFilters, meta }: Props): Rea
 
   return (
     <div className="works card">
-      <div className="container">
+      <div className="container-el">
         <div className="my-work">
           <h1>My { Category }</h1>
           <div className="description" onClick={onDescriptionClick}>
