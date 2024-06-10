@@ -78,19 +78,20 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     notFound()
   }
 
-  const MDXContent = useMDXComponent(markdown, {})
+  const titleRegex = new RegExp(`${post.title}`, 'gm')
+  const MDXContent = useMDXComponent(markdown.replace(titleRegex, ''), {})
 
   return (
     <>
       <Dipsyland />
       <div className='post card'>
         <div className='container-el'>
-          <div className='my-work'>
+          <div className='my-work m-auto'>
             <h1>{post.title}</h1>
             <time className="my-4 block text-sm text-zinc-400" dateTime={post.date}>
               {post.date && format(parseISO(post.date), 'LLLL d, yyyy')}
             </time>
-            <article className="prose dark:prose-invert">
+            <article className="prose dark:prose-invert max-w-[70ch]">
               <MDXContent components={mdxComponents} />
             </article>
           </div>

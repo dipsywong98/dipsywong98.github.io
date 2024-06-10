@@ -931,7 +931,7 @@ export const aiAction = (state: Poker99State, turn: number): Poker99Action => {
 
 then supply the aiAction to the useBoardGameNetwork in `withPoker99Network.tsx`
 
-```tsx=12
+```tsx showLineNumbers12
 const network = useBoardGameNetwork(Poker99Reducer, new Poker99State(), aiAction)
 ```
 

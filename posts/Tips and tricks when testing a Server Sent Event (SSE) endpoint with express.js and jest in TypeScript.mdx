@@ -27,7 +27,7 @@ SSE is one way, the client requests once and open the connection, then server ca
 
 ## How client start an SSE and server handle it
 
-```ts=
+```ts showLineNumbers
 // client side (by client i mean receive side, even this is a nodejs server)
 import http from 'http'
 
@@ -45,7 +45,7 @@ const req = http.get(`http://localhost:12345/sse`, res => {
   })
 ```
 
-```ts=
+```ts showLineNumbers
 // app.ts
 import express from 'express'
 const app = express()
@@ -84,7 +84,7 @@ So here we really start an express server inside the test case and do real netwo
 
 
 
-```ts=
+```ts showLineNumbers
 import app from './app.ts'
 import stoppable from 'stoppable'
 

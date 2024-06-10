@@ -50,7 +50,7 @@ mod tests_main {
 
 As for the actual server impl, it is just ordinary websocket implementation available in actix official documentation. <https://actix.rs/docs/websockets/> The only twist is that i extracted the `create_app` method so that  we can use the same server factory in our test cases.
 
-```rust=
+```rust showLineNumbers
 // main.rs
 
 use actix::{Actor, StreamHandler};

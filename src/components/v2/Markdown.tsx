@@ -12,7 +12,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 import { Code } from './Code'
 
 export const Markdown = ({ children }: { children: string }): React.ReactNode => {
-  const v = children.replace(/^(```.+)(=)$/gm, '$1 showLineNumbers').replace(/(\S)\n/gm, '$1  \n')
+  const v = children.replace(/^(```.+)( showLineNumbers)$/gm, '$1 showLineNumbers').replace(/(\S)\n/gm, '$1  \n')
   // console.log(v)
   return (
     <ReactMarkdown

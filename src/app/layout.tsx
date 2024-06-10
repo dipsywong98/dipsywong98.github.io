@@ -62,9 +62,7 @@ export default function RootLayout({
           <main id='content'>
             <div id='home' />
             {children}
-            <footer>
-              <Footer />
-            </footer>
+            <Footer />
           </main>
         </ThemeProvider>
       </body>

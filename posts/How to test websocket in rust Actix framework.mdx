@@ -24,7 +24,7 @@ So i dig the source code to see if there exists test cases on ws written definit
 
 So i found the original code in https://github.com/actix/actix-web/blob/master/actix-web-actors/tests/test_ws.rs and i kept only the crutial ones here to demostrate how the test works.
 
-```rust=
+```rust
 //test_ws.rs
 
 
@@ -59,7 +59,7 @@ mod tests_main {
 
 As for the actual server impl, it is just ordinary websocket implementation available in actix official documentation. https://actix.rs/docs/websockets/ The only twist is that i extracted the `create_app` method so that  we can use the same server factory in our test cases.
 
-```rust=
+```rust showLineNumbers
 // main.rs
 
 use actix::{Actor, StreamHandler};
