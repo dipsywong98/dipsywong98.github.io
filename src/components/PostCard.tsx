@@ -18,7 +18,7 @@ export function PostCard(post: Post) {
           </Link>
         </h3>
         <p className="mt-5 line-clamp-3 text-sm leading-6">
-          {post.description}
+          {/* {post.description} */}
         </p>
       </div>
     </article>

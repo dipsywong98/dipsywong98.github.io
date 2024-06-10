@@ -1,0 +1,106 @@
+---
+title: >-
+  Tips and tricks when testing a Server Sent Event (SSE) endpoint with
+  express.js and jest in TypeScript
+story: //hackmd.io/j7nLPie1QqKqSibv8CW5MQ/download
+tags:
+  - Node.js
+  - TypeScript
+  - SSE
+  - jest
+  - express
+id: >-
+  Tips%20and%20tricks%20when%20testing%20a%20Server%20Sent%20Event%20(SSE)%20endpoint%20with%20express.js%20and%20jest%20in%20TypeScript
+
+---
+# Tips and tricks when testing a Server Sent Event (SSE) endpoint with express.js and jest in TypeScript
+
+## What is SSE
+
+SSE (Server Sent Events) is one of the methods that the server can push update to client without client sending any request, another method is web socket (ws). Push based update approach is much more efficient than poll based approach because in poll based approach, the client keep sending requests to the server to fetch the latest update, but most probably there is no update from the server, so the requests are likely to be a waste of bandwidth and computation power; in contrast in push based methods the server will push updates to clients only when there is an update.
+
+Each event will start with `data:` and end with two line break characters `\n\n`
+
+## SSE vs WS
+
+SSE is one way, the client requests once and open the connection, then server can keep pushing events ever the same connection, but client cannot push any more data using the same connection; ws is two way, the client requests once and open the connection, then both client and server can use the same connection to push updates to each other.
+
+## How client start an SSE and server handle it
+
+```ts=
+// client side (by client i mean receive side, even this is a nodejs server)
+import http from 'http'
+
+
+const req = http.get(`http://localhost:12345/sse`, res => {
+    res.on('data', data => {
+      // data is a Uint8 buffer
+      const text = new TextDecoder('utf-8').decode(data)
+      
+      // remove the data: prefix
+      const content = text.replace('data: ', '')
+      
+      console.log(content)
+    })
+  })
+```
+
+```ts=
+// app.ts
+import express from 'express'
+const app = express()
+
+app.get('/sse', async (req, res) => {
+  // sse is sent through event-stream content type head
+  res.setHeader('Content-Type', 'text/event-stream')
+  
+  // need to keep alive to prevent it from closing
+  res.setHeader('Connection', 'keep-alive')
+  
+  // prevent caching
+  res.setHeader('Cache-Control', 'no-cache')
+  res.flushHeaders()
+  
+  res.write(`data: hello world\n\n`)
+  res.write(`data: 1\n\n`)
+  res.write(`data: 1\n\n`)
+  res.write(`data: 2\n\n`)
+  res.write(`data: 3\n\n`)
+  res.write(`data: 5\n\n`)
+  res.write(`data: 8\n\n`)
+  
+  res.on('close', () => {
+    res.end()
+  })
+})
+
+```
+
+## How I test an SSE endpoint
+
+Here i would like to test the above SSE endpoint using jest. looked into the popular supertest library, but seems that doesnt support SSE. Some may say mock everything but we do not want to mock this kind of network traffic in acceptance or e2e or integration test.
+
+So here we really start an express server inside the test case and do real network requests in our test cases. One thing to note is that SSE keeps the connection live(unless we stop it specifically but some cases we may never stop it), so I used stoppable to wrap the express server. Hence when i stop the express server in the afterAll hook, it will stop all the on going SSE connections for me and prevent the test process never stop.
+
+
+
+```ts=
+import app from './app.ts'
+import stoppable from 'stoppable'
+
+const port = 12345
+
+let server
+beforeAll(() => {
+  server = stoppable(app.listen(port), 0)
+})
+
+afterAll(() => {
+  server?.stop()
+})
+
+
+
+```
+
+    

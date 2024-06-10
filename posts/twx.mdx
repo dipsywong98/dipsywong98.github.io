@@ -1,0 +1,194 @@
+---
+title: twx
+titleLink: //github.com/dipsywong98/twx
+brief: Convert old Twilight Wars formats to new ones 同人陣讀檔器 - 將光暈戰記的舊資料格式轉換成新的
+liveLink: //twx-util.gamelet.online/
+time: 2021 Q1
+more: true
+story: //hackmd.io/EjkaQ7-BSDiqi5IbuL4vZg/download
+tags:
+  - TypeScript
+  - React
+  - twf
+  - web
+id: twx
+
+---
+
+
+# twx開發教學
+
+## 什麼是twx
+
+twx 是一個可以將第一代光暈戰記檔案轉換成二代格式的工具，目前已經可以轉換地圖檔和角色檔，同人檔尚在開發中
+
+## 你需要這些軟件
+
+這部分主要讓你安裝開發環境必備的軟件
+
+[git](https://git-scm.com/book/zh-tw/v2/%E9%96%8B%E5%A7%8B-Git-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8)
+
+[nodejs](https://nodejs.org/en/)
+
+[yarn](https://yarnpkg.com/getting-started/install)
+
+開發環境任選一個，選一個你覺得好看的就好: [vscode(我會示範這個)](https://code.visualstudio.com/)/[atom](https://atom.io/)/[webstorm(學生免費)(我最喜歡Jetbrains IDE)](https://www.jetbrains.com/webstorm/)
+
+安裝這些東西應該不難吧
+
+## 環境設定
+
+這部分主要讓你可以有自己的開發環境，在自己的開發環境寫程式
+
+1. 開Github 帳號 -> https://github.com/join?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home
+
+1. fork https://github.com/dipsywong98/twx ![](https://i.imgur.com/MCW5SbX.png)
+
+1. 在你的fork，複製這條URL
+![](https://i.imgur.com/crVBeHQ.png)
+
+1. 在某個資料來開啟git bash
+![](https://i.imgur.com/JANiwQ0.png)
+
+1. 輸入`git clone <剛剛複製的URL>`，執行
+![](https://i.imgur.com/Tg3Sa2i.png)
+
+1. 會多個一個twx 資料夾，打開它
+![](https://i.imgur.com/uiScLAV.png)
+
+1. 在空白位置右鍵，open with code
+![](https://i.imgur.com/kfZzyTg.png)
+
+1. 按terminal/New Terminal
+
+1. 在terminal執行 `yarn`
+![](https://i.imgur.com/WhbUqRO.png)
+
+1. 在terminal執行 `yarn start`，terminal 會出現Compiled successfully，然後可以在瀏覽器打開`localhost:3000/twx`
+![](https://i.imgur.com/iXfzQJQ.png)
+![](https://i.imgur.com/mi5xm9e.png)
+
+1. 可以開始coding
+
+## 第一個Pull Request(PR)
+
+這部分主要讓你知道怎樣改code，並向我申請更新
+
+1. 確保自己已經有`yarn start`
+
+1. 到`src/components/InfoModal.tsx`加上自己的名字，儲存，terminal 會變成compiling
+![](https://i.imgur.com/onaEr5u.png)
+
+1. 到localhost:3000/twx，按i，有看到自己的名字
+![](https://i.imgur.com/QHibpUa.png)
+
+1. 按+多開一個terminal，執行`git commit -am 'add <your name>'`
+![](https://i.imgur.com/CGsUfSH.png)
+
+1. 然後執行`git push origin master`
+
+1. 到github 上面你的fork看，你會看到最新的commit 是`add <your name>`
+![](https://i.imgur.com/vpNM1Ig.png)
+
+1. 啟用Action，並執行它。到settings啟用github pages，選gh-pages，按save。執行完畢可以在`<你用戶名>.github.io/twx`看你的twx
+![](https://i.imgur.com/MDqquBt.png)
+![](https://i.imgur.com/OA3gykH.png)
+![](https://i.imgur.com/jiaGvMd.png)
+![](https://i.imgur.com/61ss2gJ.png)
+![](https://i.imgur.com/vShrBM7.png)
+
+1. 到開一個PR。要按compare across fork，右邊head repository 要選自己的fork，按Create pull request
+![](https://i.imgur.com/o2E3Mwm.png)
+
+1. 看到這樣就可以等FK同意你的pull request
+![](https://i.imgur.com/oxDIS3d.png)
+
+## 幫忙做轉檔器:支援多轉一種動作/檢查做CG
+
+1. 用twx打開一個twf檔
+2. 到轉換為CG同人陣，TREE JSON，打開裡面會說有什麼動作/檢查/參數尚未被支援
+![](https://i.imgur.com/75dsYJ8.png)
+```
+type:"Action Type" <--代表有個動作未支援
+what:"screenEffect" <--動作名稱是screenEffect
+```
+打開example會看到這個動作的JSON結構
+3. 到CG去看相對應的動作的JSON結構(官方/Alt都可啦，官方的東西那麼垃圾怎可以不用Alt，都沒有就只能親自做啦幹)
+![](https://i.imgur.com/wRbG9JW.png)
+![](https://i.imgur.com/CuNqt3X.png)
+
+4. 然後到`src/translators/twf/actions` 新增一個ts檔，ts 檔的名字要跟type一樣。例如要翻譯上面的screenEffect就是開screenEffect.ts，輸出來的function 名字也要是screenEffect。可以參考其他action translator的做法，例如標題文字
+
+twf
+```
+{"type":"title","t":"歡迎來玩模擬新日檢N2試題 ","du":600000,"s":25}
+```
+
+cg
+```
+{
+    type: 'ActionTitle',
+    data: {
+      text: '歡迎來玩模擬新日檢N2試題',
+      size: '25',
+      bold: true,
+      color: '#ffffff',
+      stroke: '#000000',
+      strokeThickness: 4,
+      direction: 'rtol',
+      shiftX: 0,
+      shiftY: -60,
+      duration: '600000',
+      delay: '0',
+      fadeinDuration: '300',
+      fadeoutDuration: '300',
+      wait: false
+    }
+  }
+  ```
+  
+顯然twf 中的t 就是文字(text)，du是維持時間(duration)，s是大小(size)，那麼它的translator 就是
+
+```ts
+// 這個檔案名稱是title.ts，因為type 是title
+import { ActionTranslator } from '../../../type'
+import { withCheckFields } from '../missingStuff'
+
+// function 名是title
+export const title: ActionTranslator = withCheckFields([
+  // 在這兒打上有被翻譯的參數
+  // 如果參數在twf出現，但沒有在這個陣列，會被列出來
+  't', // text
+  's', // size
+  'du' // duration
+])((cgActions, action) => ([
+  // action 就是來自twf 的JSON
+  ...cgActions, {
+    type: 'ActionTitle',
+    data: {
+      text: action.t,  // twf 的t 對應CG 的text
+      size: action.s?.toString() ?? '25',  // s 對應CG的size，但CG都用string，所以要toString，預設值是25
+      bold: true,
+      color: '#ffffff',
+      stroke: '#000000',
+      strokeThickness: 4,
+      direction: 'rtol',
+      shiftX: 0,
+      shiftY: -60,
+      duration: action.du?.toString() ?? '2600',  // du 對應CG的duration，但CG都用string，所以要toString，預設值是2600
+      delay: '0',
+      fadeinDuration: '300',
+      fadeoutDuration: '300',
+      wait: false
+    }
+  }
+]))
+```
+
+然後在`src/translators/twf/actions/index.ts` 加上`export * from './title'`
+
+1. 嘗試用twx輸出CG events 檔，在CG上面跑一下看看有沒有bug
+
+1. 沒有bug就可以開PR，給我你測試用的twf檔
+
+    

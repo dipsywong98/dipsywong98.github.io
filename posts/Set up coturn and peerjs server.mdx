@@ -1,0 +1,32 @@
+---
+title: Set up coturn and peerjs server
+story: //hackmd.io/jlzWP_RITSqqLMWnjKzqHw/download
+tags:
+  - docker
+id: Set%20up%20coturn%20and%20peerjs%20server
+
+---
+
+
+# set up peerjs server with coturn
+
+
+
+```bash
+docker run -d --network=host unless-stopped instrumentisto/coturn \
+            --user=username:password --lt-cred-mech --fingerprint
+docker run -p 9000:9000 -d peerjs/peerjs-server --path=/ -p=9000
+```
+
+```json
+{
+  "host": "my-host.com",
+  "port": 9000,
+  "path": "/",
+  "secure": true,
+  "config": {
+  "iceTransportPolicy":"all","iceServers":[
+  {"urls":"stun:my-host.com:3478"},{"urls":"turn:my-host.com:3478","username":"username","credential":"password"}]}
+}
+```
+    

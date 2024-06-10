@@ -1,0 +1,66 @@
+---
+title: collab-network
+titleLink: //github.com/dipsywong98/collab-network
+brief: Collaborator Relation Graph Studies
+time: 2020 spring
+tags:
+  - JavaScript
+  - React
+  - Python
+  - Academic
+  - MATH4999
+more: true
+story: //hackmd.io/uMrEzT1cQSGqVLfb7R4-WQ/download
+id: collab-network
+
+---
+
+# Collab-Network
+> Collaborator Relation Graph Studies
+> Authors: [Dipsy Wong](//github.com/dipsywong98), [Katrin Cheung](https://github.com/katrincheung)
+
+
+## Methodology
+There are two main databases of research papers available on the internet. Microsoft Academic Graphs (MAG) and AMiner academic paper database. While the MAG database is much bigger, the AMiner one is more manageable and cleaner for our project. Hence, this is the database we have decided to use.
+
+The project is built using SQLite as the database, which stored all the author data; Python as the API backend, which computes the graph functions and query the database, ReactJS as the web client, which users can call the graph functions and view the result.
+
+We use SQLite as a database since it is light-weight, simple to set-up and fast; use Python as API since it comes with nice interface and library for doing graph analysis and visualization; use ReactJS as web client since it is very convenient to use and flexible, and it is developed by Facebook. 
+
+## Keywords Searching
+The original dataset was in JSON. However, the loading time and data usage would be too long. So we put the data in the SQL database. The following are some code snippets for setting up and inserting the data to the database
+
+## Graph Visualisation
+Generating a graph is complex and requires a long running time. In order to optimise the loading time of the website, instead of generating a new graph every time, we pre-computed a large graph with all the required relationships, we then trim out the subgraph every time the user searched for the subgraph.
+
+## Functions
+Here are the functions that our websites provide.
+
+### Authors
+Here users can enter any keywords for searching the authors. Then the system shows any author that contains the keywords in their Name, Affiliation or tags. For example, here we use ‘chen beifang’ as the keyword. 
+
+
+![](https://i.imgur.com/eim4ttU.png)
+
+Then you can obtain the authors’ information, with the author’s ID that may be used in the other functions.
+
+### Subgraphs
+Here users can enter any keyword. Then users can see all the subgraphs that are made by the nodes that contain the keyword. In the following example, the graph contains 37 nodes, the max degree in the graph is 34 and 185681 is the node with the max degree.
+
+![](https://i.imgur.com/nJkX2QJ.png)
+![](https://i.imgur.com/yrvd3RW.png)
+
+
+### Path
+In this function, users can input the ids of 2 authors and the system will output the co-author path between the two authors. Users can get the id of their desired author from the author function. You can see the generated coauthor path and the author information along the path. For example, here we search for the shortest path between author 48 to author 676, they are connected minimally by authors 403375 103416, 1516216, etc. Below the graph, there is a table listing all the information of the corresponding authors on the shortest path.
+
+![](https://i.imgur.com/apJXUPD.png)
+![](https://i.imgur.com/9I1fpDs.png)
+
+### Degree
+Six degrees theory claimed that a person can connect to any person on the earth within 6 people. By giving an author id and degree d, the function renders a graph that any authors will have the shortest distance to the specified author at most d. For example, here we searched for the degrees 2 connection of author 188513, every node will have a distance to author 188513 at most 2. Below the graph, there is author information of the graph, grouped by the distance between the author and author 188513. 
+
+![](https://i.imgur.com/MRDpCbZ.png)
+![](https://i.imgur.com/fMuDRFa.png)
+
+    

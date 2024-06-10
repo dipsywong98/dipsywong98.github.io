@@ -1,0 +1,150 @@
+---
+title: Aseprite 象素畫教學
+brief: tutorial on aseprite
+story: //hackmd.io/qoT4OHtIQFSTbFRBTlxhQw/download
+tags:
+  - Art
+id: Aseprite%20%E8%B1%A1%E7%B4%A0%E7%95%AB%E6%95%99%E5%AD%B8
+
+---
+
+
+# Aseprite 象素畫教學
+
+如果你是跟我一樣的手殘黨，但又需要遊戲美術，可以考慮看象素畫
+
+## 下載Aseprite
+
+[Aseprite](https://www.aseprite.org/)是一款專畫象素畫的開源軟件，直接下載executable要$$，所以窮人可以學我這樣自行下載源碼去自己compile executable，而官網也有完整英教學
+
+https://github.com/aseprite/aseprite/blob/master/INSTALL.md
+
+下面win10 安裝aseprite 流程
+
+1. [Visual Studio Community 2019 + Desktop development + Windows 10.0.18362.0 SDK](https://visualstudio.microsoft.com/downloads/) ![](https://i.imgur.com/lnW0x5L.png)
+
+2. [CMake (3.14 or greater)](https://cmake.org/)
+
+3. [Ninja build system](https://ninja-build.org/)
+
+4. [Skia-m81](https://github.com/aseprite/skia/releases) 放到`C:\deps\skia`
+
+5. [下載aseprite source code](https://github.com/aseprite/aseprite/releases) 到`C:\aseprite`
+
+6. 開啟cmd，跑
+
+```bat=
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat" -arch=x64
+mkdir C:\aseprite\build
+cd C:\aseprite\build
+cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLAF_BACKEND=skia -DSKIA_DIR=C:\deps\skia -DSKIA_LIBRARY_DIR=C:\deps\skia\out\Release-x64 -DSKIA_LIBRARY=C:\deps\skia\out\Release-x64\skia.lib -G Ninja ..
+ninja aseprite
+```
+
+7. `C:\aseprite\build\bin\aseprite.exe` 就是executable，打開它就是了
+
+![](https://i.imgur.com/oKwNUHx.png)
+
+## 操作
+
+就Ctrl+N開一個新的專案，滾輪縮放，中鍵平移，左鍵筆，右鍵刷子，當小畫家用就好
+
+## TiledMap
+
+示範怎弄16x16 的tiledmap，先開一個160x160和一個16x16的sprite。我們會在16x16畫，再複製貼上到160x160的大spritesheet上面。
+
+1. 啟動grid settings
+![](https://i.imgur.com/YSELN1z.png)
+![](https://i.imgur.com/tNDdGju.png)
+
+
+
+2. 到16x16開啟tile mode，然後便會很有趣地自己重複，就不用人手控制tile之間的縫合
+
+![](https://i.imgur.com/9DA706X.png)
+
+![](https://i.imgur.com/VTfhEwP.png)
+
+![](https://i.imgur.com/xqMBMBJ.png)
+
+![](https://i.imgur.com/OpvwD0c.png)
+
+![](https://i.imgur.com/K9wWniW.png)
+
+![](https://i.imgur.com/AVRx0jJ.png)
+
+![](https://i.imgur.com/PUP2R3f.png)
+
+![](https://i.imgur.com/0NGKAzK.png)
+
+按Ctrl可以看到原本大小的方框
+
+有個做pixel art 的小提示，即使做的過程覺得很醜，只要縮小看順眼就可以了，因為沒有人會放那麼大來玩
+
+3. 重選複製貼上到160x160那邊
+![](https://i.imgur.com/cEkxfHm.png)
+我們大槪要做這些種類的地形
+![](https://i.imgur.com/SurlSDx.png)
+
+先做面朝上的牆吧
+
+4. 先設tile in X Axis ，這樣就不會在Y Axis 重複
+![](https://i.imgur.com/rADjJAl.png)
+
+![](https://i.imgur.com/lkDdPhx.png)
+
+![](https://i.imgur.com/1KFuYoD.png)
+
+
+5. 畫下面
+![](https://i.imgur.com/OR8Pc44.png)
+![](https://i.imgur.com/LMMtxEH.png)
+
+6. 朝左跟朝右的也是差不多
+![](https://i.imgur.com/UYin73u.png)
+
+7. 角落就是複製兩條邊再重製那個角，例如左上角就是左邊跟上邊
+
+![](https://i.imgur.com/s78W91q.png)
+![](https://i.imgur.com/6grXVcV.png)
+![](https://i.imgur.com/Sl1g3WD.png)
+![](https://i.imgur.com/uua8TBE.png)
+
+
+![](https://i.imgur.com/KN9zxjY.png)
+
+8. 複製左邊和右邊，合在一起就是左右邊
+
+![](https://i.imgur.com/ha0G75E.png)
+
+![](https://i.imgur.com/TF4xNRM.png)
+
+![](https://i.imgur.com/Di01KIT.png)
+
+![](https://i.imgur.com/5FGsEmP.png)
+
+9. 上下邊同理
+
+![](https://i.imgur.com/Auj1kIB.png)
+
+10. 柱子就把左右邊的上邊跟下邊並在一起
+
+![](https://i.imgur.com/a2tErZ9.png)
+
+![](https://i.imgur.com/owPsOhF.png)
+
+![](https://i.imgur.com/dhekgZ5.png)
+
+![](https://i.imgur.com/4yMoh8o.png)
+
+11. export!
+
+![](https://i.imgur.com/jGh0Kep.png)
+
+
+12. 成品
+![](https://i.imgur.com/wPNxAan.png)
+
+![](https://i.imgur.com/K7PmpNi.png)
+
+    

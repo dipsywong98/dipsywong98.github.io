@@ -1,0 +1,73 @@
+---
+title: AI Rebellion
+titleLink: //github.com/danvim/tone-server
+brief: A realtime multi-player strategy game
+time: 2019 spring
+tags:
+  - TypeScript
+  - Vue
+  - protobuf.js
+  - WebRTC
+  - Academic
+  - COMP4451
+  - game
+more: true
+story: //hackmd.io/RQJaiN4TTNa6etBLQqma5Q/download
+id: AI%20Rebellion
+
+---
+
+# AI Rebellion
+> Game inspired by the Tone Rebellion
+> Authors: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
+> Repos: [Core](//github.com/danvim/tone-core), [Server](//github.com/danvim/tone-server), [Frontend](//github.com/danvim/tone-vue)
+> Readme file: https://hackmd.io/Xwm4E6LzTciB95ovlmtZ_g?view
+
+![](https://i.imgur.com/Kr3qbuA.png)
+
+## Stack
+- TypeScript
+- WebRTC + Protobuf
+- Vue
+- scss
+- WebGL/ VueGL
+- Blender
+
+## Inspiration - Tone Rebellion
+[![](https://i.imgur.com/edojtpJ.png)](https://www.youtube.com/watch?v=L9rLOqUJXqs)
+https://www.youtube.com/watch?v=L9rLOqUJXqs
+
+## Gameplay
+- Multiplayer real-time strategy game
+- Command buildings instead of units directly
+- Buildings issue automatic jobs for units
+- The goal is taking over other opponents’ base
+
+![](https://i.imgur.com/EUqbCTP.png)
+> _Very beautiful 3D models made by my partner [Daniel](//github.com/danvim)_
+
+
+## Architecture
+![](https://i.imgur.com/PxDqBMh.png)
+
+- Modular approach
+- Client:
+    - no game logic, just a viewer,
+    - send and receive events from server
+- Core:
+    - protocol and packages 
+    - shared class interfaces across client and server (coordinate class, building)
+- Server:
+    - All game logic and connect to all client
+
+
+## Gameplay video
+<div id="Container"
+ style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
+ <iframe id="ViostreamIframe"
+  width="100%" height="100%"
+  src="https://www.youtube.com/embed/gva2DzpiCaI"
+  frameborder="0" allowfullscreen=""
+  style="position:absolute; top:0; left: 0"></iframe>
+</div>
+    

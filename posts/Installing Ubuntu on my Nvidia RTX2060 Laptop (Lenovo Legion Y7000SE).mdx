@@ -1,0 +1,282 @@
+---
+title: Installing Ubuntu on my Nvidia RTX2060 Laptop (Lenovo Legion Y7000SE)
+brief: Pains and tears installing ubuntu
+story: >-
+  //gist.githubusercontent.com/dipsywong98/76c3c956916cc18b7125e5a1c1e6d7d5/raw/Installing%20Ubuntu%20on%20Nvidia%20RTX2060%20Laptop.md
+tags:
+  - Linux
+  - Nvidia
+  - KDE
+id: >-
+  Installing%20Ubuntu%20on%20my%20Nvidia%20RTX2060%20Laptop%20(Lenovo%20Legion%20Y7000SE)
+
+---
+# Installing Ubuntu on my Nvidia RTX2060 Laptop (Lenovo Legion Y7000SE)
+
+Procrastinated for three years, I finally decided to buy my very first "first-hand" computer. ~~Now I am bankrupted.~~ I got it from the school's notebook ownership program which is rather worth it given the OP spec. With just 12000 HKD, I got 1TB SSD, Gen 9 i7 intel CPU core, Nvidia RTX 2060, 32GB RAM, HD screen, as well as a gigantic power supply yay~. As a ~~professional~~ IT dog, the very first thing I need to do is to install linux dual boot on it, but it has been cries and tears doing so. Took me several days TAT.
+
+## 1. Install Nvidia Driver
+
+I cant directly install from desktop images as it will enter a broken screen as the computer don't have Nvidia driver at fresh install.
+
+Therefore I install ubuntu by first installing a ubuntu server, install the Nvidia driver manually, finally install the desktop.
+
+During the installation wifi seems not working so I connect the computer with LAN.
+
+```bash=
+# the repository that nvidia is
+sudo add-apt-repository ppa:graphics-drivers/ppa
+
+# dynamic kernel module support
+sudo apt-get install dkms build-essential
+
+sudo apt-get update
+
+# know what is the newest version of nvidia driver
+sudo apt-get install ubuntu-drivers
+ubuntu-drivers list
+
+# install the driver
+sudo apt-get install nvidia-driver-440
+```
+
+Then install a desktop distro. ~~I chose KDE because the desktop looks like win10, and I just joke with my non linux friends that it is win11 and they really believe in it~~.
+
+```bash=
+sudo tasksel
+```
+
+This will display a list of available desktops that you can install
+
+After installing, just reboot
+
+```bash=
+reboot
+```
+
+## 2. Brightness control
+
+And then brightness setting is not working
+
+First need to enable brightness control of the GPU. Open  `/usr/share/X11/xorg.conf.d/10-nvidia.conf` (or maybe other file like this in the same directory) and add a line of 
+
+```
+Option "RegistryDwords" "EnableBrightnessControl=1"
+```
+
+**Everytime after you update the nvidia driver, you need to manually add back the above line.**
+
+Then ubuntu don't know it can control the lower level setting of computer. So to enable the OS to set the low level stuffs, set the grub by modifying a line in `/etc/default/grub`
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet acpi_backlight=vendor acpi_osi=linux"
+```
+
+Remember to `sudo update-grub` and then restart.
+You may now test the brightness control with `xbacklight -set 10` or brightness control buttons on your computer if you have.
+
+## 3. Cannot connect to WIFI
+
+Do this after you have installed desktop
+
+First switch the netplan to use NetworkManager
+
+```bash=
+cd /etc/netplan
+
+# Optional: backup the setting
+sudo cp 01-netcfg.yaml 01-netcfg.yaml-backup
+
+# edit the netplan
+sudo vi 01-netcfg.yaml
+```
+
+Change the "ENTIRE" `01-netcfg.yaml` as follows
+
+```yaml=
+# This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  renderer: NetworkManager
+```
+
+```bash=
+sudo netplan generate
+sudo netplan apply
+sudo systemctl restart NetworkManager.service
+```
+
+The story hasn't ended yet. idk why i dont need these for the first attempt. For each start up, you need to run these
+
+```bash=
+#!/bin/sh -e
+sudo modprobe -r ideapad_laptop
+sudo rfkill unblock all
+exit 0
+```
+
+If you don't have `rfkill`, install it by `sudo apt isntall rfkill`
+
+If you don't want to run it every time manually, you can put them as `/etc/rc.local`
+
+```bash=
+sudo chmod +x /etc/rc.local
+```
+
+## 4. Chinese input
+
+Installing Chinese in KDE is such a headache, and the input method itself is much less user friendly than that in win10. ~~But never mind when programming who use Chinese.~~
+
+First install Chinese language pack
+
+```bash=
+sudo apt install language-pack-zh-hant 
+```
+
+Then check whether `zh-tw` something like that is in your locale by running
+
+```bash=
+locale -a
+```
+
+Next install ibus. I have not successfully tried other input libraries. ibus claims itself as new and user friendly but nah...
+
+```bash=
+sudo apt install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
+sudo apt install ibus-cangjie  # I use cangjie
+im-config -s ibus # ibus official docs said it is im-switch which is wrong
+ibus-setup
+
+sudo apt-get install gnome-icon-theme # poor KDE people need this idk why
+```
+add this to your `~/.bashrc` or `~/.zshrc` or you cannot use ibus in some app
+```
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+```
+
+Finally log out and log in again will have it done :)
+
+If the language box is not on the toolbar, run this
+
+```bash=
+ibus-daemon -drx 
+```
+
+
+
+## 5. Share drive with windows
+
+I also want to share some part of the hard drive for windows, rule of thumbs
+
+1. Always save shared documents in NTFS partition
+2. Need to disable fast boot in windows and dont boot to linux when window is sleeping
+
+And then in linux mount the drive (for me linux directly auto mount C: to `/media/storage/`), and symlink the folders in home directory to the shared drive (I just remove `~/Documents/` `~/Pictures/` etc and make some symlink that point to `C:\Users\xxxxxx\Documents` whatever in `~/`)
+
+One interesting thing is I am even able to share the VirtualBox VMs across linux and windows.
+
+1. Set up the VM in windows environment
+2. Add the VM in Linux environment
+   1. Press Ctrl+A
+   2. Open `myVirtualMachine.vbox` in NTFS partition
+   3. Done
+
+## 6. Broken nvidia driver after updating bios
+
+After I had update my bios, my entire nvidia driver breaks and back-light control is not working. My eyes hurt! (Takes me a whole night and morning to get it solved T^T)
+
+What I did is update the nvidia driver
+
+But then the driver is installed but not running, you can tell by
+
+```bash=
+# you will see a list a nvidia packages you have installed
+dpkg -l | grep -i nvidia
+
+# you will see nvidia-driver is actually not running
+nvidia-smi
+```
+
+What i did is just uninstall and then install all the nvidia related packages listed in `dpkg -l | grep -i nvidia`, and then install the newest nvidia driver by the steps at #1.
+
+And then I run https://devtalk.nvidia.com/default/topic/1037160 again, it shows something like this
+
+```
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.26       Driver Version: 440.26       CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce RTX 2060    Off  | 00000000:01:00.0  On |                  N/A |
+| N/A   50C    P8     7W /  N/A |      0MiB /  5926MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
++-----------------------------------------------------------------------------+
+```
+
+None of the processes are using the GPU, if I run `nvidia-settings` , it saids cannot connect to Nvidia driver whatever.
+
+What I did is review the debug log, which is generated by `nvidia-bug-report.sh `, I see something like this
+
+```bash=
+nvidia-modeset: Version mismatch: nvidia.ko(440.26) nvidia-modeset.ko(435.21)
+```
+
+To solve this, I removed `nvidia-modeset.ko` and reinstall all nvidia related packages
+
+```bash=
+sudo rm /lib/modules/4.15.0-36-generic/updates/dkms/nvidia-modeset.ko
+```
+
+I changed `4.15.0-36-generic`to something else, anyway it should be changed to the newest one
+
+After I setup the brightness control again in #2, my eyes are saved! Run `nvidia-smi` I can see desktop processes are actually using the GPU, and `nvidia-settings` can open a normal dialog.
+
+```
+#> nvidia-smi     
+Fri Nov 29 08:20:51 2019       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.26       Driver Version: 440.26       CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce RTX 2060    Off  | 00000000:01:00.0  On |                  N/A |
+| N/A   50C    P8     7W /  N/A |    343MiB /  5926MiB |      3%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0      2483      G   /usr/lib/xorg/Xorg                           129MiB |
+|    0      3186      G   kwin_x11                                      65MiB |
+|    0      3207      G   /usr/bin/krunner                               3MiB |
+|    0      3209      G   /usr/bin/plasmabash                          80MiB |
+|    0      3314      G   /usr/bin/systemsettings5                      37MiB |
+|    0      3497      G   /usr/bin/akonadi_archivemail_agent            13MiB |
+|    0      3548      G   /usr/bin/akonadi_mailfilter_agent              3MiB |
+|    0      3574      G   /usr/bin/akonadi_sendlater_agent               3MiB |
++-----------------------------------------------------------------------------+
+
+```
+
+
+
+## References
+
+1. https://www.pugetsystems.com/labs/hpc/The-Best-Way-To-Install-Ubuntu-18-04-with-NVIDIA-Drivers-and-any-Desktop-Flavor-1178/
+2. https://bbs.archlinux.org/viewtopic.php?id=230932
+3. https://www.howtogeek.com/howto/35807/how-to-harmonize-your-dual-boot-setup-for-windows-and-ubuntu/
+4. https://ubuntuforums.org/showthread.php?t=2403551
+5. https://github.com/ibus/ibus/wiki/Ubuntu
+6. https://devtalk.nvidia.com/default/topic/1037160
+    

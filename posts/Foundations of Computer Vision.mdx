@@ -1,0 +1,134 @@
+---
+title: Foundations of Computer Vision
+titleLink: //github.com/dipsywong98/COMP4901L
+brief: Traditional approaches in computer vision, CMU 16-385
+time: 2019 fall
+tags:
+  - Matlab
+  - Computer Vision
+  - COMP4901L
+  - Academic
+  - AI
+more: true
+story: //hackmd.io/4U81fWrXS2uBwZOfgHjTbA/download
+rank: 4
+id: Foundations%20of%20Computer%20Vision
+
+---
+
+# Foundations of Computer Vision
+
+> Course project of COMP4901L - a clone of CMU 16-385 course
+> Team: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
+> Repo: https://github.com/dipsywong98/COMP4901L
+> 
+
+One of the hardest and most intensive UG Computer Science course in HKUST, 7 programming projects in 13 weeks. ~~Thanks god our super difficult final is cancelled~~.
+
+0. Matlab warm-up
+1. image filtering and hough transform
+2. augmented reality and planar homography
+3. 3D reconstruction
+4. physics-based vision
+5. scene recognition with bag of words
+6. digit recognition with CNN
+7. tracking objects in videos
+
+## 1. image filtering and hough transform
+
+Pipeline that applies kernals and hough transform to detect straight line edges
+
+1. original image
+![](https://i.imgur.com/lA2yjwI.png)
+2. apply sobel operator
+![](https://i.imgur.com/JuwYgjr.png)
+3. thresholding
+![](https://i.imgur.com/OXGl9hc.png)
+4. hough transform
+![](https://i.imgur.com/0TwRnwc.png)
+5. lines
+![](https://i.imgur.com/bEAlJ9h.png)
+
+## 2. augmented reality and planar homography
+
+Feature detectors (FAST/ Harris corner detections), feature descriptors (BRIEF, filter bank), homography, RANSAC, Panorama
+
+1. Extract and match the features
+![Uploading file..._6nl6yh4f5](https://github.com/dipsywong98/COMP4901L/raw/master/assgn2_no_cv_package/saved_figures/2_1_4.png)
+
+2. Compute the homography and map new image
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn2_no_cv_package/saved_figures/harrypotterized.png)
+
+Panorama
+left
+![](https://github.com/dipsywong98/COMP4901L/blob/master/assgn2_no_cv_package/data/pano2_left.jpg?raw=true)
+right
+![](https://github.com/dipsywong98/COMP4901L/blob/master/assgn2_no_cv_package/data/pano2_right.jpg?raw=true)
+result
+![](https://github.com/dipsywong98/COMP4901L/blob/master/assgn2_no_cv_package/saved_figures/pano2.png?raw=true)
+
+## 3. 3D reconstruction
+
+Sparse reconstruction
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn3/saved_figures/match_points.png)
+![Uploading file..._jip2c1p53](https://github.com/dipsywong98/COMP4901L/raw/master/assgn3/saved_figures/temple1.jpg)
+
+dense reconstruction
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn3/saved_figures/rectified.jpg)
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn3/ec/disparity.jpg)
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn3/ec/depth.jpg)
+
+pose estimation
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn3/saved_figures/ec3.3.3.4.jpg)
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn3/saved_figures/ec3.3.3.5.png)
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn3/saved_figures/ec3.3.3.6.jpg)
+
+## 4. Physic based reconstruction
+
+Given albedo and normal, render model under different light source
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn4/saved_figures/rabbit_normal.jpg)
+
+
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn4/saved_figures/rabbit_basic_render.jpg)
+
+Given pictures under different light source, compute albedo and normal
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn4/saved_figures/stereo_albedo_normal.jpg)
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn4/saved_figures/stereo_reconstructed.jpg)
+
+## 5. scene recognition with bag of words
+
+Given a set of filters, set of training images, sample some points using random or corners, compute their filter responses, k-mean cluster the responses as dictionary. Then map each pixel of all images into words in the dictionary, this word map then convert into a histogram counting the relative frequency of each word. Next use image feature distance/ NN/ kNN/ SVM to do the classification
+
+1. original
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn5/data/airport/sun_aerinlrdodkqnypz.jpg)
+2. filter response on LAB color system
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn5/saved_figures/1.1im3.jpg)
+3. collect sampling points
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn5/saved_figures/1.2im2.jpg)
+4. image to word map
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn5/saved_figures/2.1im1.jpg)
+5. classification
+kNN 57.5% accuracy, k=14
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn5/saved_figures/accuracy_plot.png)
+LibSVM 63.75% accuracy, HOG+SVM 80% accuracy
+
+## 6. digit recognition with CNN
+
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn6/saved_figures/image1.JPG.jpg)
+
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn6/saved_figures/image3.png.jpg)
+
+![](https://github.com/dipsywong98/COMP4901L/raw/master/assgn6/saved_figures/image4.jpg.jpg)
+
+## 7. tracking objects in videos
+Lucas-Kanade Tracker and Matthew-Baker tracker
+
+https://youtu.be/0fQug-VUdEk (car tracking using robust LK)
+
+https://youtu.be/UvSW91Z5msA (landing tracking using pyramid LK)
+
+## Scores
+![](https://i.imgur.com/AeiZZq5.png)
+
+I am rank 6 A+
+    

@@ -1,0 +1,57 @@
+---
+title: wsl2上裝zsh
+brief: install zsh on wsl2
+story: //hackmd.io/hHXp4LJPQVWQ2CW7XV3ArA/download
+tags:
+  - Linux
+id: wsl2%E4%B8%8A%E8%A3%9Dzsh
+
+---
+
+
+# wsl2上裝zsh
+
+到microsoft store裝windows terminal
+
+```
+sudo apt update
+sudo apt install git zsh -y
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+跟著它設定default shell
+
+我用的theme 是powerlevel10k
+
+plugin 裝了syntax highlight 跟auto complete
+
+複製貼上`~/.zshrc` 再跑三個git clone 就搞定
+
+https://github.com/romkatv/powerlevel10k
+
+https://gist.github.com/dipsywong98/451e726037cbc4129f27399d7318dffd
+
+```bash
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+```
+
+下載並安裝一個nerd font
+
+https://github.com/ryanoasis/nerd-fonts/releases/
+
+windows terminal 按ctrl+, 開settings 把font 改成剛安裝的Nerd Font
+
+```json
+{
+  "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+  "hidden": false,
+  "name": "Ubuntu-20.04",
+  "source": "Windows.Terminal.Wsl",
+  "fontFace": "JetBrainsMono NF"	// or other font face name
+},
+```
+
+
+    

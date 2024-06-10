@@ -1,0 +1,45 @@
+---
+title: Self host https localhost
+story: //hackmd.io/d-GxewX4SZanKMeCtA7ovA/download
+tags:
+  - JavaScript
+id: Self%20host%20https%20localhost
+
+---
+
+
+# Self host https localhost
+
+
+```bash=
+openssl genrsa -out privatekey.pem 1024 
+openssl req -new -key privatekey.pem -out certrequest.csr 
+openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem
+```
+
+```javascript=
+const fs = require("fs")
+const https = require('https')
+
+var privateKey = fs.readFileSync('./privatekey.pem').toString();
+var certificate = fs.readFileSync('./certificate.pem').toString();
+
+// var credentials = crypto.createCredentials({key: privateKey, cert: certificate});
+
+const httpsOptions = {
+  key: fs.readFileSync("./privatekey.pem"),
+  cert: fs.readFileSync("./certificate.pem")
+};
+// const server = https.createServer(httpsOptions, app).listen(port, () => {
+//   console.log("server running at " + port);
+// });
+
+var server = https.createServer(httpsOptions);
+server.addListener("request", function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+});
+server.listen(8000);
+
+```
+    

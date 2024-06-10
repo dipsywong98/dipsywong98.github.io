@@ -60,11 +60,6 @@ const WorkComponent: React.FC<Props> = forwardRef(function WorkComponent ({ work
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         >
-      <RippleFullScreen
-      ripple={true}
-      onAnimate={onRippleAnimate}
-      onClose={onClose}
-      outside={
         <div className="work-ripple-outside">
           <motion.h4 className="title">
             <motion.a className="title prevent-ripple-full-screen">{work.title}</motion.a>
@@ -74,7 +69,7 @@ const WorkComponent: React.FC<Props> = forwardRef(function WorkComponent ({ work
           </motion.small>
           <div className="brief">
             <span>{(work.brief ?? '') + ' '}</span>
-            {showMore ? <a className="title">more</a> : null}
+            {showMore ? <a className="title" href={`/posts/${work.title}`}>more</a> : null}
           </div>
           <div className="tags prevent-ripple-full-screen">
             {work.tags?.map((tag) => (
@@ -86,16 +81,6 @@ const WorkComponent: React.FC<Props> = forwardRef(function WorkComponent ({ work
             ))}
           </div>
         </div>
-      }
-      >
-        <div className="work-ripple-inside">
-          {
-            loading
-              ? 'Loading...'
-              : <Markdown>{story}</Markdown>
-          }
-        </div>
-      </RippleFullScreen>
       {work.liveLink !== undefined && <LiveLink href={work.liveLink} />}
 
     </motion.div>

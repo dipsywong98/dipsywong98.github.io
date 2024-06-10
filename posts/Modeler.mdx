@@ -1,0 +1,64 @@
+---
+title: Modeler
+titleLink: //github.com/dipsywong98/COMP4411-modeler
+brief: Graphics project on controlling 3D models, CSE457 of University of Washington
+time: 2019 spring
+tags:
+  - cpp
+  - Computer Graphics
+  - COMP4411
+  - Academic
+more: true
+story: //hackmd.io/8amPio7-QJSyBrie9oW_eg/download
+id: Modeler
+
+---
+
+
+# Modeler
+> Graphics project on controlling 3D models, COMP4411 of HKUST
+> CSE457 of University of Washington
+> 30 b/w (full 30)
+> Authors: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
+> Repo: https://github.com/dipsywong98/COMP4411-Modeler
+> 
+
+![Screenshot](https://github.com/dipsywong98/COMP4411-modeler/raw/master/screenshot.png)
+
+## Basic Requirements
+
+- [x] Own character (10 primitive shapes, 4 level of hierarchy)
+  - [x] each level need at least one `glTranslate` `glRotate` or `glScale`
+  - [x] use `glPushMatrix` and `glPopMatrix` to nest the levels
+- [x] Sliders to control single component
+- [x] Sliders to control a action which move multiple components at the same time
+- [x] Implement `gluLookAt`
+- [x] Complete 2 bells
+
+## Bonus
+
+B: Bell, W: Whistle, 1B=2W
+
+- [x] **(1W)** Light source
+  - [x] **(1W)** (hierarchical) level of details
+  - [x] (1W each) extra feature
+    - [x] Dynamic number of level of arms with ik supported
+- [x] **(1B)** Texture map
+- [x] **(1B)** Polygon faces shape
+- [x] **(1B)** Animated sequence
+- [x] (1B) Widget to control param and create individual-looking instances
+- [x] **(1B)** Fit whole model in camera (Frame All)
+- [x] (1B1W) an intuitive way for the user to twist the camera via mouse control.
+- [x] *(2B)* New primitives (one of the followings)
+  - [ ] 1. Given Curve A and B, surface form by sweep A through B
+  - [x] 2. Given Curve A and stright line L, surface form by rotate A about L
+  - [ ] 3. Torus
+  - [ ]  4. Others base on coolness
+- [x] (2B) procedural modelling with parameter control [L-system](https://en.wikipedia.org/wiki/L-system)
+- [x] (2B) mood cycling: the model have mood reaction based on UI control
+- [x] (4B) Organic shape [metaballs](http://en.wikipedia.org/wiki/Metaballs)
+- [x] *(8B)* goal-oriented motion (inverse kinematics  [here](https://course.cse.ust.hk/comp4411/Password_Only/projects/modeler/inverse-kinematics.pdf))
+  - [x] *(4B)* constrain on joints
+
+P.S: This is the simplest project of COMP4411, if you are taking it, do score all the bonus in this project
+    

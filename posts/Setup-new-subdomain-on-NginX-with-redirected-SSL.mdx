@@ -1,0 +1,62 @@
+---
+title: Setup-new-subdomain-on-NginX-with-redirected-SSL
+story: >-
+  https://gist.githubusercontent.com/dipsywong98/66559f2a14b59d40a0c423d53a52ef02/raw/Setup-new-subdomain-on-NginX-with-redirected-SSL.md
+tags:
+  - SSL
+  - NginX
+id: Setup-new-subdomain-on-NginX-with-redirected-SSL
+
+---
+# Setup new subdomain on NginX with redirected SSL
+
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04
+
+
+1. run certbot
+	```sh
+	sudo certbot --nginx -d mydomain.com -d mysubdomain.mydomain.com
+	```
+1. go `/etc/nginx/sites-available/default`
+1. edit and paste
+	```
+	server {
+	    if ($host = mysubdomain.mydomain.com) {
+		return 301 https://$host$request_uri;
+	    } # managed by Certbot
+
+
+	  listen 80;
+	  listen [::]:80;
+
+	  server_name mysubdomain.mydomain.com;
+
+	  return 301 https://$host$request_uri;
+
+
+	}
+
+	server {
+	  ssl on;
+	    ssl_certificate /etc/letsencrypt/live/mysubdomain.mydomain.com/fullchain.pem; # managed by Certbot
+	    ssl_certificate_key /etc/letsencrypt/live/mysubdomain.mydomain.com/privkey.pem; # managed by Certbot
+	  listen 443 ssl;
+	  listen [::]:443 ssl;
+
+	  server_name mysubdomain.mydomain.com;
+
+	  location / {
+	      proxy_set_header Host $http_host;
+	      proxy_set_header X-Real-IP $remote_addr;
+	      proxy_pass http://localhost:3000/;
+		  proxy_http_version 1.1;
+	      proxy_set_header Upgrade $http_upgrade;
+	      proxy_set_header Connection "upgrade";
+	  }
+
+	}
+	```
+
+1. test whether you have typed correctly `sudo nginx -t`
+1. restart nginx `sudo systemctl reload nginx`
+    

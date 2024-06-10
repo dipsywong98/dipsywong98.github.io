@@ -4,6 +4,7 @@ import './NameCard.scss'
 import { SvgLink } from './SvgLink'
 import NextImage from 'next/image'
 import jsyaml from 'js-yaml'
+import my from './namecard.yaml'
 
 interface My {
   name: string
@@ -18,18 +19,17 @@ interface My {
   }>
 }
 
-async function getData (): Promise<My> {
-  // const res = await fetch('https://hackmd.io/ux_QXxWNTbetEKqOgRSQSA/download', { cache: 'no-cache' })
-  const res = await fetch('http://localhost:3000/namecard.yml', { cache: 'no-cache' })
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
+// async function getData (): Promise<My> {
+//   const res = await fetch('https://hackmd.io/ux_QXxWNTbetEKqOgRSQSA/download', { cache: 'no-cache' })
+//   // const res = await fetch('http://localhost:3000/namecard.yml', { cache: 'no-cache' })
+//   if (!res.ok) {
+//     throw new Error('Failed to fetch data')
+//   }
 
-  return jsyaml.load(await res.text()) as My
-}
+//   return jsyaml.load(await res.text()) as My
+// }
 
-export async function NameCard (): Promise<React.JSX.Element> {
-  const my = await getData()
+export function NameCard (): React.JSX.Element {
   return (
     <div className="namecard card">
       <div className="field">

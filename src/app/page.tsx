@@ -1,5 +1,3 @@
-import { PostCard } from '@/components/PostCard'
-import { Button } from '@/components/ui/button'
 import { Dipsyland } from '@/components/v2/Dipsyland'
 import { NameCard } from '@/components/v2/NameCard'
 import { NavBar } from '@/components/v2/NavBar'
@@ -8,15 +6,13 @@ import { Works } from '@/components/v2/Works'
 import { getWorks } from '@/lib/getWorks'
 import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
-import { Github } from 'lucide-react'
-import Link from 'next/link'
 
-export default async function Home() {
+export default function Home() {
   const posts = allPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   )
-  const { allWorks, meta } = await getWorks('works')
-  const { allWorks: allBlog, meta: blogMeta } = await getWorks('blog')
+  const { allWorks, meta } = getWorks('works')
+  const { allWorks: allBlog, meta: blogMeta } = getWorks('blog')
 
   return (
     <div id='app'>

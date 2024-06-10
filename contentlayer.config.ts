@@ -1,8 +1,10 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeKatex from 'rehype-katex'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -17,12 +19,38 @@ const Post = defineDocumentType(() => ({
     date: {
       type: 'date',
       description: 'The date of the post',
-      required: true,
+    },
+    time: {
+      type: 'string',
+      description: 'The date of the post',
     },
     description: {
       type: 'string',
       description: 'The description of the post',
-      required: true,
+    },
+    titleLink: {
+      type: 'string',
+    },
+    liveLink: {
+      type: 'string'
+    },
+    brief: {
+      type: 'string'
+    },
+    tags: {
+      type: 'list',
+      of: {
+        type: 'string'
+      }
+    },
+    story: {
+      type: 'string'
+    },
+    id: {
+      type: 'string'
+    },
+    more: {
+      type: 'boolean'
     },
   },
   computedFields: {
@@ -37,8 +65,9 @@ export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [
+      rehypeKatex,
       rehypeSlug,
       [
         rehypePrettyCode,

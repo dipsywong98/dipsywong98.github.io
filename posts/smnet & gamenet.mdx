@@ -1,0 +1,1064 @@
+---
+title: smnet & gamenet
+titleLink: //github.com/dipsywong98/smnet
+brief: redux like decentralized peer to peer state management store
+liveLink: //www.npmjs.com/package/smnet
+more: true
+story: //hackmd.io/p78YnpfXQgymNVyFYsAcxQ/download
+time: 2020 fall
+tags:
+  - TypeScript
+  - React
+  - game
+  - peerjs
+  - library
+  - gamenet
+  - web
+id: smnet%20%26%20gamenet
+
+---
+# Make multiplayer board game with react and frontend libraries only - no backend code nor database
+
+[toc]
+
+## TLDR;
+
+[end product](//dipsywong98.github.io/poker99)
+
+[source code](//github.com/dipsywong98/poker99)
+
+## Introduction
+
+This tutorial will show you how to build a online poker 99 board game using react, material-ui and gamenet, with local hot seat players and ai players supported.
+
+There is no need to code another backend like socket.io servers or use some realtime database like firebase. Gamenet is using WebRTC technology to build peer-to-peer state management network, backed by peer.js. As public peer.js server may not stable, it will be better to host your own peer.js broker server.
+
+## Prerequisite
+
+Some react knowledge and a reactjs development environment. Best to have experience with redux/ useReducer since the API looks similar
+
+## Poker99 Game Rules
+
+Poker99 is a simple poker game: easy to implement and easy to make AI, so this game is chosen as a demo. There is a bomb on the table and whenever player played a card, it will increase the point of the bomb. When a player cannot play a card that wont blow the bomb, he dies and next player continue. Players take turn to play card until only one player left and that is the winner. The card number represents the point, except 4, 5, J correspond to 0 point, where 4 reverses and 5 set the turn to the player of your choice, J just skip your turn; K set the point to 99; 10, Q you can choose to +-10 or +-20 respectively, spade A set the point to 1. Players hold 5 card at a time, after they played a card, they draw 1 card. Card will be recycled when all are drawn.
+
+## Steps
+
+### 1. Prepare and Install
+
+Initialize a react project using create-react-app (typescript is optional)
+
+```shell
+npx create-react-app my-app --template typescript
+```
+
+Install the dependencies
+
+```
+yarn add smnet gamenet gamenet-material @material-ui/core @material-ui/icons @material-ui/lab mdi-material-ui
+```
+
+Start the react development server
+
+```
+yarn start
+```
+
+### 2. Get GameNet running
+
+This section will demonstrate how to make room joining and game start using components offered by `gamenet-material` from scratch
+
+#### 2.1 Create a basic State class, Action type and reducer that just return itself
+
+state, action and reducer are the three essential part you need to provide to set up the connection.
+
+Each point in the network will have a copy of the same state, here we can modify the min and max players that the game allowed. If more than this amount of player join, they will become spectators
+
+```tsx
+// Poker99State.ts
+import { GenericBoardGameState } from 'gamenet'
+
+export class Poker99State extends GenericBoardGameState {
+  maxPlayer = 4
+  minPlayer = 4
+}
+```
+
+We dispatch actions (will essentially just an object) to update the state, they need to be extending NetworkAction and Union GenericBoardGameAction
+
+```ts
+// Poker99Action.ts
+import { GenericBoardGameAction } from 'gamenet'
+import { NetworkAction } from 'smnet'
+
+export type Poker99Action =  NetworkAction | GenericBoardGameAction
+```
+
+Reducer handle the dispatched action and return a new state. For simplicity we are returning the old state for now. (GameNet has an additional reducer to handle generic game action like handling player join/ leave/ prepare, etc.)
+
+```ts
+// Poker99Reducer.ts
+import { NetworkReducer } from 'smnet'
+import { Poker99State } from './Poker99State'
+import { Poker99Action } from './Poker99Action'
+
+export const Poker99Reducer: NetworkReducer<Poker99State, Poker99Action> = (prevState, action) => {
+  return prevState
+}
+```
+
+#### 2.2. Create Poker99Context and hook so you can use/update the network everywhere
+
+Since gamenet is only providing an `useGameNetwork` hook for connection handling, each `useGameNetwork` would be one point in the network. In order to make the entire game to use the same point instead of creating many points, we use a context to pass the point to all the components. We can use a higher order component to wrap app with a Poker99Context.Provider, and then we can use the `usePoker99` hook to access the state or dispatch event etc.
+
+```tsx
+// withPoker99Network.tsx
+
+import React, { createContext, FunctionComponent, useContext } from 'react'
+import { BoardGameContextInterface, useBoardGameNetwork } from 'gamenet'
+import { Poker99State } from './Poker99State'
+import { Poker99Reducer } from './Poker99Reducer'
+import { Poker99Action } from './Poker99Action'
+
+const Poker99Context = createContext<BoardGameContextInterface<Poker99State, Poker99Action> | null>(null)
+
+export const withPoker99Network = (Component: FunctionComponent): FunctionComponent => {
+  const WithGameNetwork: FunctionComponent = props => {
+    const network = useBoardGameNetwork(Poker99Reducer, new Poker99State(), () => ({}))
+    return (
+      <Poker99Context.Provider value={network}>
+        <Component {...props} />
+    </Poker99Context.Provider>
+  )
+  }
+  WithGameNetwork.displayName = 'WithGameNetwork'
+  return WithGameNetwork
+}
+
+export const usePoker99 = (): BoardGameContextInterface<Poker99State, Poker99Action> => {
+  const network: BoardGameContextInterface<Poker99State, Poker99Action> | null = useContext(Poker99Context)
+  if (network === null) {
+    throw new Error('please wrap it using withPoker99Network before calling this hook')
+  }
+  return network
+}
+
+```
+
+#### 2.3. Create Empty Game.tsx for game interaction and update App.tsx for controlling the room flow
+
+Game tsx that can display the network state
+
+```tsx
+// Game.tsx
+
+import React, { FunctionComponent } from 'react'
+
+export const Game: FunctionComponent = () => {
+  const network = usePoker99()
+  return <div style={{overflow: 'auto', pointerEvents: 'all'}}>
+    <pre>{
+    JSON.stringify(network, null, 2)
+  }</pre>
+  </div>
+}
+```
+
+Wrap the app with withPoker99Network, so we can call usePoker99 here. import the Slider, Home, Room from gamenet-material, so you can have the room system automatically.
+
+```tsx
+// App.tsx
+import React, { FunctionComponent } from 'react'
+import { usePoker99, withPoker99Network } from './withPoker99Network'
+import { GamePagesSlider, Home, Room } from 'gamenet-material'
+import { Game } from './Game'
+
+const App: FunctionComponent = withPoker99Network(() => {
+  const network = usePoker99()
+  return (
+    <GamePagesSlider gameAppState={network.gameAppState} fullPage={[false, false, true]}>
+      <Home {...network} gameName='Poker99'/>
+      <Room {...network} />
+      <Game/>
+    </GamePagesSlider>
+  )
+})
+
+export default App
+
+```
+
+Then you can already create room, add "AI" and hot seat players, when you start game, you will see the network state. Then we can start implementing our game logic.
+
+### 3. Implement the ordinary PVP Poker99 game
+
+To implement that you can play with other people over the internet (no hot seat nor AI)
+
+#### 3.1 Design types and data structure
+
+Define some common types that would be useful
+
+```ts
+// types.ts
+
+export enum Suit {
+  SPADE,
+  HEART,
+  CLUB,
+  DIAMOND
+}
+
+export interface Card {
+  suit: Suit
+  number: number
+}
+
+export type Deck = Card[]
+```
+
+```ts
+// constants.ts
+
+export const cardPoints: Record<number, number> = {
+  1: 1, // spade set 1
+  2: 2,
+  3: 3,
+  4: 0, // reverse
+  5: 0, // target
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10, // +- 10
+  11: 0, //  skip
+  12: 20, // +=20
+  13: 99 //   set to 99
+}
+
+export const maxCard = 5 // player can only hold 5 cards at a time
+```
+
+```ts
+// Poker99State.ts
+
+import { GenericBoardGameState } from 'gamenet'
+import { Deck } from './types'
+
+export class Poker99State extends GenericBoardGameState {
+  maxPlayer = 4
+  minPlayer = 4
+  turn = 0	// to determine it's whose turn
+  direction = 1	// +1 or -1 to denote clockwise or anticlockwise
+  points = 0	// the bomb point, 99 => explode
+  dead: Record<number, true> = {}	// store who is dead
+  drawDeck: Deck = []	// all cards available to draw
+  trashDeck: Deck = []	// all played cards
+  playerDeck: Deck[] = []	// cards that on each players' hand
+  winner = null  		// winner's playerId
+  logs: string[] = []	// all the events happened in the game
+}
+
+```
+
+Please notice the attributes from the base class, they are controlled by gamenet
+
+```ts
+class GenericGameState {
+    /**
+     * all connected members and their names
+     */
+    members: {
+        [peerId: string]: string;
+    };
+    /**
+     * peerId in this dict iff not playing
+     */
+    spectators: {
+        [peerId: string]: true;
+    };
+    /**
+     * local players, key: display name, value is the peerId that control this local player
+     */
+    localPlayers: {
+        [name: string]: string;
+    };
+    /**
+     * ai players, key: display name, value is the peerId that control this ai player
+     */
+    aiPlayers: {
+        [name: string]: string;
+    };
+    /**
+     * name to in game id map
+     */
+    nameDict: {
+        [name: string]: number;
+    };
+    /**
+     * in game id to name map
+     */
+    players: string[];
+    /**
+     * peerId in ready iff ready
+     */
+    ready: {
+        [peerId: string]: true;
+    };
+    started: boolean;
+}
+```
+
+#### 3.2. Design the Actions
+
+There are only two possible actions that the player can do:
+
+1. Play a card
+2. End the game
+
+Since there are some cards that require additional info, like 10 and Q you need to specify increase or decrease point, and 5 you need to specify a target player to change turn, for play card action you need a special typed payload
+
+```ts
+// Poker99Action.ts
+
+import { GameActionTypes, GenericBoardGameAction } from 'gamenet'
+import { Card } from './types'
+import { NetworkAction } from 'smnet'
+
+export enum Poker99ActionType {
+  PLAY_CARD,
+  END,
+}
+
+export interface PlayCardPayload {
+  card: Card
+  increase?: boolean
+  target?: number
+}
+
+export type Poker99Action = (({
+  type: Poker99ActionType.PLAY_CARD
+  payload: PlayCardPayload
+} | {
+  type: Poker99ActionType.END
+} | {
+  type: GameActionTypes
+  payload: never
+}) & NetworkAction) | GenericBoardGameAction
+
+```
+
+#### 3.3. Implement the Card Logic and Reducer
+
+add three types to `types.ts`
+
+1. StateMapper are functions that can map previous state to next state
+2. IsCard are functions to determine whether a card is a specialized card, like whether is it a spade A
+3. PlayCard are functions that accept the playCardAction payload and the playerId, and return a StateMapper that can map the previous state to new state accordingly. 
+
+(This is a very functional approach, try your best not to alter the value of parameter passed)
+
+```ts
+// types.ts
+
+import { Poker99State } from './Poker99State'
+import { PlayCardPayload } from './Poker99Action'
+
+// ...
+
+export type StateMapper = (prevState: Poker99State) => Poker99State
+
+export type IsCard = (card: Card) => boolean
+
+export type PlayCard = (payload: PlayCardPayload, playerId: number) => StateMapper
+```
+
+implement the util functions
+
+minPossible: given the current point and cards i have, return the minimum possible point after playing a card, and the index of that card in the input array
+
+getFullDeck: return all 52 cards of a poker set
+
+```ts
+// utils.ts
+
+import { Card, Suit } from './types'
+import { cardPoints } from './constants'
+
+export const minPossible = (current: number, cards: Card[]): number[] => {
+  let min = Infinity
+  let index = 0
+  cards.forEach(({ suit, number }, k) => {
+    let next = 0
+    if (suit === Suit.SPADE && number === 1) {
+      next = 1
+    } else if (number === 10) {
+      next = current - 10
+    } else if (number === 12) {
+      next = current - 20
+    } else if (number === 13) {
+      next = 99
+    } else {
+      next = current + cardPoints[number]
+    }
+    if (next < min) {
+      min = next
+      index = k
+    }
+  })
+  return [min, index]
+}
+
+export const getFullDeck = (): Deck => {
+  const deck: Deck = []
+  for (let suit = 0; suit < 4; suit++) {
+    for (let number = 1; number <= 13; number++) {
+      deck.push({ suit, number })
+    }
+  }
+  return deck
+}
+```
+
+implement some state mappers
+
+```ts
+// Poker99Reducer.ts
+import { Poker99State } from './Poker99State'
+import { PlayCardPayload, Poker99Action, Poker99ActionType } from './Poker99Action'
+import { Deck, PlayCard, StateMapper, Suit } from './types'
+import { compose, GameActionTypes, shuffle } from 'gamenet'
+import { maxCard } from './constants'
+import { minPossible, getFullDeck } from './utils'
+import { bomb } from './cards/bomb'
+import { normal } from './cards/normal'
+import { pm } from './cards/pm'
+import { reverse } from './cards/reverse'
+import { skip } from './cards/skip'
+import { target } from './cards/target'
+import { spade1 } from './cards/spade1'
+
+// withInitGame
+// clear all the state to initial value, and initialize the cards on players' hand
+const withInitGame: StateMapper = (prevState: Poker99State) => {
+  prevState = {
+    ...prevState,
+    drawDeck: [],
+    trashDeck: [],
+    playerDeck: [],
+    points: 0,
+    direction: 1,
+    turn: 0,
+    dead: {},
+    logs: ['game started'],
+    winner: null
+  }
+  prevState.drawDeck = shuffle(getFullDeck())
+  for (let id = 0; id < prevState.players.length; id++) {
+    prevState.playerDeck[id] = []
+    for (let k = 0; k < maxCard; k++) {
+      prevState = withDrawCard(id)(prevState)
+    }
+  }
+  return { ...prevState }
+}
+
+// withDrawCard: given a playerId
+// if that player already reach maximum number of cards he can hold, block the action
+// draw a card from the draw deck, and put that card to player's hand
+// if the draw deck become empty, get back the cards in trash, reshuffle and put back to draw deck, try draw card again
+const withDrawCard: (playerId: number) => StateMapper = playerId => prevState => {
+  if (prevState.playerDeck[playerId].length >= maxCard) {
+    throw new Error(`cannot draw, ${prevState.players[playerId]} already has ${maxCard} cards`)
+  }
+  const card = prevState.drawDeck.shift()
+  if (card === undefined) {
+    return withDrawCard(playerId)({ ...prevState, drawDeck: shuffle(prevState.trashDeck), trashDeck: [] })
+  } else {
+    prevState.playerDeck[playerId].push(card)
+    return { ...prevState }
+  }
+}
+
+// withDiscardCard:
+// specified player put a card from his hand to trashDeck
+const withDiscardCard: PlayCard = ({ card }, playerId) => state => {
+  state.trashDeck.push(card)
+  state.playerDeck[playerId] = state.playerDeck[playerId].filter(({ suit, number }) => !(suit === card.suit && number === card.number))
+  return state
+}
+
+// withPlayCard
+// handle specified player played a card
+// first check whether the player do have that card
+// bomb, normal, pm, reverse, skip, target, spade1 are all the PlayCard mapper to be implemented in a chain of responsibility pattern
+// the state will flow into them one by one, and if the card matches any one of the PlayCard mapper, the mapper will return a new state that flow to mapper afterwards
+// lastly discard the card and draw a new card
+const withPlayCard: (playerId: number, payload: PlayCardPayload) => StateMapper = (playerId, payload) => prevState => {
+  const { card } = payload
+  const cardStr = `${Suit[card.suit]}${card.number}`
+  if (prevState.playerDeck[playerId].find(({ suit, number }) => suit === card.suit && number === card.number) === undefined) {
+    throw new Error(`${prevState.players[playerId]} doesnt own card ${cardStr}`)
+  }
+  if (prevState.turn !== playerId) {
+    throw new Error('not your turn')
+  }
+  return compose(
+    withDrawCard(playerId),
+    ...[withDiscardCard, bomb, normal, pm, reverse, skip, target, spade1].map(playCard => playCard(payload, playerId))
+  )(prevState)
+}
+
+// withIncrementTurn
+// to calculate the next player according to the direction and number of players
+export const withIncrementTurn: StateMapper = prevState => {
+  const nextPlayerId = (prevState.turn + prevState.maxPlayer + prevState.direction) % prevState.maxPlayer
+  return { ...prevState, turn: nextPlayerId }
+}
+
+// withEndTurn
+// when the turn is over, prevState.turn will be pointing to next player.
+// check would next player be able to play a card that would not exceed 99 and decide whether or not to mark him as dead
+// if next player has been marked as dead, his turn ended automatically
+export const withEndTurn: StateMapper = prevState => {
+  if (!prevState.dead[prevState.turn] && minPossible(prevState.points, prevState.playerDeck[prevState.turn])[0] > 99) {
+    prevState.logs.push(`${prevState.players[prevState.turn]} die, his card: ${prevState.playerDeck[prevState.turn].map(card => (
+      `${Suit[card.suit]}${card.number}`)
+    ).join(',')}`)
+    prevState.dead[prevState.turn] = true
+  }
+  if (Object.keys(prevState.dead).length === prevState.players.length - 1 && prevState.started) {
+    prevState.winner = [0, 1, 2, 3].filter(k => !prevState.dead[k])[0]
+  }
+  if (prevState.dead[prevState.turn]) {
+    return withEndTurn(withIncrementTurn({ ...prevState, turn: prevState.turn }))
+  } else {
+    return { ...prevState, turn: prevState.turn }
+  }
+}
+
+```
+
+implement PlayCard mappers
+
+```ts
+// cards/bomb.ts
+import { Card, IsCard, PlayCard } from '../types'
+import { withEndTurn, withIncrementTurn } from '../Poker99Reducer'
+
+// bomb cards are card of number 13
+export const isBombCard: IsCard = (card: Card): boolean => {
+  return card.number === 13
+}
+
+// bomb PlayCard mapper only handle cards that is a bomb card
+// if it is a bomb card
+// 1. set points to 99
+// 2. calculate next player normally
+// 3. end turn
+// if it is not a bomb card, just return the old state
+export const bomb: PlayCard = ({ card }) => state => {
+  if (isBombCard(card)) {
+    state.points = 99
+    return withEndTurn(withIncrementTurn(state))
+  }
+  return state
+}
+
+```
+
+```ts
+// target.ts
+import { Card, IsCard, PlayCard } from '../types'
+import { withEndTurn } from '../Poker99Reducer'
+
+export const isTargetCard: IsCard = (card: Card): boolean => {
+  return card.number === 5
+}
+
+// need to extract the targeted player from payload, and set the next turn to target
+// endTurn without calling incrementTurn
+export const target: PlayCard = ({ card, target }, playerId) => state => {
+  if (isTargetCard(card)) {
+    if (target === undefined) {
+      throw new Error('target is required in payload')
+    }
+    if (target === playerId) {
+      throw new Error('cannot target myself')
+    }
+    state.turn = target
+    return withEndTurn(state)
+  }
+  return state
+}
+
+```
+
+just put all PlayCard mappers here for you to copy paste (?)
+
+```ts
+// normal.ts
+import { Card, IsCard, PlayCard, Suit } from '../types'
+import { cardPoints } from '../constants'
+import { withEndTurn, withIncrementTurn } from '../Poker99Reducer'
+
+export const isNormalCard: IsCard = (card: Card): boolean => {
+  if (card.suit === Suit.SPADE && card.number === 1) {
+    return false
+  } else {
+    return [1, 2, 3, 6, 7, 8, 9].includes(card.number)
+  }
+}
+
+export const normal: PlayCard = ({ card }) => state => {
+  if (isNormalCard(card)) {
+    const points = state.points + cardPoints[card.number]
+    if (points > 99) {
+      throw new Error('playing this card will exceed 99')
+    }
+    return withEndTurn(withIncrementTurn({ ...state, points }))
+  }
+  return state
+}
+
+```
+
+```ts
+// pm.ts
+import { Card, IsCard, PlayCard } from '../types'
+import { cardPoints } from '../constants'
+import { withEndTurn, withIncrementTurn } from '../Poker99Reducer'
+
+export const isPmCard: IsCard = (card: Card): boolean => {
+  return card.number === 10 || card.number === 12
+}
+
+export const pm: PlayCard = ({ card, increase }) => state => {
+  if (isPmCard(card)) {
+    if (increase === undefined) {
+      throw new Error('increase is required in payload')
+    }
+    const points = state.points + (increase ? cardPoints[card.number] : -cardPoints[card.number])
+    if (points > 99) {
+      throw new Error('playing this card will exceed 99')
+    }
+    return withEndTurn(withIncrementTurn({ ...state, points }))
+  }
+  return state
+}
+
+```
+
+```ts
+// reverse.ts
+import { Card, IsCard, PlayCard } from '../types'
+import { withEndTurn, withIncrementTurn } from '../Poker99Reducer'
+
+export const isReverseCard: IsCard = (card: Card): boolean => {
+  return card.number === 4
+}
+
+export const reverse: PlayCard = ({ card }) => state => {
+  if (isReverseCard(card)) {
+    state.direction *= -1
+    return withEndTurn(withIncrementTurn(state))
+  }
+  return state
+}
+
+```
+
+```ts
+// skip.ts
+import { Card, IsCard, PlayCard } from '../types'
+import { withEndTurn, withIncrementTurn } from '../Poker99Reducer'
+
+export const isSkipCard: IsCard = (card: Card): boolean => {
+  return card.number === 11
+}
+
+export const skip: PlayCard = ({ card }) => state => {
+  if (isSkipCard(card)) {
+    return withEndTurn(withIncrementTurn(state))
+  }
+  return state
+}
+
+```
+
+```ts
+// spade1.ts
+import { Card, IsCard, PlayCard, Suit } from '../types'
+import { withEndTurn, withIncrementTurn } from '../Poker99Reducer'
+
+export const isSpade1Card: IsCard = (card: Card): boolean => {
+  return card.number === 1 && card.suit === Suit.SPADE
+}
+
+export const spade1: PlayCard = ({ card }) => state => {
+  if (isSpade1Card(card)) {
+    state.points = 1
+    return withEndTurn(withIncrementTurn(state))
+  }
+  return state
+}
+
+```
+
+Put things together in a reducer
+
+```ts
+// Poker99Reducer.ts
+// ...
+
+// handle different actions and map the previous state to new state accordingly
+// notice START is from GameActionTypes
+export const Poker99Reducer: NetworkReducer<Poker99State, Poker99Action> = (prevState, action) => {
+  const peerId = action.peerId
+  if (peerId === undefined) {
+    throw new Error('Expect peerId in action')
+  }
+  const playerId = (): number => {
+    const id = prevState.nameDict[prevState.members[peerId]]
+    if (id === undefined) {
+      throw new Error('game not started')
+    }
+    return id
+  }
+  switch (action.type) {
+    case GameActionTypes.START:
+      return withInitGame(prevState)
+    case Poker99ActionType.PLAY_CARD:
+      return withPlayCard(playerId(), action.payload)(JSON.parse(JSON.stringify(prevState)))
+    case Poker99ActionType.END:
+      return { ...prevState, started: false }
+  }
+  return prevState
+}
+
+```
+
+#### 3.4 Make a simple UI that can just play the poker99 game
+
+```tsx
+import React, { FunctionComponent, ReactNode, useState } from 'react'
+import { usePoker99 } from './withPoker99Network'
+import { Card, Suit } from './types'
+import { Poker99Action, Poker99ActionType } from './Poker99Action'
+
+export const Game: FunctionComponent = () => {
+  const {
+    state,
+    dispatch,
+    myPlayerId,
+    error,
+    setError,
+  } = usePoker99()
+  const [target, setTarget] = useState(0)
+  const [increment, setIncrement] = useState(true)
+  const d = state.direction === 1 ? '>' : '<'
+  const handleError = (e: Error): void => {
+    setError(e.message)
+  }
+  const clickCard = (card: Card) => async () => {
+    const action: Poker99Action = {
+      type: Poker99ActionType.PLAY_CARD,
+      payload: {
+        card,
+        increase: increment,
+        target
+      }
+    }
+    if (state.turn === myPlayerId) {
+      await dispatch(action).then(() => setError('')).catch(handleError)
+    } else {
+      setError('Not my turn')
+    }
+  }
+  const again = async (): Promise<void> => {
+    await dispatch({
+      type: Poker99ActionType.END
+    }).catch(handleError)
+  }
+  return (
+    <div style={{ pointerEvents: 'all' }}>
+      <div>
+        <h3>{state.points}</h3>
+        <h6>{state.players[state.turn]}{'\''}s turn</h6>
+        {error !== '' && <div style={{ color: 'red' }}>{error}</div>}
+        {state.winner !== undefined && state.winner !== null && <div>winner is {state.players[state.winner]}
+          <button onClick={again}>again</button>
+        </div>}
+        {state.players.map((name, id) => (
+          <span
+            key={name}
+            onClick={() => setTarget(id)}
+            style={{
+              fontWeight: state.turn === id ? 'bold' : 'normal',
+              textDecorationLine: state.dead[id] ? 'line-through' : 'none'
+            }}>
+          {name} {d}
+        </span>
+        ))}
+        <div>
+          {
+            state.playerDeck[myPlayerId]?.map(card => (
+              <button key={card.number * 10 + card.suit} onClick={clickCard(card)}>
+                {Suit[card.suit]} {card.number}
+              </button>
+            ))
+          }
+        </div>
+        <div>
+          target: {target}
+        </div>
+        <button onClick={() => setIncrement(!increment)}>
+          {increment ? '+' : '-'}
+        </button>
+      </div>
+      <div>
+        {state.logs.slice().reverse().map((s, k) => <div key={k}>{s}</div>)}
+      </div>
+    </div>
+  )
+}
+
+```
+
+### 4. Support AI
+
+implement an aiAction function, which accept the state and playerId, to decide what action to return
+
+```ts
+// aiAction.ts
+import { Poker99State } from './Poker99State'
+import { Poker99Action, Poker99ActionType } from './Poker99Action'
+import { ICard } from './types'
+import { cardPoints } from './constants'
+import { shuffle } from 'gamenet'
+import { isNormalCard } from './cards/normal'
+import { isPmCard } from './cards/pm'
+import { isSpade1Card } from './cards/spade1'
+
+const isSkippingCard = (card: ICard): boolean => {
+  return [4, 5, 11, 13].includes(card.number)
+}
+
+export const aiAction = (state: Poker99State, turn: number): Poker99Action => {
+  const cards = state.playerDeck[turn]
+  const points = state.points
+  const normalCards = cards.filter(isNormalCard).sort((a, b) => cardPoints[b.number] - cardPoints[a.number])
+
+  // play bomb if have less than 3 normal card
+  const card13 = cards.find(c => c.number === 13)
+  if (card13 !== undefined) {
+    if (points !== 99 && normalCards.length < 3) {
+      return {
+        type: Poker99ActionType.PLAY_CARD,
+        payload: {
+          card: card13
+        }
+      }
+    }
+  }
+
+  // play normal card if it wont exceed 99
+  for (const card of normalCards) {
+    if ((points + cardPoints[card.number]) <= 99) {
+      return ({
+        type: Poker99ActionType.PLAY_CARD,
+        payload: {
+          card
+        }
+      })
+    }
+  }
+
+  // play pm card  for plus if it wont exceed 99
+  const pmCards = cards.filter(isPmCard)
+  for (const card of pmCards.sort((a, b) => b.number - a.number)) {
+    if (points + cardPoints[card.number] <= 99) {
+      return ({
+        type: Poker99ActionType.PLAY_CARD,
+        payload: {
+          card,
+          increase: true
+        }
+      })
+    }
+  }
+  {
+    // play skipping card if point is huge
+    const card = cards.find(isSkippingCard)
+    if (card !== undefined) {
+      return {
+        type: Poker99ActionType.PLAY_CARD,
+        payload: {
+          card,
+          target: state.nameDict[shuffle(state.players.filter((name, id) => !state.dead[id] && id !== turn))[0]]
+        }
+      }
+    }
+  }
+
+  // if no skipping card then play pm card in minus
+  for (const card of pmCards.sort((a, b) => a.number - b.number)) {
+    if (points - cardPoints[card.number] <= 99) {
+      return ({
+        type: Poker99ActionType.PLAY_CARD,
+        payload: {
+          card,
+          increase: false
+        }
+      })
+    }
+  }
+  
+  // play spade1
+  const spade1 = cards.find(isSpade1Card)
+  if(spade1 !== undefined) {
+    return ({
+      type: Poker99ActionType.PLAY_CARD,
+      payload: {
+        card: spade1
+      }
+    })
+  }
+  
+  // to troubleshoot 
+  throw new Error('reached an edge case')
+}
+
+```
+
+then supply the aiAction to the useBoardGameNetwork in `withPoker99Network.tsx`
+
+```tsx=12
+const network = useBoardGameNetwork(Poker99Reducer, new Poker99State(), aiAction)
+```
+
+
+
+### 5. Support local hot seat
+
+obtain `myLocals,
+    hideDeck,
+    setHideDeck, renderedDeckId` from `usePoker99`
+    
+`myLocals` contains the name of all hotseat players you can control,
+
+`hideDeck` is the flag to tell whether deck should be hidden, to prevent your friend next to you can see your deck, and `setHideDeck` essentially let you to toggle this flag, to reveal your card
+
+`renderedDeckId` tell you which player's deck should you render
+
+
+```tsx
+// Game.tsx
+import React, { FunctionComponent, ReactNode, useState } from 'react'
+import { usePoker99 } from './withPoker99Network'
+import { Card, Suit } from './types'
+import { Poker99Action, Poker99ActionType } from './Poker99Action'
+
+export const Game: FunctionComponent = () => {
+  const {
+    state,
+    dispatch,
+    dispatchAs,
+    myPlayerId,
+    myLocals,
+    hideDeck,
+    setHideDeck,
+    error,
+    setError,
+    renderedDeckId
+  } = usePoker99()
+  const [target, setTarget] = useState(0)
+  const [increment, setIncrement] = useState(true)
+  const d = state.direction === 1 ? '>' : '<'
+  const handleError = (e: Error): void => {
+    setError(e.message)
+  }
+  const clickCard = (card: Card) => async () => {
+    const action: Poker99Action = {
+      type: Poker99ActionType.PLAY_CARD,
+      payload: {
+        card,
+        increase: increment,
+        target
+      }
+    }
+    if (state.turn === myPlayerId) {
+      await dispatch(action).then(() => setError('')).catch(handleError)
+    } else if (myLocals.includes(state.players[state.turn])) {
+      await dispatchAs(state.turn, action).then(() => setError('')).catch(handleError)
+    } else {
+      setError('Not my turn')
+    }
+  }
+  const renderDeck = (playerId: number): ReactNode => state.playerDeck[playerId]?.map(card => (
+    <button key={card.number * 10 + card.suit} onClick={clickCard(card)}>
+      {Suit[card.suit]} {card.number}
+    </button>
+  ))
+  const renderLocalDeck = (): ReactNode => {
+    return hideDeck ? <button onClick={() => setHideDeck(false)}>show {state.players[renderedDeckId]}</button>
+      : renderDeck(renderedDeckId)
+  }
+  const again = async (): Promise<void> => {
+    await dispatch({
+      type: Poker99ActionType.END
+    }).catch(handleError)
+  }
+  return (
+    <div style={{ pointerEvents: 'all' }}>
+      <div>
+        <h3>{state.points}</h3>
+        <h6>{state.players[state.turn]}{'\''}s turn</h6>
+        {error !== '' && <div style={{ color: 'red' }}>{error}</div>}
+        {state.winner !== undefined && state.winner !== null && <div>winner is {state.players[state.winner]}
+          <button onClick={again}>again</button>
+        </div>}
+        {state.players.map((name, id) => (
+          <span
+            key={name}
+            onClick={() => setTarget(id)}
+            style={{
+              fontWeight: state.turn === id ? 'bold' : 'normal',
+              textDecorationLine: state.dead[id] ? 'line-through' : 'none'
+            }}>
+          {name} {d}
+        </span>
+        ))}
+        <div>
+          {
+            myLocals.length === 0
+              ? renderDeck(myPlayerId)
+              : renderLocalDeck()
+          }
+        </div>
+        <div>
+          target: {target}
+        </div>
+        <button onClick={() => setIncrement(!increment)}>
+          {increment ? '+' : '-'}
+        </button>
+      </div>
+      <div>
+        {state.logs.slice().reverse().map((s, k) => <div key={k}>{s}</div>)}
+      </div>
+    </div>
+  )
+}
+
+```
+
+### 6. Custom Peer Server
+
+set these environment variables in `.env.production.local` and `.env.development.local`. They correspond the options in peerjs Peer constructor
+
+```
+REACT_APP_PEER_HOST=
+REACT_APP_PEER_PORT=
+REACT_APP_PEER_PATH=
+REACT_APP_PEER_SECURE=
+REACT_APP_PEER_CONFIG=
+```
+    
