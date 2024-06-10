@@ -8,6 +8,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { NavBar } from '@/components/v2/NavBar'
 import { Dipsyland } from '@/components/v2/Dipsyland'
+import { Footer } from '@/components/Footer'
 
 const meta = {
   title: 'Dipsyland',
@@ -54,33 +55,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div id='head'>
-          <NavBar />
-        </div>
-        <div id='content'>
-          <div id='home' />
-          {children}
-        </div>
-        {/* <ThemeProvider attribute="class" defaultTheme="dark">
-          <header className="py-4">
-            <Container>
-              <div className="flex items-center justify-between py-6">
-                <Navigation />
-                <ThemeSwitch />
-              </div>
-            </Container>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <header id='head'>
+            <NavBar />
           </header>
-          <main>
-            <Container>{children}</Container>
+          <main id='content'>
+            <div id='home' />
+            {children}
+            <footer>
+              <Footer />
+            </footer>
           </main>
-          <footer className="py-16">
-            <Container>
-              <p>
-                Make with love by Dipsy, Copyright© 2024 All Right Reserved
-              </p>
-            </Container>
-          </footer>
-        </ThemeProvider> */}
+        </ThemeProvider>
       </body>
     </html>
   )
