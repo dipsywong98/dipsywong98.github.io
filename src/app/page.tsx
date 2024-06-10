@@ -15,23 +15,21 @@ export default function Home() {
   const { allWorks: allBlog, meta: blogMeta } = getWorks('blog')
 
   return (
-    <div id='app'>
-      <div id='head'>
-        <NavBar />
+    <>
+      <Dipsyland />
+      <div className="dipsyland float">
+        <h1 className="title">Dipsyland</h1>
+        <h6 className="quote">Not Lalaland nor Poland</h6>
       </div>
-      <div id='content'>
-        <div id='home' />
-        <Dipsyland />
-        <PhotoBanner src='/img/banners/game.jpg' />
-        <div id='about' />
-        <NameCard />
-        <PhotoBanner src='/img/banners/oscon.jpg' />
-        <div id='works' />
-        <Works allWorks={allWorks} meta={meta} category='works' defaultFilters={['featured']} />
-        <PhotoBanner src='/img/banners/success.jpg' />
-        <div id='blog' />
-        <Works allWorks={allBlog} meta={blogMeta} category='blog' defaultFilters={[]} />
-      </div>
-    </div>
+      <PhotoBanner src='/img/banners/game.jpg' />
+      <div id='about' />
+      <NameCard />
+      <PhotoBanner src='/img/banners/oscon.jpg' />
+      <div id='works' />
+      <Works allWorks={allWorks} meta={meta} category='works' defaultFilters={['featured']} />
+      <PhotoBanner src='/img/banners/success.jpg' />
+      <div id='blog' />
+      <Works allWorks={allBlog} meta={blogMeta} category='blog' defaultFilters={[]} />
+    </>
   )
 }

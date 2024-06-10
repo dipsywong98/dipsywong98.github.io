@@ -1,3 +1,4 @@
+import './global.css'
 import { ThemeProvider } from '@/app/providers'
 import { Container } from '@/components/Container'
 import { Navigation } from '@/components/Navigation'
@@ -5,7 +6,8 @@ import ThemeSwitch from '@/components/ThemeSwitch'
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import './global.css'
+import { NavBar } from '@/components/v2/NavBar'
+import { Dipsyland } from '@/components/v2/Dipsyland'
 
 const meta = {
   title: 'Dipsyland',
@@ -52,7 +54,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <div id='head'>
+          <NavBar />
+        </div>
+        <div id='content'>
+          <div id='home' />
+          {children}
+        </div>
         {/* <ThemeProvider attribute="class" defaultTheme="dark">
           <header className="py-4">
             <Container>

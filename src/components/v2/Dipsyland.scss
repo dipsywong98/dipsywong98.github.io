@@ -1,7 +1,7 @@
 .dipsyland.root {
   position: relative;
   width: 100%;
-  height: var(--section-height);
+  // height: var(--section-height);
 
   .container {
     position: fixed;
@@ -52,28 +52,29 @@
       left: -552px;
     }
   }
+}
 
-  .float {
-    position: absolute;
-    left: 50vw;
-    top: 50vh;
-    transform: translateX(-50%) translateY(-30%);
+.dipsyland.float {
+  // position: absolute;
+  // left: 50vw;
+  // top: 50vh;
+  height: var(--section-height);
+  transform: translateY(50%);
 
-    &>h1.title {
-      font-family: "flappy";
-      text-shadow: 5px 5px 3px #000000;
-      color: #ffffff;
-      text-align: center;
-      font-size: 4.2rem;
-      line-height: 110%;
-      margin: 1rem;
-    }
+  &>h1.title {
+    font-family: "flappy";
+    text-shadow: 5px 5px 3px #000000;
+    color: #ffffff;
+    text-align: center;
+    font-size: 4.2rem;
+    line-height: 110%;
+    margin: 1rem;
+  }
 
-    &>h6.quote {
-      font-size: 1.2rem;
-      font-style: italic;
-      font-weight: unset;
-      margin: 1rem;
-    }
+  &>h6.quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: unset;
+    margin: 1rem;
   }
 }

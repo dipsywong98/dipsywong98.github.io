@@ -9,6 +9,8 @@ import NextImage from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { compileMDX } from "next-mdx-remote/rsc";
+import './page.scss'
+import { Dipsyland } from '@/components/v2/Dipsyland'
 
 export async function generateStaticParams() {
   const { allWorks } = getWorks('works')
@@ -24,8 +26,8 @@ export async function generateStaticParams() {
 
 const findPost = (slug: string) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === slug)
-    ?? ( getWorks('works')).allWorks.find(work => work.title === slug)
-    ?? ( getWorks('blog')).allWorks.find(work => work.title === slug)
+    ?? (getWorks('works')).allWorks.find(work => work.title === slug)
+    ?? (getWorks('blog')).allWorks.find(work => work.title === slug)
   return post
 }
 
@@ -89,7 +91,7 @@ const getContent = async (fileContent: string) => {
     },
     components: mdxComponents,
   });
-  return {content}
+  return { content }
 }
 
 const PostLayout = async ({ params }: { params: { slug: string } }) => {
@@ -107,19 +109,27 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
 
   // const MDXContent = useMDXComponent(markdown, {})
   // const MDXContent = getMDXComponent(markdown, {})
-  const {content} = await getContent(markdown)
+  const { content } = await getContent(markdown)
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <time className="my-4 block text-sm text-zinc-400" dateTime={post.date}>
-        {post.date && format(parseISO(post.date), 'LLLL d, yyyy')}
-      </time>
-      <article className="prose dark:prose-invert">
-        {content}
-        {/* <MDXContent components={mdxComponents} /> */}
-      </article>
-    </div>
+    <>
+      <Dipsyland />
+      <div className='post card'>
+        <div className='container'>
+          <div className='my-work'>
+            <h1>{post.title}</h1>
+            <time className="my-4 block text-sm text-zinc-400" dateTime={post.date}>
+              {post.date && format(parseISO(post.date), 'LLLL d, yyyy')}
+            </time>
+            <article className="prose dark:prose-invert">
+              {content}
+              {/* <MDXContent components={mdxComponents} /> */}
+            </article>
+          </div>
+        </div>
+      </div>
+    </>
+
   )
 }
 

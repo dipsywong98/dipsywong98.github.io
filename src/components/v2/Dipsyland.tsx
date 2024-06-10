@@ -63,10 +63,6 @@ export const Dipsyland = (): React.ReactNode => {
         <div className="background city" ref={city} style={{ marginLeft: `${x * 40 - w}px`, bottom: `${y * 50 - 50}px` }}></div>
         <div className="background grass" ref={grass} style={{ marginLeft: `${x * 80 - w}px`, bottom: `${y * 100 - 50}px` }}></div>
       </div>
-      <div className="float">
-        <h1 className="title">Dipsyland</h1>
-        <h6 className="quote">Not Lalaland nor Poland</h6>
-      </div>
     </div>
   )
 }
