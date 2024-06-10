@@ -33,9 +33,6 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-
-    --nav: 132 195 207;
-    --nav-forground: 174 255 1
   }
 
   .dark {
@@ -138,7 +135,7 @@ code[data-line-numbers-max-digits="3"]>[data-line]::before {
 :root {
   --line-width: 20px;
   --nav-height: 52px;
-  --section-height: 100vh;
+  --section-height: calc(100vh - var(--nav-height));
   --green: #96e282;
   --green-dark: #8ACF81;
   --green-light: #b3e893;
@@ -171,6 +168,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--dark);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  overflow-x: hidden;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
 
 #head {
@@ -179,8 +185,12 @@ body {
 }
 
 #content {
+  /* grid-area: content; */
   position: relative;
   scroll-behavior: smooth;
+  grid-row: 2;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .perspectiveContainer {
