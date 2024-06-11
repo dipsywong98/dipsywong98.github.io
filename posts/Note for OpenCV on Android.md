@@ -6,7 +6,7 @@ title: Note for OpenCV on Android
 
 ### 1. Get Start and Install
 
-<https://medium.com/@sukritipaul005/a-beginners-guide-to-installing-opencv-android-in-android-studio-ea46a7b4f2d3>
+https://medium.com/@sukritipaul005/a-beginners-guide-to-installing-opencv-android-in-android-studio-ea46a7b4f2d3
 
 ### 2. Get camera input and output on screen using JAVA camera view
 

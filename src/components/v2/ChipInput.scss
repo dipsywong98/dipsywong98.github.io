@@ -7,11 +7,11 @@
     display: flex;
     padding: 2px 8px;
     border-radius: 4px;
-    border: 1px solid var(--gray-light);
+    border: 1px solid hsl(var(--border));
     transition: 0.4s;
 
     &.active {
-      background: #ffffff;
+      background: hsl(var(--muted-hover));
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
     }
 
@@ -43,12 +43,12 @@
   .autofill-container {
     scroll-behavior: auto;
     border-radius: 0 0 4px 4px;
-    border: 1px solid var(--gray-light);
+    border: 1px solid hsl(var(--muted));
     position: absolute;
     max-height: 300px;
     width: 100%;
     overflow-y: auto;
-    background: #ffffff;
+    background: hsl(var(--background));
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
   }
 
@@ -57,15 +57,15 @@
     cursor: pointer;
 
     &.active {
-      background: var(--gray-light);
+      background: hsl(var(--muted));
 
       &:hover {
-        background: var(--gray-light);
+        background: hsl(var(--muted));
       }
     }
 
     &:hover {
-      background: var(--gray-very-light);
+      background: hsl(var(--muted-hover));
     }
   }
 }

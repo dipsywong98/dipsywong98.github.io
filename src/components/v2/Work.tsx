@@ -13,43 +13,6 @@ interface Props {
 
 const WorkComponent: React.FC<Props> = forwardRef(function WorkComponent ({ work, onTagClick, category }: Props, ref: React.ForwardedRef<HTMLDivElement>) {
   const showMore = 'story' in work && 'more' in work
-  const [loading, setLoading] = useState(false)
-  const [story, setStory] = useState('')
-
-  const onRippleAnimate = (): void => {
-    const title = `${work.title} | ${category} - Dipsyland`
-    document.title = title
-    // window.history.pushState('', title, `#${encodeURIComponent(work.title)}`)
-    if ('story' in work) {
-      setLoading(true)
-      const storyUrl = work.story
-      if (typeof storyUrl === 'string') {
-        fetch(storyUrl)
-          .then(async res => await res.text())
-          .then(text => {
-            setStory(text.replace(/^---(\n.*?)*?---/gm, ''))
-          })
-          .catch(() => {
-            setStory(`unable to fetch content from ${storyUrl}`)
-          })
-          .finally(() => {
-            setLoading(false)
-          })
-      } else {
-        // TODO - static load of mdx
-        // fetch(`/${category}/${work.title}.md`)
-        //   .then(async res => await res.text())
-        //   .then(text => story = text)
-        //   .finally(() => loading = false)
-      }
-    }
-  }
-
-  const onClose = (): void => {
-    const title = 'Dipsyland'
-    document.title = title
-    // window.history.pushState('', title, '/')
-  }
 
   return (
     <motion.div className="rect shadow-hover" id={work.id} layoutId={work.id}

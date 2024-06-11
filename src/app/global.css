@@ -7,7 +7,7 @@
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
+    --card: 0 0% 97%;
     --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
@@ -19,7 +19,8 @@
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 210 40% 92.1%;
+    --muted-hover: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 210 40% 96.1%;
@@ -33,13 +34,16 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --tag: 210 100% 97%;
+    --tag-hover: 210 100% 93%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222.2 34% 5.9%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222.2 84% 4.9%;
@@ -52,6 +56,7 @@
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
+    --muted-hover: 217.2 32.6% 12.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
     --accent: 217.2 32.6% 17.5%;
@@ -63,6 +68,9 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --tag: 210 100% 13%;
+    --tag-hover: 210 100% 23%;
   }
 }
 
@@ -70,6 +78,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -100,6 +109,20 @@
 
   .link {
     @apply text-primary hover:text-primary/90;
+  }
+
+  .card {
+    @apply text-card-foreground bg-card
+  }
+
+  .dark {
+    .shadow-hover {
+      @apply hover:bg-muted-hover transition-colors;
+    }
+  }
+
+  .shadow-hover {
+    @apply hover:shadow-xl transition-shadow;
   }
 }
 
@@ -167,7 +190,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--dark);
+  /* color: var(--dark); */
   position: fixed;
   top: 0;
   left: 0;
@@ -227,6 +250,7 @@ body {
   border-radius: 20px;
 }
 
+/* 
 .shadow-hover {
   transition: box-shadow 0.2s;
 
@@ -234,4 +258,4 @@ body {
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.25);
     ;
   }
-}
+} */

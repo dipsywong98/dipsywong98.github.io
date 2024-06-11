@@ -2,6 +2,7 @@ import React from 'react'
 import ghcolors from '../../lib/ghcolors'
 import NextImage from 'next/image'
 import './Tag.scss'
+import { X } from 'lucide-react'
 
 interface Props {
   tag: string
@@ -16,7 +17,7 @@ export const Tag: React.FC<Props> = ({ tag, removable = false, onClick }) => {
     : 'Toggle to add this filter'
 
   return (
-    <a className="tag" onClick={onClick} title={title}>
+    <a className="tag bg-tag hover:bg-tag-hover" onClick={onClick} title={title}>
       <div className="flex items-center align-center justify-center">
         {_tag in ghcolors && (
           <div className="color rounded-full" style={{ backgroundColor: ghcolors[_tag] }} />
@@ -24,7 +25,7 @@ export const Tag: React.FC<Props> = ({ tag, removable = false, onClick }) => {
         <div>{_tag}</div>
         {removable && (
           <div className="cross">
-            <NextImage width={8} height={8} src="/svg/cross.svg" alt="cross" />
+            <X size='sm' />
           </div>
         )}
       </div>

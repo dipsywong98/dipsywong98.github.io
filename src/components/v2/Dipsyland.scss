@@ -41,6 +41,25 @@
       background-image: url("../../assets/img/grass.png");
       animation: move 8s 0s infinite linear;
     }
+
+    .dark &.sky {
+      background-image: url("../../assets/img/dark/sky.png");
+    }
+
+    .dark &.cloud {
+      background-image: url("../../assets/img/dark/cloud.png");
+      animation: move 32s 0s infinite linear;
+    }
+
+    .dark &.city {
+      background-image: url("../../assets/img/dark/city.png");
+      animation: move 16s 0s infinite linear;
+    }
+
+    .dark &.grass {
+      background-image: url("../../assets/img/dark/grass.png");
+      animation: move 8s 0s infinite linear;
+    }
   }
 
   @keyframes move {

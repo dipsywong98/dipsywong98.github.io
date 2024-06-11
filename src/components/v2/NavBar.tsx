@@ -9,7 +9,7 @@ export const NavBar = (): React.ReactNode => {
     <header>
       <div className="shadow-lg navbar-fixed">
         <nav>
-          <div className="nav-wrapper">
+          <div className="nav-wrapper bg-background fg-foreground">
             <a href="/#home" className="nav-item title anim">Dipsyland</a>
             {screenWidth > 768
               ? <div style={{ display: 'inherit' }}>

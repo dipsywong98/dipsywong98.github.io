@@ -6,15 +6,15 @@ title: How I Setup Separate Production and Development Environment of imba.js wi
 
 ![img](https://cdn-images-1.medium.com/max/800/1*1yz2pBMIinMSU9ArRZsKeQ.png)
 
-imba icon from imba, reload icon from<https://www.freeiconspng.com/img/16893>, webpack icon from webpack
+imba icon from imba, reload icon from https://www.freeiconspng.com/img/16893, webpack icon from webpack
 
 ### TLDR;
 
-git clone <https://github.com/dipsywong98/imba-template> and follow the readme
+git clone https://github.com/dipsywong98/imba-template and follow the readme
 
 ### Why imba
 
-My friend [Daniel Cheung](https://medium.com/@danvim) shared me a newsletter on [imba](https://github.com/imba/imba), saying that imba makes use of memorized dom which allows rendering speed is much faster than Vue and React which uses virtual dom: <https://medium.freecodecamp.org/the-virtual-dom-is-slow-meet-the-memoized-dom-bb19f546cc52>
+My friend [Daniel Cheung](https://medium.com/@danvim) shared me a newsletter on [imba](https://github.com/imba/imba), saying that imba makes use of memorized dom which allows rendering speed is much faster than Vue and React which uses virtual dom: https://medium.freecodecamp.org/the-virtual-dom-is-slow-meet-the-memoized-dom-bb19f546cc52
 
 As I see imba looks powerful and the syntax is quite clean, I’d like to try it out in my next project, which I am going to use imba for both backend and frontend.
 
