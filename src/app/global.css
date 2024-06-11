@@ -37,6 +37,9 @@
 
     --tag: 210 100% 97%;
     --tag-hover: 210 100% 93%;
+
+    --nav: 199 100% 90%;
+    --nav-foreground: 199 100% 50%;
   }
 
   .dark {
@@ -71,6 +74,9 @@
 
     --tag: 210 100% 13%;
     --tag-hover: 210 100% 23%;
+    
+    --nav: 222.2 34% 10.9%;
+    --nav-foreground: 199 100% 50%;
   }
 }
 
@@ -225,10 +231,6 @@ body {
   filter: drop-shadow(0 0.5vh 1vh rgba(0, 0, 0, 0.3));
   perspective-origin: top;
   overflow: hidden;
-}
-
-.anim {
-  transition: all 0.5s cubic-bezier(0.6, 0.03, 0.09, 1.03);
 }
 
 .section {

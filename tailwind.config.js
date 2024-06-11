@@ -56,6 +56,10 @@ module.exports = {
           hover: 'hsl(var(--tag-hover))',
           foreground: 'hsl(var(--tag-foreground))',
         },
+        nav: {
+          DEFAULT: 'hsl(var(--nav))',
+          foreground: 'hsl(var(--nav-foreground))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',

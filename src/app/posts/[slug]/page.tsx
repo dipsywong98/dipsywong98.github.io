@@ -78,7 +78,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     notFound()
   }
 
-  const titleRegex = new RegExp(`${post.title}`, 'gm')
+  const titleRegex = new RegExp(`${post.title}`, 'igm')
   const MDXContent = useMDXComponent(markdown.replace(titleRegex, ''), {})
 
   return (
