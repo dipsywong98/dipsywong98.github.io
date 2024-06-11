@@ -132,6 +132,10 @@
   }
 }
 
+/* .nav-link {
+  @apply rounded-md px-2 py-1 hover:bg-background/55 focus:bg-accent focus:text-accent-foreground focus:outline-none;
+} */
+
 code {
   counter-reset: line;
 }
