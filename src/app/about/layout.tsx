@@ -1,5 +1,7 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
+import '../posts/[slug]/page.scss'
+import { useMDXComponent } from 'next-contentlayer2/hooks'
 
 const meta = {
   title: 'About Me',
@@ -24,11 +26,14 @@ export const metadata: Metadata = {
   },
 }
 
-export default function About() {
+export default function About({ children }) {
   return (
-    <div className="space-y-7">
-      <h1>About</h1>
-      <p>Welcome to the about page</p>
+    <div className='post card'>
+      <div className='container-el'>
+        <div className='my-work m-auto'>
+          {children}
+        </div>
+      </div>
     </div>
   )
 }

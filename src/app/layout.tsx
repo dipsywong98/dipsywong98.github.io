@@ -61,6 +61,7 @@ export default function RootLayout({
           </header>
           <main id='content'>
             <div id='home' />
+            <Dipsyland />
             {children}
             <Footer />
           </main>

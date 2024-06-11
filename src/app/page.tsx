@@ -17,7 +17,6 @@ export default function Home() {
 
   return (
     <>
-      <Dipsyland />
       <div className="dipsyland float">
         <h1 className="title">Dipsyland</h1>
         <h6 className="quote">Not Lalaland nor Poland</h6>
