@@ -13,5 +13,5 @@ export const Code: React.FC = (props) => {
       copyToClipboard(codeRef.current?.innerText ?? '')
     }
   }
-  return <code ref={codeRef} onClick={handleClick} {...props} />
+  return <code ref={codeRef} onClick={handleClick} title='Click to copy' {...props} />
 }

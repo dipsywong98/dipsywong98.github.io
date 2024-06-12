@@ -1,23 +1,18 @@
 import { WEBSITE_HOST_URL } from '@/lib/constants'
-import { IWork, getWorks } from '@/lib/getWorks'
 import { Post, allPosts } from 'contentlayer/generated'
 import { format, parseISO } from 'date-fns'
-import type { MDXComponents } from 'mdx/types'
 import type { Metadata } from 'next'
-import { getMDXComponent, useMDXComponent } from 'next-contentlayer2/hooks'
-import NextImage from 'next/image'
-import Link from 'next/link'
+import { useMDXComponent } from 'next-contentlayer2/hooks'
 import { notFound } from 'next/navigation'
-import { compileMDX } from "next-mdx-remote/rsc";
 import './page.scss'
-import { Dipsyland } from '@/components/v2/Dipsyland'
-// import { Markdown } from '@/components/v2/Markdown'
 import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS for you
+import { mdxComponents } from '@/components/mdxComponents'
+import { CardSection } from '@/components/CardSection'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
-      slug: encodeURI(post._raw.flattenedPath),
-    }))
+    slug: encodeURI(post._raw.flattenedPath),
+  }))
 }
 
 const findPost = (slug: string) => {
@@ -59,12 +54,6 @@ export async function generateMetadata({
   }
 }
 
-// Define your custom MDX components.
-const mdxComponents: MDXComponents = {
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  Image: (props) => <NextImage className="rounded-lg" {...props} />,
-}
-
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = findPost(params.slug)
 
@@ -82,19 +71,15 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const MDXContent = useMDXComponent(markdown.replace(titleRegex, ''), {})
 
   return (
-    <div className='post card'>
-      <div className='container-el'>
-        <div className='my-work m-auto'>
-          <h1>{post.title}</h1>
-          <time className="my-4 block text-sm text-zinc-400" dateTime={post.date}>
-            {post.date && format(parseISO(post.date), 'LLLL d, yyyy')}
-          </time>
-          <article className="prose dark:prose-invert max-w-[70ch]">
-            <MDXContent components={mdxComponents} />
-          </article>
-        </div>
-      </div>
-    </div>
+    <CardSection>
+      <h1>{post.title}</h1>
+      <time className="my-4 block text-sm text-zinc-400" dateTime={post.date}>
+        {post.date && format(parseISO(post.date), 'LLLL d, yyyy')}
+      </time>
+      <article className="prose dark:prose-invert max-w-[90ch]">
+        <MDXContent components={mdxComponents} />
+      </article>
+    </CardSection>
   )
 }
 

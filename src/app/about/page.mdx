@@ -1,3 +1,26 @@
+export const meta = {
+  title: 'About Me',
+  description: 'I like to blog about web development',
+  url: `/about`,
+}
+
+export const metadata = {
+  title: meta.title,
+  description: meta.description,
+  openGraph: {
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
+  },
+  twitter: {
+    title: meta.title,
+    description: meta.description,
+  },
+  alternates: {
+    canonical: meta.url,
+  },
+}
+
 # hello world
 
 some content
