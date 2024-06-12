@@ -1,11 +1,14 @@
 import { CardSection } from '@/components/CardSection'
-import { WEBSITE_HOST_URL } from '@/lib/constants'
-import type { Metadata } from 'next'
 
 export default function About({ children }) {
   return (
     <CardSection>
-      {children}
+      <h1>Hey there, I am Dipsy :D</h1>
+      <time className="my-4 block text-sm text-zinc-400">
+      </time>
+      <article className="prose dark:prose-invert max-w-[90ch]">
+        {children}
+      </article>
     </CardSection>
   )
 }

@@ -1,0 +1,36 @@
+---
+title: about
+---
+
+export const meta = {
+  title: 'About Me',
+  description: 'I like to blog about web development',
+  url: `/about`,
+}
+
+export const metadata = {
+  title: meta.title,
+  description: meta.description,
+  openGraph: {
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
+  },
+  twitter: {
+    title: meta.title,
+    description: meta.description,
+  },
+  alternates: {
+    canonical: meta.url,
+  },
+}
+
+# About me
+
+Hey there, I am Dipsy, currently I am working in Credit Suisse as a software engineer. Here are the stuffs in my job:
+
+- Data engineering - Python(Prefect), Clojure(Spark)
+- Fullstack development - Python(FastAPI), TypeScript(Express, React)
+- Database - Clickhouse, Mongo, Elasticsearch
+- DevOps - Kubernetes, Ansible
+- SRE - Prometheus, Opentelemetry, Tempo, Grafana

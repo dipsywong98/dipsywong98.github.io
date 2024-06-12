@@ -39,7 +39,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-  ],
+, "contentlayer.config.ts", "mdx.config.mjs"  ],
   "exclude": [
     "node_modules",
     "bun*"
