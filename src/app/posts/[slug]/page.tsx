@@ -11,13 +11,13 @@ import { CardSection } from '@/components/CardSection'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
-    slug: encodeURI(post._raw.flattenedPath),
+    slug: encodeURI(post.title),
   }))
 }
 
 const findPost = (slug: string) => {
   const escaped = decodeURI(slug)
-  const post = allPosts.find((post) => post._raw.flattenedPath === escaped)
+  const post = allPosts.find((post) => post.title === escaped)
   return post
 }
 
@@ -67,8 +67,8 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     notFound()
   }
 
-  const titleRegex = new RegExp(`${post.title}`, 'igm')
-  const MDXContent = useMDXComponent(markdown.replace(titleRegex, ''), {})
+  const titleRegex = new RegExp(`"${post.title.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')}"`, 'igm')
+  const MDXContent = useMDXComponent(markdown.replace(titleRegex, '""'), {})
 
   return (
     <CardSection>

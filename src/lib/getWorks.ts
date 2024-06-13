@@ -7,13 +7,12 @@ import blog from './blogs.yaml'
 const switcher = {works, blog}
 
 export interface IWork {
-  id: string
   meta?: false
   title: string
   titleLink?: string
   liveLink?: string
   brief?: string
-  time: string
+  time?: string
   date?: string
   tags?: string[]
   story?: string

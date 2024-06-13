@@ -29,7 +29,7 @@ export default function Home() {
       <Works allWorks={allWorks} meta={meta} category='works' defaultFilters={['featured']} />
       <PhotoBanner src='/img/banners/success.jpg' />
       <div id='blog' />
-      <Works allWorks={allBlog} meta={blogMeta} category='blog' defaultFilters={[]} />
+      <Works allWorks={posts} meta={blogMeta} category='blog' defaultFilters={[]} />
     </>
   )
 }

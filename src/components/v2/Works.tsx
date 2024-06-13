@@ -99,7 +99,7 @@ export function Works ({ allWorks, category, defaultFilters, meta }: Props): Rea
           </div>
           <div className="works">
             <AnimatePresence>
-              {works.map((work) => <Work work={work} onTagClick={onTagClick} category={category} key={work.id}></Work>)}
+              {works.map((work) => <Work work={work} onTagClick={onTagClick} category={category} key={work.title}></Work>)}
             </AnimatePresence>
             <div className="placeholder"></div>
             <div className="placeholder"></div>

@@ -1,9 +1,9 @@
 ---
 title: MongoDB with imba and nodejs
 tags:
-	- JavaScript
-	- MongoDB
-	- imba.js
+  - JavaScript
+  - MongoDB
+  - imba.js
 date: 2018-12-16
 ---
 
