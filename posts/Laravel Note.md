@@ -1,5 +1,9 @@
 ---
 title: Laravel Note
+tags:
+- PHP
+- Laravel
+date: 2017-02-25
 ---
 # Laravel Note
 

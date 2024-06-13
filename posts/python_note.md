@@ -1,5 +1,8 @@
 ---
 title: python_note
+tags:
+  - python
+date: 2017-11-11
 ---
 
 # Python Guide 

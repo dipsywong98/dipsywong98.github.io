@@ -1,5 +1,10 @@
 ---
 title: Host Simple Realtime Chatroom using Node.js and socket.io on Heroku
+tags:
+  - JavaScript
+  - socker.io
+  - heroku
+date: 2018-06-01
 ---
 
 # Host Simple Real time Chatroom using Node.js and socket.io on Heroku

@@ -1,5 +1,11 @@
 ---
 title: React-Redux
+brief: 中文React-Redux教程
+tags:
+  - JavaScript
+  - React
+  - Redux
+date: 2018-09-04
 ---
 
 # React-Redux

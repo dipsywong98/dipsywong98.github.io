@@ -47,9 +47,6 @@ const Post = defineDocumentType(() => ({
     more: {
       type: 'boolean'
     },
-    noMdx: {
-      type: 'boolean'
-    }
   },
   computedFields: {
     url: {

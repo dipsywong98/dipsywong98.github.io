@@ -1,5 +1,9 @@
 ---
 title: SailsJS, MVC JavaScript Framework
+tags:
+  - JavaScript
+  - SailsJS
+date: 2018-09-04
 ---
 
 # SailsJS, MVC JavaScript Framework

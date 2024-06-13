@@ -1,5 +1,9 @@
 ---
 title: Firebase in 10 Minutes
+tags:
+  - JavaScript
+  - Firebase
+date: 2018-07-28
 ---
 # Learn Firebase in 10 Minutes
 

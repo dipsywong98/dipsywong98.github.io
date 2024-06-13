@@ -1,5 +1,9 @@
 ---
 title: Build Desktop Serial App with Electron
+tags:
+  - JavaScript
+  - Electronjs
+date: 2018-06-01
 ---
 
 # Build Desktop Serial App with Electron

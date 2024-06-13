@@ -1,5 +1,11 @@
 ---
 title: How I Setup Separate Production and Development Environment of imba.js with Hot Reload
+tags:
+  - JavaScript
+  - imba.js
+  - hot-reload
+  - webpack
+date: 2018-12-16
 ---
 
 # How I Setup Separate Production and Development Environment of imba.js with Hot Reload

@@ -1,5 +1,9 @@
 ---
 title: Note for OpenCV on Android
+tags:
+- Android
+- OpenCV
+date: 2018-06-01
 ---
 
 # Note for OpenCV on Android

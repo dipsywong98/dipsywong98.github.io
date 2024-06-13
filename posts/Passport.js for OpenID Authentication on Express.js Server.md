@@ -1,5 +1,10 @@
 ---
 title: Passport.js for OpenID Authentication on Express.js Server
+tags:
+  - JavaScript
+  - Passport.js
+  - OpenID
+date: 2018-12-16
 ---
 
 # Passport.js for OpenID Authentication on Express.js Server

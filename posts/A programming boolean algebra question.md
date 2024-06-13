@@ -4,8 +4,8 @@ story: //hackmd.io/B7b51hYJRCOycNTbhWqZLQ/download
 tags:
   - math
   - question
-noMdx: true
 id: A%20programming%20boolean%20algebra%20question
+date: 2020-05-01
 
 ---
 

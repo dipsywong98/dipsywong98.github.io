@@ -1,5 +1,8 @@
 ---
 title: Android notes
+tags:
+  - Android
+date: 2017-12-19
 ---
 
 # Android notes
