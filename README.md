@@ -1,34 +1,20 @@
-# NextJS - MDX - shadcn-ui - Tailwind - Blog
+# Homepage3
 
-**UPDATED on 2023-08-22 to use Next.js App Router!**
-
-A Next.js starter template for your next blog or personal site. Built with:
-
-- Next.js [App Router](https://nextjs.org/docs/app)
-- Content processing with [Contentlayer](https://www.contentlayer.dev/)
-- Write posts with [MDX](https://mdxjs.com/)
-- UI components with [shadcn-ui](https://ui.shadcn.com/)
-- Style with [Tailwind CSS](https://tailwindcss.com/)
-
-This Starter is **heavily** inspired by [Lee Robinson](https://github.com/leerob/leerob.io).
-
-👀 [View the Live Demo](https://nextjs-typescript-mdx-blog.vercel.app/)
-
-## Getting Started
-
-```bash
-git clone https://github.com/ChangoMan/nextjs-mdx-blog.git
-cd nextjs-typescript-mdx-blog
-
-npm install
-
-npm run dev
+```sh
+yarn # install dependencies
+yarn dev # start dev server
+yarn build # static site generation
+yarn start # serve the static site
 ```
 
-Your new site will be up at http://localhost:3000/
+push to master will trigger `yarn build` and site deployment
 
-Blog posts can be added to the `posts` directory, in the root folder.
+Posts are all downloaded to `/posts`
 
-Update the `WEBSITE_HOST_URL` when taking your site live. This lives in `/src/lib/constants.ts`
+I am still thinking how to rearrange the UI layouts
 
-Make sure to update the `sitemap.ts` file, specifically the `const routes` if you add more pages to the website.
+Two major types of content:
+
+1. list of works, each may have dev log or not
+
+2. list of posts, each may link to a work or not
