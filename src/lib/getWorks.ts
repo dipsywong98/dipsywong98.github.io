@@ -16,6 +16,7 @@ export interface IWork {
   date?: string
   tags?: string[]
   story?: string
+  url?: string
 }
 
 export interface IMeta {

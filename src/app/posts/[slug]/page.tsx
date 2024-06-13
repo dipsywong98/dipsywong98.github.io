@@ -8,16 +8,16 @@ import './page.scss'
 import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS for you
 import { mdxComponents } from '@/components/mdxComponents'
 import { CardSection } from '@/components/CardSection'
+import { sanitizePath } from '@/lib/sanitizePath'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
-    slug: encodeURI(post.title),
+    slug: sanitizePath(post._raw.flattenedPath),
   }))
 }
 
 const findPost = (slug: string) => {
-  const escaped = decodeURI(slug)
-  const post = allPosts.find((post) => post.title === escaped)
+  const post = allPosts.find((post) => sanitizePath(post._raw.flattenedPath) === slug)
   return post
 }
 

@@ -4,6 +4,7 @@ import { type IWork } from '../../lib/getWorks'
 import './Work.scss'
 import { motion } from 'framer-motion'
 import { LiveLink } from './LiveLink'
+import { sanitizePath } from '@/lib/sanitizePath'
 
 interface Props {
   work: IWork
@@ -23,7 +24,7 @@ const WorkComponent: React.FC<Props> = forwardRef(function WorkComponent ({ work
         >
         <div className="work-ripple-outside">
           <motion.h5 className="title">
-          <motion.a className="title prevent-ripple-full-screen" href={`/posts/${work.title}`}>{work.title}</motion.a>
+          <motion.a className="title prevent-ripple-full-screen" href={work.url ?? `/posts/${sanitizePath(work.title)}`}>{work.title}</motion.a>
           </motion.h5>
           <motion.small className="prevent-ripple-full-screen" onClick={() => { onTagClick(work.time) }}>
             <i>{work.time}</i>

@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import { mdxConfig } from './mdx.config.mjs'
+import { sanitizePath } from './src/lib/sanitizePath'
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -51,7 +52,7 @@ const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: 'string',
-      resolve: (doc) => `/posts/${doc._raw.flattenedPath}`,
+      resolve: (doc) => `/posts/${sanitizePath(doc._raw.flattenedPath)}`,
     },
   },
 }))
