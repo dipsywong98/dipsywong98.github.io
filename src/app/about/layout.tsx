@@ -1,14 +1,11 @@
-import { CardSection } from '@/components/CardSection'
+import { CardPage } from '@/components/CardPage'
 
 export default function About({ children }) {
   return (
-    <CardSection>
-      <h1>Hey there, I am Dipsy :D</h1>
-      <time className="my-4 block text-sm text-zinc-400">
-      </time>
+    <CardPage title="Hey there, I am Dipsy :D" date="June 14, 2024">
       <article className="prose dark:prose-invert max-w-[90ch]">
         {children}
       </article>
-    </CardSection>
+    </CardPage>
   )
 }

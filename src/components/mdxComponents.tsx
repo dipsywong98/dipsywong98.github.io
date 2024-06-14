@@ -8,7 +8,7 @@ import { Code } from './v2/Code'
 export const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
   Image: (props) => <NextImage className="rounded-lg" {...props} />,
-  code: Code
+  code: Code,
 }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

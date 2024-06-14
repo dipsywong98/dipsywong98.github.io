@@ -11,6 +11,7 @@ import './Work.scss'
 import type { IMeta, IWork } from '../../lib/getWorks'
 import { ChipInput } from './ChipInput'
 import { AnimatePresence, motion } from 'framer-motion'
+import { sanitizePath } from '@/lib/sanitizePath'
 
 interface Props {
   category: string
@@ -99,7 +100,7 @@ export function Works ({ allWorks, category, defaultFilters, meta }: Props): Rea
           </div>
           <div className="works">
             <AnimatePresence>
-              {works.map((work) => <Work work={work} onTagClick={onTagClick} category={category} key={work.title}></Work>)}
+              {works.map((work) => <Work work={work} onTagClick={onTagClick} category={category} key={sanitizePath(work.title)}></Work>)}
             </AnimatePresence>
             <div className="placeholder"></div>
             <div className="placeholder"></div>

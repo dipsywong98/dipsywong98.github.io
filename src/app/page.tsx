@@ -9,11 +9,13 @@ import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 
 export default function Home() {
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
-  )
-  const { allWorks, meta } = getWorks('works')
   const { allWorks: allBlog, meta: blogMeta } = getWorks('blog')
+  // const posts = allPosts.sort((a, b) =>
+  //   compareDesc(new Date(a.date), new Date(b.date)),
+  // ).filter((p) => allBlogSet.has(p.title))
+  const { allWorks, meta } = getWorks('works')
+  const postsMap = Object.fromEntries(allPosts.map((p) => [p.title, p]))
+  const posts = allBlog.map(b => ({...b, ...postsMap[b.title]}))
 
   return (
     <>
