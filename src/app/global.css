@@ -147,7 +147,27 @@ code {
   counter-reset: line;
 }
 
-code>[data-line]::before {
+pre.codeblock-loading {
+  &>code {
+    @apply flex;
+    * {
+      @apply my-0
+    }
+  }
+  &>code::before {
+    counter-increment: line;
+    content: counter(line);
+  
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-right: 2rem;
+    text-align: right;
+    color: gray;
+  }
+}
+
+code>[data-line]::before, code>.line::before {
   counter-increment: line;
   content: counter(line);
 

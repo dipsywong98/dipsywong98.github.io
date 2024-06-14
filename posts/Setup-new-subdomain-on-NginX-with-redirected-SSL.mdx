@@ -13,13 +13,24 @@ date: 2019-03-17
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04
 
 
+export const amount = 123
+
+hello 
+
+<CodeBlock language="sh">{`echo ${amount}`}</CodeBlock>
+
+<CodeBlock language="js">
+const amount = {amount}
+console.log('hello world \{amount\}')
+</CodeBlock>
+
 1. run certbot
 	```sh
 	sudo certbot --nginx -d mydomain.com -d mysubdomain.mydomain.com
 	```
 1. go `/etc/nginx/sites-available/default`
 1. edit and paste
-	```
+	```nginx
 	server {
 	    if ($host = mysubdomain.mydomain.com) {
 		return 301 https://$host$request_uri;
