@@ -1,0 +1,25 @@
+name: promote-prod
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['staging']
+
+permissions:
+  contents: write
+
+jobs:
+  promote-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: staging
+          path: out
+      - name: Promote
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          cname: dipsy.me
+          publish_branch: prod

@@ -3,7 +3,7 @@ import { getWorks } from '@/lib/getWorks'
 
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 
-export const meta = {
+const meta = {
   title: 'Blog',
   description: 'I like to blog about web development',
   url: `${WEBSITE_HOST_URL}/blog`,

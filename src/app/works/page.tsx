@@ -2,7 +2,7 @@ import { Works } from '@/components/v2/Works'
 import { getWorks } from '@/lib/getWorks'
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 
-export const meta = {
+const meta = {
   title: 'Works',
   description: 'All the works made by Dipsy',
   url: `${WEBSITE_HOST_URL}/works`,
