@@ -1,178 +1,211 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app</loc>
-<lastmod>2024-06-11</lastmod>
+<loc>https://dipsy.me</loc>
+<lastmod>2024-06-14</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/about</loc>
-<lastmod>2024-06-11</lastmod>
+<loc>https://dipsy.me/about</loc>
+<lastmod>2024-06-14</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/A programming boolean algebra question</loc>
+<loc>https://dipsy.me/posts/A-programming-boolean-algebra-question</loc>
+<lastmod>2020-05-01T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/AI Rebellion</loc>
+<loc>https://dipsy.me/posts/AI-Rebellion</loc>
+<lastmod>2019-05-09T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Amazing way to use hackmd to manage blog</loc>
+<loc>https://dipsy.me/posts/Amazing-way-to-use-hackmd-to-manage-blog</loc>
+<lastmod>2020-01-03T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Android notes</loc>
+<loc>https://dipsy.me/posts/Android-notes</loc>
+<lastmod>2017-12-19T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Animator</loc>
+<loc>https://dipsy.me/posts/Animator</loc>
+<lastmod>2019-05-02T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Apollo_notes</loc>
+<loc>https://dipsy.me/posts/Apollo_notes</loc>
+<lastmod>2019-08-17T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Arena</loc>
+<loc>https://dipsy.me/posts/Arena</loc>
+<lastmod>2022-09-17T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Aseprite 象素畫教學</loc>
+<loc>https://dipsy.me/posts/Aseprite-</loc>
+<lastmod>2021-01-02T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Bad Apple</loc>
+<loc>https://dipsy.me/posts/Build-Desktop-Serial-App-with-Electron</loc>
+<lastmod>2018-06-01T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Build Desktop Serial App with Electron</loc>
+<loc>https://dipsy.me/posts/EC2-root-loginconfig</loc>
+<lastmod>2019-08-04T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/EC2 root loginconfig</loc>
+<loc>https://dipsy.me/posts/Firebase-in-10-minutes</loc>
+<lastmod>2018-07-28T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Firebase in 10 minutes</loc>
+<loc>https://dipsy.me/posts/Foundations-of-Computer-Vision</loc>
+<lastmod>2019-12-17T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Foundations of Computer Vision</loc>
+<loc>https://dipsy.me/posts/Grade-Invader</loc>
+<lastmod>2016-11-18T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Good Software</loc>
+<loc>https://dipsy.me/posts/Host-Simple-Realtime-Chatroom-using-Node-js-and-socket-io-on-Heroku</loc>
+<lastmod>2018-06-01T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Grade Invader</loc>
+<loc>https://dipsy.me/posts/How-I-Setup-Separate-Production-and-Development-Environment-of-imba-js-with-Hot-Reload</loc>
+<lastmod>2018-12-16T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Host Simple Realtime Chatroom using Node.js and socket.io on Heroku</loc>
+<loc>https://dipsy.me/posts/How-to-test-websocket-in-rust-Actix-framework</loc>
+<lastmod>2023-04-30T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/How I Setup Separate Production and Development Environment of imba.js with Hot Reload</loc>
+<loc>https://dipsy.me/posts/Impressionist</loc>
+<lastmod>2019-03-01T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/How to test websocket in rust Actix framework</loc>
+<loc>https://dipsy.me/posts/Installing-Ubuntu-on-my-Nvidia-RTX2060-Laptop-Lenovo-Legion-Y7000SE-</loc>
+<lastmod>2019-10-03T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Impressionist</loc>
+<loc>https://dipsy.me/posts/Judge2</loc>
+<lastmod>2019-08-28T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Installing Ubuntu on my Nvidia RTX2060 Laptop (Lenovo Legion Y7000SE)</loc>
+<loc>https://dipsy.me/posts/KDE-screenshot-with-copy</loc>
+<lastmod>2020-01-24T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Judge2</loc>
+<loc>https://dipsy.me/posts/Laravel-Note</loc>
+<lastmod>2017-02-25T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/KDE screenshot with copy</loc>
+<loc>https://dipsy.me/posts/Make-multiplayer-board-game-with-react-and-frontend-libraries-only-no-backend-code-nor-database</loc>
+<lastmod>2020-11-27T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Laravel Note</loc>
+<loc>https://dipsy.me/posts/Mario-Kart-Tour-Advisor</loc>
+<lastmod>2020-10-20T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Make multiplayer board game with react and frontend libraries only - no backend code nor database</loc>
+<loc>https://dipsy.me/posts/Modeler</loc>
+<lastmod>2019-03-20T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Mario Kart Tour Advisor</loc>
+<loc>https://dipsy.me/posts/MongoDB-with-imba-and-nodejs</loc>
+<lastmod>2018-12-16T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Mastering Programming in 256 Minutes</loc>
+<loc>https://dipsy.me/posts/Note-for-OpenCV-on-Android</loc>
+<lastmod>2018-06-01T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Modeler</loc>
+<loc>https://dipsy.me/posts/Quoridor-AI</loc>
+<lastmod>2019-06-14T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/MongoDB with imba and nodejs</loc>
+<loc>https://dipsy.me/posts/React-Redux</loc>
+<lastmod>2018-09-04T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Note for OpenCV on Android</loc>
+<loc>https://dipsy.me/posts/Reimbursement-System</loc>
+<lastmod>2019-04-16T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Passport.js for OpenID Authentication on Express.js Server</loc>
+<loc>https://dipsy.me/posts/ScoreBoard</loc>
+<lastmod>2018-11-25T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Quoridor AI</loc>
+<loc>https://dipsy.me/posts/Self-host-https-localhost</loc>
+<lastmod>2020-02-24T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/React-Redux</loc>
+<loc>https://dipsy.me/posts/Serverless-Smart-Album</loc>
+<lastmod>2019-12-07T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Reimbursement System</loc>
+<loc>https://dipsy.me/posts/Set-up-coturn-and-peerjs-server</loc>
+<lastmod>2021-10-12T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/SailsJS, MVC JavaScript Framework</loc>
+<loc>https://dipsy.me/posts/Setup-new-subdomain-on-NginX-with-redirected-SSL</loc>
+<lastmod>2019-03-17T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/ScoreBoard</loc>
+<loc>https://dipsy.me/posts/Tentoban</loc>
+<lastmod>2020-09-14T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Self host https localhost</loc>
+<loc>https://dipsy.me/posts/Trace</loc>
+<lastmod>2019-04-12T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Serverless Smart Album</loc>
+<loc>https://dipsy.me/posts/Use-Github-Actions-to-auto-deploy-your-Github-pages</loc>
+<lastmod>2020-03-16T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Set up coturn and peerjs server</loc>
+<loc>https://dipsy.me/posts/ZINC</loc>
+<lastmod>2020-06-12T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Setup-new-subdomain-on-NginX-with-redirected-SSL</loc>
+<loc>https://dipsy.me/posts/bad-apple</loc>
+<lastmod>2021-05-23T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Tentoban</loc>
+<loc>https://dipsy.me/posts/collab-network</loc>
+<lastmod>2020-06-12T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Tips and tricks when testing a Server Sent Event (SSE) endpoint with express.js and jest in TypeScript</loc>
+<loc>https://dipsy.me/posts/homepage2</loc>
+<lastmod>2020-01-18T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Trace</loc>
+<loc>https://dipsy.me/posts/minesweeper</loc>
+<lastmod>2021-06-19T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/Use Github Actions to auto deploy your Github pages</loc>
+<loc>https://dipsy.me/posts/passportjs-openid-express</loc>
+<lastmod>2018-12-16T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/ZINC</loc>
+<loc>https://dipsy.me/posts/photosynthesis</loc>
+<lastmod>2021-05-30T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/collab-network</loc>
+<loc>https://dipsy.me/posts/python_note</loc>
+<lastmod>2017-11-11T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/example-post</loc>
-<lastmod>2023-09-16T00:00:00.000Z</lastmod>
+<loc>https://dipsy.me/posts/sailsjs</loc>
+<lastmod>2018-09-04T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/hello-world</loc>
-<lastmod>2021-03-10T00:00:00.000Z</lastmod>
+<loc>https://dipsy.me/posts/smnet-gamenet</loc>
+<lastmod>2020-11-27T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/homepage2</loc>
+<loc>https://dipsy.me/posts/sse-tips-and-tricks</loc>
+<lastmod>2021-08-11T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/minesweeper</loc>
+<loc>https://dipsy.me/posts/twx</loc>
+<lastmod>2021-04-09T00:00:00.000Z</lastmod>
 </url>
 <url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/photosynthesis</loc>
-</url>
-<url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/python_note</loc>
-</url>
-<url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/smnet & gamenet</loc>
-</url>
-<url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/twx</loc>
-</url>
-<url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/wsl2上裝zsh</loc>
-</url>
-<url>
-<loc>https://nextjs-typescript-mdx-blog.vercel.app/posts/為什麼在光暈戰記做Bad Apple 其實不容易</loc>
+<loc>https://dipsy.me/posts/wsl2-zsh</loc>
+<lastmod>2021-04-03T00:00:00.000Z</lastmod>
 </url>
 </urlset>
