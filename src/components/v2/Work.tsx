@@ -17,7 +17,7 @@ const WorkComponent: React.FC<Props> = forwardRef(function WorkComponent({ work,
   const showMore = 'story' in work && 'more' in work
 
   return (
-    <motion.div className="rect shadow-hover" id={work.title} layoutId={work.title}
+    <motion.div className="rect shadow-hover" layoutId={work.title}
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}

@@ -1,3 +1,4 @@
+import { BackwardCompatibleRedirect } from '@/components/BackwardCompatibleRedirect'
 import { PostCard } from '@/components/PostCard'
 import { Dipsyland } from '@/components/v2/Dipsyland'
 import { NameCard } from '@/components/v2/NameCard'
@@ -32,6 +33,7 @@ export default function Home() {
       <PhotoBanner src='/img/banners/success.jpg' />
       <div id='blog' />
       <Works allWorks={posts} meta={blogMeta} category='blog' defaultFilters={[]} />
+      <BackwardCompatibleRedirect />
     </>
   )
 }
