@@ -135,6 +135,13 @@
 /* .nav-link {
   @apply rounded-md px-2 py-1 hover:bg-background/55 focus:bg-accent focus:text-accent-foreground focus:outline-none;
 } */
+ 
+.next-error-h1 {
+  @apply text-foreground border-r-foreground;
+  &+* {
+    @apply text-foreground;
+  }
+}
 
 code {
   counter-reset: line;
