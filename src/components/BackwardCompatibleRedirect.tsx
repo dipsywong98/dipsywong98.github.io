@@ -11,7 +11,11 @@ export const BackwardCompatibleRedirect = () => {
     }
     const title = decodeURIComponent(hash.replace('#', ''))
     const post = allPosts.find((p) => p.title === title)
-    window.location.href = post.url
+    if (post) {
+      window.location.href = post.url
+    } else {
+      console.log('cannot find post with title', title)
+    }
   }, [])
   return <div />
 }
