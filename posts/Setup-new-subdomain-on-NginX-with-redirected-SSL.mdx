@@ -13,59 +13,55 @@ date: 2019-03-17
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04
 
 
-<WidgetsRoot defaultValues={{subdomain: "subdomain.dipsy.me"}} names={['subdomain']}>
-<WidgetInput name="subdomain" defaultValue="subdomain.dipsy.me" />
-<WidgetValue name="subdomain" />
+This util is to generate nginx ssl config with enforced HTTPS for a subdomain, and generate cert with certbot let's encrypt
 
-export const amount = 123
+Please refer to these articles for details: [Certbot official](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx) / [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04)
 
-hello 
+First enter the subdomain, then enter port if you want this subdomain to proxy to a localhost server, or an absolute path if it is a static file hosting.
 
-<CodeBlock language="sh">echo %[subdomain]% </CodeBlock>
+<WidgetsRoot defaultValues={{subdomain: "subdomain.dipsy.me", port: "3000"}}>
+<div className="flex space-x-3">
+	<WidgetInput name="subdomain" />
+	<WidgetInput name="port" />
+</div>
+
 
 1. run certbot
-	```sh
-	sudo certbot --nginx -d mydomain.com -d mysubdomain.mydomain.com
-	```
-1. go `/etc/nginx/sites-available/default` <WidgetValue name="subdomain" />
-1. edit and paste
-	```nginx
+
+<CodeBlock language="sh">sudo certbot --nginx -d %[subdomain]%</CodeBlock>
+
+2. Run <code>sudo vi /etc/nginx/conf.d/<WidgetValue name="subdomain" /></code> and copy past below
+
+	<CodeBlock language="nginx">
+	{`\
 	server {
-	    if ($host = mysubdomain.mydomain.com) {
+		if ($host = %[subdomain]%) {
+			return 301 https://$host$request_uri;
+		}
+		listen 80;
+		listen [::]:80;
+		server_name %[subdomain]%;
 		return 301 https://$host$request_uri;
-	    } # managed by Certbot
-
-
-	  listen 80;
-	  listen [::]:80;
-
-	  server_name mysubdomain.mydomain.com;
-
-	  return 301 https://$host$request_uri;
-
-
 	}
 
 	server {
-	  ssl on;
-	    ssl_certificate /etc/letsencrypt/live/mysubdomain.mydomain.com/fullchain.pem; # managed by Certbot
-	    ssl_certificate_key /etc/letsencrypt/live/mysubdomain.mydomain.com/privkey.pem; # managed by Certbot
-	  listen 443 ssl;
-	  listen [::]:443 ssl;
+		ssl_certificate /etc/letsencrypt/live/%[subdomain]%/fullchain.pem;
+		ssl_certificate_key /etc/letsencrypt/live/%[subdomain]%/privkey.pem;
+		listen 443 ssl;
+		listen [::]:443 ssl;
+		server_name %[subdomain]%;
 
-	  server_name mysubdomain.mydomain.com;
-
-	  location / {
-	      proxy_set_header Host $http_host;
-	      proxy_set_header X-Real-IP $remote_addr;
-	      proxy_pass http://localhost:3000/;
-		  proxy_http_version 1.1;
-	      proxy_set_header Upgrade $http_upgrade;
-	      proxy_set_header Connection "upgrade";
-	  }
-
+		location / {
+			proxy_set_header Host $http_host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_pass http://localhost:%[port]%/;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection "upgrade";
+		}
 	}
-	```
+	`}
+	</CodeBlock>
 
 1. test whether you have typed correctly `sudo nginx -t`
 1. restart nginx `sudo systemctl reload nginx`
