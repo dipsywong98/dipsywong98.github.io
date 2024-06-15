@@ -148,22 +148,13 @@ code {
 }
 
 pre.codeblock-loading {
+  background-color: #282c34;
+  color: #abb2bf;
   &>code {
-    @apply flex;
+    @apply flex grid;
     * {
       @apply my-0
     }
-  }
-  &>code::before {
-    counter-increment: line;
-    content: counter(line);
-  
-    /* Other styling */
-    display: inline-block;
-    width: 1rem;
-    margin-right: 2rem;
-    text-align: right;
-    color: gray;
   }
 }
 

@@ -1,10 +1,9 @@
-
 export const codeToHtml = async ({ code, language }) => {
-  const { bundledLanguages, getHighlighter } = await import('shiki');
+  const { getHighlighter } = await import('shiki');
   const highlighter = await getHighlighter({
     themes: ['one-dark-pro'],
     langs: [
-      ...Object.keys(bundledLanguages),
+      language
     ],
   });
 

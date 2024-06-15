@@ -17,12 +17,12 @@ This util is to generate nginx ssl config with enforced HTTPS for a subdomain, a
 
 Please refer to these articles for details: [Certbot official](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx) / [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04)
 
-First enter the subdomain, then enter port if you want this subdomain to proxy to a localhost server, or an absolute path if it is a static file hosting.
+First enter the subdomain, then enter the port of the localhost server you want this subdomain to proxy to.
 
 <WidgetsRoot defaultValues={{subdomain: "subdomain.dipsy.me", port: "3000"}}>
 <div className="flex space-x-3">
-	<WidgetInput name="subdomain" />
-	<WidgetInput name="port" />
+	<Input name="subdomain" />
+	<Input name="port" />
 </div>
 
 
@@ -30,7 +30,7 @@ First enter the subdomain, then enter port if you want this subdomain to proxy t
 
 <CodeBlock language="sh">sudo certbot --nginx -d %[subdomain]%</CodeBlock>
 
-2. Run <code>sudo vi /etc/nginx/conf.d/<WidgetValue name="subdomain" /></code> and copy past below
+2. Run <code>sudo vi /etc/nginx/conf.d/<Value name="subdomain" /></code> and copy past below
 
 	<CodeBlock language="nginx">
 	{`\

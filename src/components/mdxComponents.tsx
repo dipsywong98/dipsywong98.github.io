@@ -3,7 +3,7 @@ import Link from 'next/link'
 import NextImage from 'next/image'
 import { Code } from './v2/Code'
 import { CodeBlock } from './widgets/CodeBlock'
-import { WidgetHelper, WidgetValue, WidgetsRoot } from './widgets/WidgetContext'
+import { WidgetValue, WidgetsRoot } from './widgets/WidgetContext'
 import { WidgetInput } from './widgets/WidgetInput'
 import { WidgetResetButton } from './widgets/WidgetResetButton'
 
@@ -15,10 +15,9 @@ export const mdxComponents: MDXComponents = {
   code: Code,
   CodeBlock,
   WidgetsRoot,
-  WidgetValue,
-  WidgetInput,
-  WidgetResetButton,
-  // WidgetHelper,
+  Value: WidgetValue,
+  Input: WidgetInput,
+  ResetButton: WidgetResetButton,
 }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

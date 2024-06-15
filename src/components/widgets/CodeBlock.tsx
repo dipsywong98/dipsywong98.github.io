@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { codeToHtml } from './codeToHtml'
 import { Copy } from '../v2/Copy'
 import { useWidgetValues } from './WidgetContext'
-import {useDebounce} from 'use-debounce'
 
 interface Props {
   children: React.ReactNode
@@ -22,9 +21,8 @@ export const CodeBlock = ({ children, language }: Props) => {
 
   const { interpolate } = useWidgetValues()
   const code = interpolate(getNodeText(children))
-  
+
   useEffect(() => {
-    console.log('start code to html')
     codeToHtml({
       code,
       language,
@@ -36,7 +34,11 @@ export const CodeBlock = ({ children, language }: Props) => {
   return <Copy>
     {(copyProps) => {
       if (html === '') {
-        return <pre className="codeblock-loading"><code {...copyProps} >{code}</code></pre>
+        return <pre className="codeblock-loading">
+          <code {...copyProps} >
+            {code.split('\n').map((line, k) => <span key={k} className='line'>{line}</span>)}
+          </code>
+        </pre>
       }
       return <div {...copyProps} dangerouslySetInnerHTML={{ __html: html }} />
     }}

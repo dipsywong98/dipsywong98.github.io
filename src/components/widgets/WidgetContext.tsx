@@ -87,7 +87,3 @@ export const WidgetValue = ({name}) => {
   const {getValue} = useWidgetValues()
   return getValue(name)
 }
-
-export const WidgetHelper = ({children}) => {
-  return children(useWidgetValues())
-}
