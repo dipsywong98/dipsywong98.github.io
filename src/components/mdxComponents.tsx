@@ -2,7 +2,10 @@ import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
 import NextImage from 'next/image'
 import { Code } from './v2/Code'
-import { CodeBlock } from './v2/CodeBlock'
+import { CodeBlock } from './widgets/CodeBlock'
+import { WidgetHelper, WidgetValue, WidgetsRoot } from './widgets/WidgetContext'
+import { WidgetInput } from './widgets/WidgetInput'
+import { WidgetResetButton } from './widgets/WidgetResetButton'
 
 
 // Define your custom MDX components.
@@ -11,6 +14,11 @@ export const mdxComponents: MDXComponents = {
   Image: (props) => <NextImage className="rounded-lg" {...props} />,
   code: Code,
   CodeBlock,
+  WidgetsRoot,
+  WidgetValue,
+  WidgetInput,
+  WidgetResetButton,
+  // WidgetHelper,
 }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

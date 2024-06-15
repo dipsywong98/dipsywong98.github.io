@@ -13,22 +13,21 @@ date: 2019-03-17
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04
 
 
+<WidgetsRoot defaultValues={{subdomain: "subdomain.dipsy.me"}} names={['subdomain']}>
+<WidgetInput name="subdomain" defaultValue="subdomain.dipsy.me" />
+<WidgetValue name="subdomain" />
+
 export const amount = 123
 
 hello 
 
-<CodeBlock language="sh">{`echo ${amount}`}</CodeBlock>
-
-<CodeBlock language="js">
-const amount = {amount}
-console.log('hello world \{amount\}')
-</CodeBlock>
+<CodeBlock language="sh">echo %[subdomain]% </CodeBlock>
 
 1. run certbot
 	```sh
 	sudo certbot --nginx -d mydomain.com -d mysubdomain.mydomain.com
 	```
-1. go `/etc/nginx/sites-available/default`
+1. go `/etc/nginx/sites-available/default` <WidgetValue name="subdomain" />
 1. edit and paste
 	```nginx
 	server {
@@ -71,3 +70,4 @@ console.log('hello world \{amount\}')
 1. test whether you have typed correctly `sudo nginx -t`
 1. restart nginx `sudo systemctl reload nginx`
     
+</WidgetsRoot>

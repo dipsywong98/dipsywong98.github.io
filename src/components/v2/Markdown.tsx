@@ -20,7 +20,6 @@ export const Markdown = ({ children }: { children: string }): React.ReactNode =>
       remarkPlugins={[remarkGfm, remarkMath]}
       rehypePlugins={[rehypeHighlight, rehypeRaw, rehypeKatex]}
       components={{
-        // @ts-expect-error i dont want to type this
         code: Code
       }}
       >

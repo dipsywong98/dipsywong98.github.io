@@ -9,6 +9,7 @@ import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS for 
 import { mdxComponents } from '@/components/mdxComponents'
 import { CardSection } from '@/components/CardSection'
 import { sanitizePath } from '@/lib/sanitizePath'
+import { WidgetsRoot } from '@/components/widgets/WidgetContext'
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -77,7 +78,9 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         {post.date && format(parseISO(post.date), 'LLLL d, yyyy')}
       </time>
       <article className="prose dark:prose-invert max-w-[90ch]">
-        <MDXContent components={mdxComponents} />
+        <WidgetsRoot>
+          <MDXContent components={mdxComponents} />
+        </WidgetsRoot>
       </article>
     </CardSection>
   )
