@@ -3,6 +3,7 @@ import { ThemeProvider } from '@/app/providers'
 import { Container } from '@/components/Container'
 import { Navigation } from '@/components/Navigation'
 import ThemeSwitch from '@/components/ThemeSwitch'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -55,6 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <GoogleAnalytics gaId="G-2G457C66LH" />
         <ThemeProvider attribute="class" defaultTheme="dark">
           <header id='head'>
             <NavBar />
