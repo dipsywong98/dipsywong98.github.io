@@ -43,21 +43,41 @@ ${text.replace(/^---[\s\S]*?---/m, '')}
   }
 }
 
+const initWorkStory = async (folder: string, work: IWork) => {
+  const meta = jsYaml.dump(work)
+  console.log(`initializing ${work.title}`)
+  // const res = await fetch(work.story.replace(/^\/\//, 'https://'))
+  // const text = await res.text()
+  const reprocessedText = 
+  `---
+${meta}
+---
+Story about ${work.title}
+  `
+  await writeFileAsync(`posts/${work.title}.mdx`, reprocessedText)
+}
+
 export const syncContent = async (contentDir: string) => {
   const syncRun = async () => {
     const { allWorks, meta } = getWorks('works')
-    const { allWorks: allBlog, meta: blogMeta } = getWorks('blog')
+    // const { allWorks: allBlog, meta: blogMeta } = getWorks('blog')
+
+    allWorks.forEach((work) => {
+      if (!work.story) {
+        initWorkStory('', work)
+      }
+    })
 
     // writeFileSync('toc/works.yaml', jsYaml.dump(allWorks))
     // writeFileSync('toc/blogs.yaml', jsYaml.dump(allBlog))
 
-    await concurrently(allWorks.map(work => async () => {
-      await downloadWork('works', work)
-    }), 4)
+    // await concurrently(allWorks.map(work => async () => {
+    //   await downloadWork('works', work)
+    // }), 4)
 
-    await concurrently(allBlog.map(work => async () => {
-      await downloadWork('blog', work)
-    }), 4)
+    // await concurrently(allBlog.map(work => async () => {
+    //   await downloadWork('blog', work)
+    // }), 4)
   }
 
   await syncRun()

@@ -39,7 +39,7 @@ export const getWorks = (category: string): WorkCollection => {
   // const yaml = readFileSync(path, {encoding: 'utf-8'})
   // const v = jsYaml.load(yaml) as Array<IMeta | IWork>
   const v = switcher[category]
-  const allWorks = v.filter(({ meta }) => meta !== true).map((work) => ({ ...work, id: encodeURIComponent((work as IWork).title) })) as IWork[]
+  const allWorks = v.filter(({ meta }) => meta !== true) as IWork[]
   const meta = v.find(({ meta }) => meta) as IMeta
   const collection = {
     allWorks,
