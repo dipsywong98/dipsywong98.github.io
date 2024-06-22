@@ -12,10 +12,8 @@ import { WidgetResetButton } from './widgets/WidgetResetButton'
 export const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
   Image: (props) => {
-    console.log(props.src)
   return <NextImage className="rounded-lg" {...props} src={props.src.replace('../public/', '/')} />},
   img: (props) => {
-    console.log(props.src)
     return <img alt={props.alt ?? 'alt'} className="rounded-lg" {...props} src={props.src.replace('../public/', '/')} />
   },
   code: Code,

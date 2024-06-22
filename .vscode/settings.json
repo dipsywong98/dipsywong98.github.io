@@ -1,0 +1,6 @@
+{
+  "markdown.copyFiles.destination": {
+    "/posts/**/*": "${documentWorkspaceFolder}/public/img/posts/${documentBaseName}/"
+  },
+  "files.associations": {"*.mdx": "markdown"}
+}

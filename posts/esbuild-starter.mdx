@@ -1,0 +1,24 @@
+---
+title: esbuild-starter
+titleLink: //github.com/dipsywong98/esbuild-starter
+brief: >-
+  template to start typescript express-react project that uses esbuild for
+  development and test, and github action
+time: 2021 Q4
+tags:
+  - TypeScript
+  - web
+id: esbuild-starter
+date: 2022-09-10
+---
+
+Uses esbuild to build express server and ~~create-react-app~~ vite and run jest. Also included eslint and github actions. To get started, git clone this repo and run yarn
+
+This template includes:
+
+- esbuild typescript express server
+- typescript ~~create react app~~ react vite
+- esbuild jest for server acceptance and create react app unit test
+- github action that runs tests and creates releases on tag
+
+I used esbuild to bundled both frontend and backend code. Bundling backend code allows me to start the server by simply `node index.js` and I dont need to install node_modules or run docker command. The template allows me to kick start typescript fullstack projects quickly, and I used it to kickstart a few projects already - [mini-deployer](/posts/mini-deployer), [mirror-on-wall](/posts/mirror-on-wall), first generation of [calenytics](/posts/calenytics), [ig-helper](/posts/ig-helper)
