@@ -1,7 +1,7 @@
 design connectivity
 frontend connection
 
-![alt text](../public/img/posts/azure/image.png)
+![alt text](../../public/img/posts/azure/image.png)
 
 ## Goverance
 
@@ -9,7 +9,7 @@ pim - prevalage identity managment
 
 users can raise request to create vm but need approver approve
 
-![alt text](../public/img/posts/azure/image-1.png)
+![alt text](../../public/img/posts/azure/image-1.png)
 
 default management group always available
 
@@ -29,9 +29,9 @@ compliance setting (azure policy) at resource group, sometime resource group, no
 
 ensure backup by policy (azure policy)
 
-![alt text](../public/img/posts/azure/image-2.png)
+![alt text](../../public/img/posts/azure/image-2.png)
 
-![alt text](../public/img/posts/azure/image-3.png)
+![alt text](../../public/img/posts/azure/image-3.png)
 
 ^ no applying to real life, too complicated
 
@@ -63,13 +63,13 @@ tags is very useful - search for resource usage etc
 
 ## Landing zone
 
-![alt text](../public/img/posts/azure/image-4.png)
+![alt text](../../public/img/posts/azure/image-4.png)
 
 cloud adoption framework well our framework
 
 ## M2 - VM
 
-![alt text](../public/img/posts/azure/image-5.png)
+![alt text](../../public/img/posts/azure/image-5.png)
 
 premium for db hosts
 
@@ -83,6 +83,6 @@ control scaling of machines
 
 try to finish task as soon as possible
 
-![alt text](../public/img/posts/azure/image-6.png)
+![alt text](../../public/img/posts/azure/image-6.png)
 
 
