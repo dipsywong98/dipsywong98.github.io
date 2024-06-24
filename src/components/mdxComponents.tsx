@@ -11,10 +11,11 @@ import { WidgetResetButton } from './widgets/WidgetResetButton'
 // Define your custom MDX components.
 export const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  Image: (props) => {
-  return <NextImage className="rounded-lg" {...props} src={props.src.replace('../public/', '/')} />},
   img: (props) => {
-    return <img alt={props.alt ?? 'alt'} className="rounded-lg" {...props} src={props.src.replace('../public/', '/')} />
+    return <div>
+      <img alt={props.alt ?? 'alt'} className="rounded-lg mb-0 max-h-[30vh]" {...props} src={props.src.replace('../public/', '/')} />
+      {!['alt text', '', 'image'].includes(props.alt) && <span className='mt-0 italic text-muted-foreground'>▲ {props.alt}</span>}
+    </div>
   },
   code: Code,
   CodeBlock,
