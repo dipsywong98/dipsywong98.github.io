@@ -130,7 +130,7 @@ file share can be mounted to machines
 
 ![alt text](../../public/img/posts/azure/image-10.png)
 
-## M4- structured database
+# M4- structured database
 
 avaialbility and backup
 
@@ -213,4 +213,123 @@ no database performance impact
 
 if use encrypt, there is
 
+# M5 design data integration solution (big data)
 
+data factory, data bricks
+
+![alt text](../../public/img/posts/azure/image-11.png)
+
+data factory is just a ETL
+
+E from azure and non azure
+
+![alt text](../../public/img/posts/azure/image-12.png)
+
+![alt text](../../public/img/posts/azure/image-13.png)
+
+Dipsy: I wont recommend using this... visual programming => no git, extremely vendor locked in
+
+
+![alt text](../../public/img/posts/azure/image-14.png)
+
+![alt text](../../public/img/posts/azure/image-15.png)
+
+![alt text](../../public/img/posts/azure/image-16.png)
+
+synapse analytics
+
+![alt text](../../public/img/posts/azure/image-17.png)
+
+![alt text](../../public/img/posts/azure/image-18.png)
+
+![alt text](../../public/img/posts/azure/image-19.png)
+
+cold - archived data
+
+![alt text](../../public/img/posts/azure/image-20.png)
+
+## M6 event
+
+![alt text](../../public/img/posts/azure/image-21.png)
+
+![alt text](../../public/img/posts/azure/image-22.png)
+
+can send event through webhook
+
+event grid vs event hub (developed later)
+
+discribe event (grid)
+
+continuous event real time (hub)
+
+grid 10000, not 5M events
+
+capture activity
+
+grid dont ensure downstream receive, hub will
+
+hub capture events and persist it, so it is stateful
+
+azure service bus
+
+store message on a process
+
+queue can handle lot of connect and ensure receiver get te message
+
+cache/redis
+
+lifecycle - depedent on app (crash then gone)
+
+no back up
+
+no sharing between apps
+
+# M8 monitor
+
+![alt text](../../public/img/posts/azure/image-23.png)
+
+KQL
+
+there is logs in storage account
+
+![alt text](../../public/img/posts/azure/image-24.png)
+
+dedicated storage account to store log, or the save log event also generate log, it is strange
+
+# IAM and vault
+
+![alt text](../../public/img/posts/azure/image-25.png)
+
+![dont set none](../../public/img/posts/azure/image-26.png)
+
+some ppl like ceo should be able to do this
+
+best practise to select a group of people
+
+![alt text](../../public/img/posts/azure/image-27.png)
+
+![alt text](../../public/img/posts/azure/image-28.png)
+
+![alt text](../../public/img/posts/azure/image-29.png)
+
+# Virtual network
+
+![alt text](../../public/img/posts/azure/image-30.png)
+
+![alt text](../../public/img/posts/azure/image-31.png)
+
+both in azure then can connect using vnet
+
+express route through local ISP
+
+![alt text](../../public/img/posts/azure/image-32.png)
+
+# cloud migration
+
+![alt text](../../public/img/posts/azure/image-33.png)
+
+# back up
+
+not common do blob backup because there is soft delete already
+
+partial backup
