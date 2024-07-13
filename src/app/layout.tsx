@@ -55,16 +55,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-[100vh] flex flex-col">
         <GoogleAnalytics gaId="G-2G457C66LH" />
         <ThemeProvider attribute="class" defaultTheme="dark">
           <header id='head'>
             <NavBar />
           </header>
-          <main id='content'>
+          <main id='content' className="flex-auto flex flex-col h-full">
             <div id='home' />
             <Dipsyland />
-            {children}
+            <div className="flex-1">
+              {children}
+            </div>
             <Footer />
           </main>
         </ThemeProvider>
