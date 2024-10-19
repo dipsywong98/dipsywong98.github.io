@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://dipsy.me</loc>
-<lastmod>2024-07-13</lastmod>
+<lastmod>2024-10-19</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/about</loc>
-<lastmod>2024-07-13</lastmod>
+<lastmod>2024-10-19</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/A-programming-boolean-algebra-question</loc>
@@ -255,6 +255,10 @@
 <url>
 <loc>https://dipsy.me/posts/homepage2</loc>
 <lastmod>2020-01-18T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://dipsy.me/posts/homepage3</loc>
+<lastmod>2024-06-12T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/ig-helper</loc>
