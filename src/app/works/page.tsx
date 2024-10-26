@@ -29,6 +29,6 @@ export const metadata = {
 export default function WorksPage() {
   // const { allWorks, meta } = getWorks('works')
   return (
-    <Works allWorks={allPosts.sort((a, b) => a.date > b.date? -1 : 1)} category='works' defaultFilters={['featured']} />
+    <Works allWorks={allPosts.filter((post) => post.isProject).sort((a, b) => a.date > b.date? -1 : 1)} category='works' defaultFilters={['featured']} />
   )
 }

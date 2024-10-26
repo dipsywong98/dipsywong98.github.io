@@ -8,7 +8,8 @@ tags:
   - twf
   - game
 id: '%E6%90%B6%E5%A1%94%E6%94%BB%E5%9F%8E'
-date: 2015-09-15
+date: 2015-04-01
+isProject: true
 ---
 
 This is the most complex twf game I have built since I have started making game using twf the mission creator inside Twilight Wars.

@@ -10,6 +10,7 @@ tags:
 liveLink: //dipsyland.itch.io/wosk
 id: WOSK
 date: 2020-07-13
+isProject: true
 ---
 
 This project was to attempt the GMTK game jam and to learn Godot the open sourced game eninge. It is a good game engine but my game was not really a good game. Anyway it is good that I learned something new

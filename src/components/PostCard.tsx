@@ -20,14 +20,14 @@ const PostCard: React.FC<Props> = forwardRef(function WorkComponent({ post, onTa
         <motion.h5 className="title">
           <motion.a className="title" href={post.url}>{post.title}</motion.a>
         </motion.h5>
-        <motion.small onClick={() => { onTagClick(post.time) }}>
+        {/* <motion.small onClick={() => { onTagClick(post.time) }}>
           <time>
             <i>{post.time}</i>
           </time>
-        </motion.small>
-        {!post.time && <motion.small>
+        </motion.small> */}
+        {<motion.small>
           <time>
-            <i>{post.date && format(parseISO(post.date), 'LLLL d, yyyy')}</i>
+            <i>{post.date && format(parseISO(post.date), 'yyyy LLLL')}</i>
           </time>
         </motion.small>}
         <div className="brief">

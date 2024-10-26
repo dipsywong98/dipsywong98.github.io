@@ -25,6 +25,9 @@ const Post = defineDocumentType(() => ({
       type: 'string',
       description: 'The description of the post',
     },
+    isProject: {
+      type: 'boolean',
+    },
     githubLink: {
       type: 'string',
     },

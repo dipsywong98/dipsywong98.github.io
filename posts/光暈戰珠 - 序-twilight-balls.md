@@ -9,6 +9,7 @@ tags:
   - game
 id: '%E5%85%89%E6%9A%88%E6%88%B0%E7%8F%A0%20-%20%E5%BA%8F'
 date: 2016-02-26
+isProject: true
 ---
 
 During study leave for HKDSE, I reproduce puzzle and drangon using the mission customization tools inside Twilight Wars.
