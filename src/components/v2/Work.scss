@@ -33,19 +33,6 @@ a.title {
   height: calc(100% - 32px);
 }
 
-.work-ripple-inside {
-  margin: 40px auto;
-  max-width: 1000px;
-
-  & a {
-    color: var(--blue-pale);
-  }
-
-  & .markdown {
-    margin: 0 10px;
-  }
-}
-
 small {
   cursor: pointer;
 

@@ -1,26 +1,63 @@
-import { Post } from 'contentlayer/generated'
+import React, { forwardRef, useState } from 'react'
+import { Tag } from './v2/Tag'
+import { type IWork } from '../lib/getWorks'
+import './v2/Work.scss'
+import { motion } from 'framer-motion'
+import { LiveLink } from './v2/LiveLink'
+import { sanitizePath } from '@/lib/sanitizePath'
 import { format, parseISO } from 'date-fns'
-import Link from 'next/link'
+import { Post } from 'contentlayer/generated'
 
-export function PostCard(post: Post) {
-  return (
-    <article className="flex flex-col items-start justify-between">
-      <div className="flex items-center gap-x-4 text-xs">
-        <time dateTime={post.date}>
-          {/* {format(parseISO(post.date), 'LLLL d, yyyy')} */}
-        </time>
-      </div>
-      <div className="group relative">
-        <h3 className="mt-3 text-lg font-semibold leading-6">
-          <Link className="link" href={post.url}>
-            <span className="absolute inset-0" />
-            {post.title}
-          </Link>
-        </h3>
-        <p className="mt-5 line-clamp-3 text-sm leading-6">
-          {/* {post.description} */}
-        </p>
-      </div>
-    </article>
-  )
+interface Props {
+  post: Post
+  onTagClick: (tag: string) => void
 }
+
+const PostCard: React.FC<Props> = forwardRef(function WorkComponent({ post, onTagClick, }: Props, ref: React.ForwardedRef<HTMLDivElement>) {
+  return (
+    <CardRoot layoutId={post.title}>
+      <div className="work-ripple-outside">
+        <motion.h5 className="title">
+          <motion.a className="title" href={post.url}>{post.title}</motion.a>
+        </motion.h5>
+        <motion.small onClick={() => { onTagClick(post.time) }}>
+          <time>
+            <i>{post.time}</i>
+          </time>
+        </motion.small>
+        {!post.time && <motion.small>
+          <time>
+            <i>{post.date && format(parseISO(post.date), 'LLLL d, yyyy')}</i>
+          </time>
+        </motion.small>}
+        <div className="brief">
+          <span>{(post.brief ?? '') + ' '}</span>
+        </div>
+        <div className="tags">
+          {post.tags?.map((tag) => (
+            <Tag
+              tag={tag}
+              onClick={() => { onTagClick(tag) }}
+              key={tag}
+            />
+          ))}
+        </div>
+      </div>
+      {post.liveLink !== undefined && <LiveLink href={post.liveLink} />}
+
+    </CardRoot>
+  )
+})
+
+const CardRoot = ({ layoutId, children }) => (
+  <motion.article className="rect shadow-hover" layoutId={layoutId}
+    animate={{ opacity: 1 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.3 }}
+  >
+    {children}
+  </motion.article>
+)
+
+export default PostCard

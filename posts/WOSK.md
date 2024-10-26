@@ -1,6 +1,6 @@
 ---
 title: WOSK
-titleLink: //github.com/dipsywong98/WOSK
+githubLink: //github.com/dipsywong98/WOSK
 brief: Spaceship steering wheel out of control? No worries you still have WOSK!
 time: 2020 summer
 tags:

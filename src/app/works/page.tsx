@@ -1,6 +1,7 @@
-import { Works } from '@/components/v2/Works'
+import { Works } from '@/components/Works'
 import { getWorks } from '@/lib/getWorks'
 import { WEBSITE_HOST_URL } from '@/lib/constants'
+import { allPosts } from 'contentlayer/generated'
 
 const meta = {
   title: 'Works',
@@ -26,8 +27,8 @@ export const metadata = {
 }
 
 export default function WorksPage() {
-  const { allWorks, meta } = getWorks('works')
+  // const { allWorks, meta } = getWorks('works')
   return (
-    <Works allWorks={allWorks} meta={meta} category='works' defaultFilters={['featured']} />
+    <Works allWorks={allPosts.sort((a, b) => a.date > b.date? -1 : 1)} category='works' defaultFilters={['featured']} />
   )
 }

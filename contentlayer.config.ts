@@ -15,6 +15,7 @@ const Post = defineDocumentType(() => ({
     date: {
       type: 'date',
       description: 'The date of the post',
+      required: true,
     },
     time: {
       type: 'string',
@@ -24,7 +25,7 @@ const Post = defineDocumentType(() => ({
       type: 'string',
       description: 'The description of the post',
     },
-    titleLink: {
+    githubLink: {
       type: 'string',
     },
     liveLink: {

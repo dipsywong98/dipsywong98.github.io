@@ -1,13 +1,9 @@
 import { BackwardCompatibleRedirect } from '@/components/BackwardCompatibleRedirect'
-import { PostCard } from '@/components/PostCard'
-import { Dipsyland } from '@/components/v2/Dipsyland'
 import { NameCard } from '@/components/v2/NameCard'
-import { NavBar } from '@/components/v2/NavBar'
 import { PhotoBanner } from '@/components/v2/PhotoBanner'
 import { Works } from '@/components/v2/Works'
 import { getWorks } from '@/lib/getWorks'
 import { allPosts } from 'contentlayer/generated'
-import { compareDesc } from 'date-fns'
 
 export default function Home() {
   const { allWorks: allBlog, meta: blogMeta } = getWorks('blog')
