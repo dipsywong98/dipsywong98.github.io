@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://dipsy.me</loc>
-<lastmod>2024-10-19</lastmod>
+<lastmod>2024-10-31</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/about</loc>
-<lastmod>2024-10-19</lastmod>
+<lastmod>2024-10-31</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/A-programming-boolean-algebra-question</loc>
@@ -38,7 +38,7 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/Arena</loc>
-<lastmod>2022-09-17T00:00:00.000Z</lastmod>
+<lastmod>2021-08-09T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/Aseprite</loc>
@@ -114,7 +114,7 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/Judge2</loc>
-<lastmod>2019-08-28T00:00:00.000Z</lastmod>
+<lastmod>2018-12-13T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/KDE-screenshot-with-copy</loc>
@@ -158,7 +158,7 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/Poker99</loc>
-<lastmod>2020-11-21T00:00:00.000Z</lastmod>
+<lastmod>2020-11-27T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/Principles-of-Programming-Languages</loc>
@@ -178,7 +178,7 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/Reimbursement-System</loc>
-<lastmod>2019-04-16T00:00:00.000Z</lastmod>
+<lastmod>2018-03-21T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/Robotics-Tutorials</loc>
@@ -246,7 +246,7 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/esbuild-starter</loc>
-<lastmod>2022-09-10T00:00:00.000Z</lastmod>
+<lastmod>2021-10-14T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/homepage1</loc>
@@ -286,7 +286,7 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/photosynthesis</loc>
-<lastmod>2021-05-30T00:00:00.000Z</lastmod>
+<lastmod>2020-10-12T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/python_note</loc>
@@ -306,7 +306,7 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/smnet-gamenet</loc>
-<lastmod>2020-11-27T00:00:00.000Z</lastmod>
+<lastmod>2020-11-21T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/sse-tips-and-tricks</loc>
@@ -318,6 +318,7 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/twmap</loc>
+<lastmod>2020-02-05T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/twx</loc>
@@ -333,10 +334,11 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/-twftechnique</loc>
+<lastmod>2015-09-15T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/-tower-capture</loc>
-<lastmod>2015-09-15T00:00:00.000Z</lastmod>
+<lastmod>2015-04-01T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://dipsy.me/posts/-minute-to-win-it</loc>
@@ -344,6 +346,6 @@
 </url>
 <url>
 <loc>https://dipsy.me/posts/-mirror-palace</loc>
-<lastmod>2015-09-15T00:00:00.000Z</lastmod>
+<lastmod>2014-09-15T00:00:00.000Z</lastmod>
 </url>
 </urlset>
