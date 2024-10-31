@@ -12,7 +12,9 @@ import PostCard from './PostCard'
 interface Props {
   category: string
   defaultFilters: string[]
-  allWorks: Post[]
+  allPosts: Post[]
+  dateFormat: string
+  description: string
 }
 
 const isAnchorElement = (something: unknown): something is HTMLAnchorElement => (
@@ -21,13 +23,13 @@ const isAnchorElement = (something: unknown): something is HTMLAnchorElement => 
     'tagName' in something &&
      something?.tagName === 'A')
 
-export function Works ({ allWorks, category, defaultFilters }: Props): React.ReactNode {
+export function Posts ({ allPosts, category, defaultFilters, dateFormat, description }: Props): React.ReactNode {
   const [filters, setFilters] = useState(defaultFilters)
   const works = useMemo(() => {
     if (filters.length === 0) {
-      return allWorks
+      return allPosts
     } else {
-      return allWorks.filter(({ tags = [], time, title }) => {
+      return allPosts.filter(({ tags = [], time, title }) => {
         const template = tags
           .concat([time, title])
           .filter((b) => b)
@@ -38,16 +40,16 @@ export function Works ({ allWorks, category, defaultFilters }: Props): React.Rea
         )
       })
     }
-  }, [allWorks, filters])
+  }, [allPosts, filters])
   const Category = useMemo(() => category[0].toUpperCase() + category.substring(1), [])
   const allTags = useMemo(() => {
-    return allWorks
+    return allPosts
       .map(({ title, time, tags = [] }) => tags.concat(time, title))
       .flat()
       .filter((t) => typeof t !== 'undefined')
       .sort()
       .filter((t, k, s) => t !== '' && s.indexOf(t) === k)
-  }, [allWorks])
+  }, [allPosts])
 
   const onTagClick = (tag: string, reset = false): void => {
     if (reset) {
@@ -85,10 +87,7 @@ export function Works ({ allWorks, category, defaultFilters }: Props): React.Rea
           <h1>My { Category }</h1>
           <div className="description" onClick={onDescriptionClick}>
             <Markdown>
-              I love working on interesting side projects, most of them are [game](#) and [web](#) projects. In additional to those, I also worked on [embedded system](#), [computer graphics](#), [AI](#) and [cloud](#) projects. I pinned the 6 most interesting ones I think as [featured](#) works.
-
-
-              When I was studying in university, besides working on [academic](#) projects, I was also a software engineer of [robotics](#) team and a developer of [USThing](#).
+              {description}
             </Markdown>
           </div>
           <div className="filter">
@@ -97,7 +96,7 @@ export function Works ({ allWorks, category, defaultFilters }: Props): React.Rea
           </div>
           <div className="works">
             <AnimatePresence>
-              {works.map((work) => <PostCard post={work} onTagClick={onTagClick} key={sanitizePath(work.title)}></PostCard>)}
+              {works.map((work) => <PostCard post={work} onTagClick={onTagClick} dateFormat={dateFormat} key={sanitizePath(work.title)}></PostCard>)}
             </AnimatePresence>
             <div className="placeholder"></div>
             <div className="placeholder"></div>

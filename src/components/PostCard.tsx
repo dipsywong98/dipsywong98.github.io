@@ -13,7 +13,7 @@ interface Props {
   dateFormat: string
 }
 
-const PostCard: React.FC<Props> = forwardRef(function WorkComponent({ post, onTagClick, dateFormat = 'yyyy LLLL'  }: Props, ref: React.ForwardedRef<HTMLDivElement>) {
+const PostCard: React.FC<Props> = forwardRef(function WorkComponent({ post, onTagClick, dateFormat  }: Props, ref: React.ForwardedRef<HTMLDivElement>) {
   return (
     <CardRoot layoutId={post.title}>
       <div className="work-ripple-outside">

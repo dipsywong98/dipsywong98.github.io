@@ -1,18 +1,10 @@
 import { BackwardCompatibleRedirect } from '@/components/BackwardCompatibleRedirect'
 import { NameCard } from '@/components/v2/NameCard'
 import { PhotoBanner } from '@/components/v2/PhotoBanner'
-import { Works } from '@/components/v2/Works'
-import { getWorks } from '@/lib/getWorks'
-import { allPosts } from 'contentlayer/generated'
+import WorksPage from './works/page'
+import BlogPage from './blog/page'
 
 export default function Home() {
-  const { allWorks: allBlog, meta: blogMeta } = getWorks('blog')
-  // const posts = allPosts.sort((a, b) =>
-  //   compareDesc(new Date(a.date), new Date(b.date)),
-  // ).filter((p) => allBlogSet.has(p.title))
-  const { allWorks, meta } = getWorks('works')
-  const postsMap = Object.fromEntries(allPosts.map((p) => [p.title, p]))
-  const posts = allBlog.map(b => ({...b, ...postsMap[b.title]}))
 
   return (
     <>
@@ -25,10 +17,10 @@ export default function Home() {
       <NameCard />
       <PhotoBanner src='/img/banners/oscon.jpg' />
       <div id='works' />
-      <Works allWorks={allWorks} meta={meta} category='works' defaultFilters={['featured']} />
+      <WorksPage />
       <PhotoBanner src='/img/banners/success.jpg' />
       <div id='blog' />
-      <Works allWorks={posts} meta={blogMeta} category='blog' defaultFilters={[]} />
+      <BlogPage />
       <BackwardCompatibleRedirect />
     </>
   )

@@ -1,7 +1,6 @@
-import { Works } from '@/components/v2/Works'
-import { getWorks } from '@/lib/getWorks'
-
 import { WEBSITE_HOST_URL } from '@/lib/constants'
+import { Posts } from '@/components/Posts'
+import { allPosts } from 'contentlayer/generated'
 
 const meta = {
   title: 'Blog',
@@ -26,9 +25,17 @@ export const metadata = {
   },
 }
 
+const description = `
+Sometimes I wrote some notes in English/Chinese when learning new stuff
+`
+
 export default function BlogPage() {
-  const { allWorks, meta } = getWorks('blog')
   return (
-    <Works allWorks={allWorks} meta={meta} category='blog' defaultFilters={[]} />
+    <Posts
+      description={description}
+      dateFormat="yyyy LLLL" 
+      allPosts={allPosts.filter((post) => !post.isProject).sort((a, b) => a.date > b.date ? -1 : 1)} 
+      category='blog' 
+      defaultFilters={[]} />
   )
 }
