@@ -1,33 +1,29 @@
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef } from 'react'
 import { Tag } from './v2/Tag'
-import { type IWork } from '../lib/getWorks'
 import './v2/Work.scss'
 import { motion } from 'framer-motion'
 import { LiveLink } from './v2/LiveLink'
-import { sanitizePath } from '@/lib/sanitizePath'
 import { format, parseISO } from 'date-fns'
 import { Post } from 'contentlayer/generated'
+import { RxGithubLogo } from "react-icons/rx";
 
 interface Props {
   post: Post
   onTagClick: (tag: string) => void
+  dateFormat: string
 }
 
-const PostCard: React.FC<Props> = forwardRef(function WorkComponent({ post, onTagClick, }: Props, ref: React.ForwardedRef<HTMLDivElement>) {
+const PostCard: React.FC<Props> = forwardRef(function WorkComponent({ post, onTagClick, dateFormat = 'yyyy LLLL'  }: Props, ref: React.ForwardedRef<HTMLDivElement>) {
   return (
     <CardRoot layoutId={post.title}>
       <div className="work-ripple-outside">
-        <motion.h5 className="title">
+        <motion.h5 className="title flex items-center space-x-2">
           <motion.a className="title" href={post.url}>{post.title}</motion.a>
+          {post.githubLink && <motion.a className="text-primary-background hover:text-muted-foreground hover:border-b-1" href={post.githubLink}><RxGithubLogo /></motion.a>}
         </motion.h5>
-        {/* <motion.small onClick={() => { onTagClick(post.time) }}>
-          <time>
-            <i>{post.time}</i>
-          </time>
-        </motion.small> */}
         {<motion.small>
           <time>
-            <i>{post.date && format(parseISO(post.date), 'yyyy LLLL')}</i>
+            <i>{post.date && format(parseISO(post.date), dateFormat)}</i>
           </time>
         </motion.small>}
         <div className="brief">

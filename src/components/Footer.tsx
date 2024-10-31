@@ -1,5 +1,3 @@
-import { Github } from "lucide-react"
-import ThemeSwitch from "./ThemeSwitch"
 import { SvgLink } from "./v2/SvgLink"
 import my from './v2/namecard.yaml'
 
