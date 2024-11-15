@@ -118,7 +118,7 @@
   }
 
   .card {
-    @apply text-card-foreground bg-card
+    @apply text-card-foreground bg-card px-2 py-3 md:px-0 md:py-0;
   }
 
   .dark {

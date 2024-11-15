@@ -31,7 +31,7 @@ interface My {
 
 export function NameCard (): React.JSX.Element {
   return (
-    <div className="namecard card flex space-x-3 bg-card">
+    <div className="namecard card flex space-x-3 bg-card py-10">
       <div>
         <NextImage src={'/img/icon.png'} width={204} height={204} alt='icon' />
       </div>
