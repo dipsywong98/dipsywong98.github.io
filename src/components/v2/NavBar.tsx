@@ -40,7 +40,7 @@ export const NavBar = (): React.ReactNode => {
   return (
     <header className="fixed top-0 w-full z-10 shadow-lg overflow-x-hidden">
       <nav>
-        <div className="flex justify-between items-center px-4 md:px-16 bg-nav text-nav-foreground h-[var(--nav-height)]">
+        <div className="flex justify-between items-center px-4 md:px-16 bg-nav text-nav-foreground h-16">
           <div className="flex items-center">
             {/* Hamburger menu for mobile */}
             <button
