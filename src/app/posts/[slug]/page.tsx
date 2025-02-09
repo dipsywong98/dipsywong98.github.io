@@ -14,11 +14,13 @@ import { WidgetsRoot } from '@/components/widgets/WidgetContext'
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
     slug: sanitizePath(post._raw.flattenedPath),
-  }))
+  })).concat(allPosts.map((post) => ({
+    slug: sanitizePath(post._raw.flattenedPath).toLocaleLowerCase(),
+  })))
 }
 
 const findPost = (slug: string) => {
-  const post = allPosts.find((post) => sanitizePath(post._raw.flattenedPath) === slug)
+  const post = allPosts.find((post) => sanitizePath(post._raw.flattenedPath).toLocaleLowerCase() === slug.toLocaleLowerCase())
   return post
 }
 

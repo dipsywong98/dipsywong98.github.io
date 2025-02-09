@@ -359,7 +359,7 @@ Case 3
 
 // This should be all possible VIN that they could have used
 let possible_VINs = Traffic
-| where Street == 148 and Ave == 157 and Timestamp >= datetime(2022-10-16 08:31) and Timestamp <= datetime(2022-10-16 08:40)
+| `where Street == 148 and Ave == 157 and Timestamp >= datetime(2022-10-16 08:31) and Timestamp <= datetime(2022-10-16 08:40)`
 | distinct VIN
 | summarize VINs = make_list(VIN);
 // Look for when three of these VINs appear at the same street and 

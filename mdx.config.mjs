@@ -5,12 +5,22 @@ import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
+import mdxMermaid from 'mdx-mermaid'
+import { Mermaid } from 'mdx-mermaid/lib/Mermaid'
 
 /**
  * @type {MDXOptions}
  */
 export const mdxConfig = {
-  remarkPlugins: [remarkGfm, remarkMath],
+  remarkPlugins: [
+    remarkGfm,
+    [
+      mdxMermaid,
+      { output: 'svg', theme: { light: 'neutral', dark: 'forest' } },
+    ],
+    remarkMath,
+  ],
+  components: { mermaid: Mermaid, Mermaid },
   rehypePlugins: [
     rehypeKatex,
     rehypeSlug,
