@@ -16,7 +16,19 @@ export const mdxConfig = {
     remarkGfm,
     [
       mdxMermaid,
-      { output: 'svg', theme: { light: 'neutral', dark: 'forest' } },
+      {
+        output: 'svg',
+        theme: { light: 'neutral', dark: 'forest' },
+        // svgMermaidSrc: 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/+esm',
+        mermaid: {
+          theme: 'dark',
+          look: 'handDrawn',
+          flowchart: {
+            defaultRenderer: 'elk',
+            padding: 30,
+          },
+        },
+      },
     ],
     remarkMath,
   ],
