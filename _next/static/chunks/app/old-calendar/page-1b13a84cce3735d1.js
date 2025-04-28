@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5121],{67825:function(n,e,t){Promise.resolve().then(t.bind(t,36292))},36292:function(n,e,t){"use strict";t.r(e),e.default=()=>(window.location.href="https://old-calendar.dipsy.me","redirecting...")}},function(n){n.O(0,[2971,7023,1744],function(){return n(n.s=67825)}),_N_E=n.O()}]);
