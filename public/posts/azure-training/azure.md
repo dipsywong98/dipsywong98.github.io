@@ -1,7 +1,7 @@
 design connectivity
 frontend connection
 
-![alt text](../../public/img/posts/azure/image.png)
+![alt text](../../img/posts/azure/image.png)
 
 ## Goverance
 
@@ -9,7 +9,7 @@ pim - prevalage identity managment
 
 users can raise request to create vm but need approver approve
 
-![alt text](../../public/img/posts/azure/image-1.png)
+![alt text](../../img/posts/azure/image-1.png)
 
 default management group always available
 
@@ -29,9 +29,9 @@ compliance setting (azure policy) at resource group, sometime resource group, no
 
 ensure backup by policy (azure policy)
 
-![alt text](../../public/img/posts/azure/image-2.png)
+![alt text](../../img/posts/azure/image-2.png)
 
-![alt text](../../public/img/posts/azure/image-3.png)
+![alt text](../../img/posts/azure/image-3.png)
 
 ^ no applying to real life, too complicated
 
@@ -63,13 +63,13 @@ tags is very useful - search for resource usage etc
 
 ## Landing zone
 
-![alt text](../../public/img/posts/azure/image-4.png)
+![alt text](../../img/posts/azure/image-4.png)
 
 cloud adoption framework well our framework
 
 ## M2 - VM
 
-![alt text](../../public/img/posts/azure/image-5.png)
+![alt text](../../img/posts/azure/image-5.png)
 
 premium for db hosts
 
@@ -83,7 +83,7 @@ control scaling of machines
 
 try to finish task as soon as possible
 
-![alt text](../../public/img/posts/azure/image-6.png)
+![alt text](../../img/posts/azure/image-6.png)
 
 # M3 Storage
 
@@ -120,15 +120,15 @@ access key problem - it is a very sensitive data, it is a master key
 
 we can use SAS which is more granular and can generate url
 
-![alt text](../../public/img/posts/azure/image-7.png)
+![alt text](../../img/posts/azure/image-7.png)
 
-![alt text](../../public/img/posts/azure/image-8.png)
+![alt text](../../img/posts/azure/image-8.png)
 
-![alt text](../../public/img/posts/azure/image-9.png)
+![alt text](../../img/posts/azure/image-9.png)
 
 file share can be mounted to machines
 
-![alt text](../../public/img/posts/azure/image-10.png)
+![alt text](../../img/posts/azure/image-10.png)
 
 # M4- structured database
 
@@ -217,42 +217,42 @@ if use encrypt, there is
 
 data factory, data bricks
 
-![alt text](../../public/img/posts/azure/image-11.png)
+![alt text](../../img/posts/azure/image-11.png)
 
 data factory is just a ETL
 
 E from azure and non azure
 
-![alt text](../../public/img/posts/azure/image-12.png)
+![alt text](../../img/posts/azure/image-12.png)
 
-![alt text](../../public/img/posts/azure/image-13.png)
+![alt text](../../img/posts/azure/image-13.png)
 
 Dipsy: I wont recommend using this... visual programming => no git, extremely vendor locked in
 
 
-![alt text](../../public/img/posts/azure/image-14.png)
+![alt text](../../img/posts/azure/image-14.png)
 
-![alt text](../../public/img/posts/azure/image-15.png)
+![alt text](../../img/posts/azure/image-15.png)
 
-![alt text](../../public/img/posts/azure/image-16.png)
+![alt text](../../img/posts/azure/image-16.png)
 
 synapse analytics
 
-![alt text](../../public/img/posts/azure/image-17.png)
+![alt text](../../img/posts/azure/image-17.png)
 
-![alt text](../../public/img/posts/azure/image-18.png)
+![alt text](../../img/posts/azure/image-18.png)
 
-![alt text](../../public/img/posts/azure/image-19.png)
+![alt text](../../img/posts/azure/image-19.png)
 
 cold - archived data
 
-![alt text](../../public/img/posts/azure/image-20.png)
+![alt text](../../img/posts/azure/image-20.png)
 
 ## M6 event
 
-![alt text](../../public/img/posts/azure/image-21.png)
+![alt text](../../img/posts/azure/image-21.png)
 
-![alt text](../../public/img/posts/azure/image-22.png)
+![alt text](../../img/posts/azure/image-22.png)
 
 can send event through webhook
 
@@ -286,47 +286,47 @@ no sharing between apps
 
 # M8 monitor
 
-![alt text](../../public/img/posts/azure/image-23.png)
+![alt text](../../img/posts/azure/image-23.png)
 
 KQL
 
 there is logs in storage account
 
-![alt text](../../public/img/posts/azure/image-24.png)
+![alt text](../../img/posts/azure/image-24.png)
 
 dedicated storage account to store log, or the save log event also generate log, it is strange
 
 # IAM and vault
 
-![alt text](../../public/img/posts/azure/image-25.png)
+![alt text](../../img/posts/azure/image-25.png)
 
-![dont set none](../../public/img/posts/azure/image-26.png)
+![dont set none](../../img/posts/azure/image-26.png)
 
 some ppl like ceo should be able to do this
 
 best practise to select a group of people
 
-![alt text](../../public/img/posts/azure/image-27.png)
+![alt text](../../img/posts/azure/image-27.png)
 
-![alt text](../../public/img/posts/azure/image-28.png)
+![alt text](../../img/posts/azure/image-28.png)
 
-![alt text](../../public/img/posts/azure/image-29.png)
+![alt text](../../img/posts/azure/image-29.png)
 
 # Virtual network
 
-![alt text](../../public/img/posts/azure/image-30.png)
+![alt text](../../img/posts/azure/image-30.png)
 
-![alt text](../../public/img/posts/azure/image-31.png)
+![alt text](../../img/posts/azure/image-31.png)
 
 both in azure then can connect using vnet
 
 express route through local ISP
 
-![alt text](../../public/img/posts/azure/image-32.png)
+![alt text](../../img/posts/azure/image-32.png)
 
 # cloud migration
 
-![alt text](../../public/img/posts/azure/image-33.png)
+![alt text](../../img/posts/azure/image-33.png)
 
 # back up
 

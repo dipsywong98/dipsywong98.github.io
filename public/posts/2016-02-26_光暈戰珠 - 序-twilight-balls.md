@@ -16,12 +16,12 @@ During study leave for HKDSE, I reproduce puzzle and drangon using the mission c
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LOzIH5Vv-m8?si=nWYOXWREP66QBLNM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-![alt text](<../public/img/posts/光暈戰珠 - 序-twilight-balls/image-1.png>)
+![alt text](<../img/posts/光暈戰珠 - 序-twilight-balls/image-1.png>)
 
-![alt text](<../public/img/posts/光暈戰珠 - 序-twilight-balls/image.png>)
+![alt text](<../img/posts/光暈戰珠 - 序-twilight-balls/image.png>)
 
 The game is honorably mentioned by the game maker of Twilight Wars through the game's fans page and [his personal blog](https://haskasu.com/)
 
-![alt text](<../public/img/posts/光暈戰珠 - 序-twilight-balls/image-2.png>)
+![alt text](<../img/posts/光暈戰珠 - 序-twilight-balls/image-2.png>)
 
-![alt text](<../public/img/posts/光暈戰珠 - 序-twilight-balls/image-3.png>)
+![alt text](<../img/posts/光暈戰珠 - 序-twilight-balls/image-3.png>)

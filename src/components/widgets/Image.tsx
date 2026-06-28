@@ -9,7 +9,7 @@ export const Image = ({ alt, src, ...props }) => {
     <Dialog>
       <DialogTrigger asChild>
         <span className="inline-block mr-6">
-          <ImageWithSkeleton alt={alt ?? 'alt'} className="rounded-lg mb-0 max-h-[400px]" {...props} src={src.replace('../public/', '/')} />
+          <ImageWithSkeleton alt={alt ?? 'alt'} className="rounded-lg mb-0 max-h-[400px]" {...props} src={src.replace('../', '/')} />
           {!altIsEmpty && <span className='mt-0 italic text-muted-foreground'>▲ {alt}</span>}
         </span>
       </DialogTrigger>
@@ -19,7 +19,7 @@ export const Image = ({ alt, src, ...props }) => {
           <DialogDescription> </DialogDescription>
         </DialogHeader>
         <div className="max-h-[85vh] overflow-auto w-fit">
-          <ImageWithSkeleton alt={alt ?? 'alt'} className="rounded-lg mb-0" {...props} src={src.replace('../public/', '/')} />
+          <ImageWithSkeleton alt={alt ?? 'alt'} className="rounded-lg mb-0" {...props} src={src.replace('../', '/')} />
         </div>
       </DialogContent>
     </Dialog>

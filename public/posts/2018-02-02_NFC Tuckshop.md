@@ -17,8 +17,8 @@ isProject: true
 
 We are setting up a internal tuckshop within robotics team, using k60 micro controller, nfc, bluetooth, rasp pi
 
-![alt text](<../public/img/posts/NFC Tuckshop/image.png>)
+![alt text](<../img/posts/NFC Tuckshop/image.png>)
 
-![alt text](<../public/img/posts/NFC Tuckshop/image-1.png>)
+![alt text](<../img/posts/NFC Tuckshop/image-1.png>)
 
 <video src="/vid/NFC-Tuckshop/tuckshop.mp4"/>

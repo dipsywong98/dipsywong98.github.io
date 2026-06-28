@@ -65,8 +65,8 @@ Within this lab we will create an Azure SQL server with some test data inside it
 
 1. Once the resource is deployed click Go to resource.
 
-![alt text](../../public/img/posts/lab-4/image.png)
-![alt text](../../public/img/posts/lab-4/image-1.png)
+![alt text](../../img/posts/lab-4/image.png)
+![alt text](../../img/posts/lab-4/image-1.png)
 
 ### Task 2: Check there is sample data
 
@@ -321,8 +321,8 @@ Within this lab we will create an Azure SQL server with some test data inside it
 
 1. Results: You have created a SQL server and database, configured data classification and auditing.
 
-![alt text](../../public/img/posts/lab-4/image-2.png)
+![alt text](../../img/posts/lab-4/image-2.png)
 
-![alt text](../../public/img/posts/lab-4/image-3.png)
+![alt text](../../img/posts/lab-4/image-3.png)
 
-![alt text](../../public/img/posts/lab-4/image-4.png)
+![alt text](../../img/posts/lab-4/image-4.png)

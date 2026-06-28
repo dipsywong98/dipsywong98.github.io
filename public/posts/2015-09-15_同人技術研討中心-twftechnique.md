@@ -16,8 +16,8 @@ Contains over 70 articles on techniques using Twilight Wars campaign maker to ma
 It was made in old google sites which was deprecated by google. Here is a backup of the website https://dipsy.me/twftechnique/home.html .
 
 Homepage
-![alt text](../public/img/posts/同人技術研討中心-twftechnique/image.png)
+![alt text](../img/posts/同人技術研討中心-twftechnique/image.png)
 
 
 The technique that I am most proud of is accessing cursor position. There was no native support on getting the cursor position, I have to utilize math knowledge in high school to achieve that, for example section formular, Cramer's rule.
-![alt text](../public/img/posts/同人技術研討中心-twftechnique/image-1.png)
+![alt text](../img/posts/同人技術研討中心-twftechnique/image-1.png)

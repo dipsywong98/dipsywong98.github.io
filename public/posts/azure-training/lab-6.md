@@ -110,9 +110,9 @@ Browse to your test file and upload it.
 
 You've triggered the event, and Event Grid sent the message to the endpoint you configured when subscribing. The message is in the JSON format and it contains an array with one or more events. In the following example, the JSON message contains an array with one event. View your web app and notice that a blob created event was received.
 
-![alt text](../../public/img/posts/lab-6/image.png)
+![alt text](../../img/posts/lab-6/image.png)
 
-![alt text](../../public/img/posts/lab-6/image-1.png)
+![alt text](../../img/posts/lab-6/image-1.png)
 
-![alt text](../../public/img/posts/lab-6/image-2.png)
+![alt text](../../img/posts/lab-6/image-2.png)
 

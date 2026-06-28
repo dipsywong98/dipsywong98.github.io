@@ -17,4 +17,4 @@ USThing wanted to develop a new feature to show academic progress of a student i
 
 The Academic requirements page
 
-![alt text](<../public/img/posts/Academic Requirement/image-1.png>)
+![alt text](<../img/posts/Academic Requirement/image-1.png>)

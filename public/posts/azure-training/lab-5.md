@@ -391,18 +391,18 @@ After few minutes, in the portal, find the storage account & the container that 
 
 Select the file, and then on the Blob page, select Edit to view contents in the file. It should look like the below screenshot
 
-![alt text](../../public/img/posts/lab-5/image-4.png)
+![alt text](../../img/posts/lab-5/image-4.png)
 
 
-![alt text](../../public/img/posts/lab-5/image.png)
+![alt text](../../img/posts/lab-5/image.png)
 
 https://account90.dfs.core.windows.net/users/green_tripdata_2023-01.parquet
 
 abfss://users@account90.dfs.core.windows.net/green_tripdata_2023-01.parquet
 
-![alt text](../../public/img/posts/lab-5/image-1.png)
+![alt text](../../img/posts/lab-5/image-1.png)
 
-![alt text](../../public/img/posts/lab-5/image-2.png)
+![alt text](../../img/posts/lab-5/image-2.png)
 
 
 ```
@@ -413,6 +413,6 @@ abfss://users@account90.dfs.core.windows.net/green_tripdata_2023-01.parquet
      ) AS [result]
 ```
 
-![alt text](../../public/img/posts/lab-5/image-3.png)
+![alt text](../../img/posts/lab-5/image-3.png)
 
-![alt text](../../public/img/posts/lab-5/image-5.png)
+![alt text](../../img/posts/lab-5/image-5.png)

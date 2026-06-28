@@ -27,7 +27,7 @@ isProject: true
 
 [Play now!](https://dipsywong98.github.io/photosynthesis/)
 
-![alt text](../public/img/posts/photosynthesis/image.png)
+![alt text](../img/posts/photosynthesis/image.png)
 
 ## Game Rules
 

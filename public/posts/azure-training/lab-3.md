@@ -66,7 +66,7 @@ Bastion will take a few minutes to deploy but we can procced with other steps wh
 1. Copy the URL of the file and put it into a new browser tab.
 1. You should see your image displayed (keep this URL to hand in notepad you will need it later).
 
-![alt text](../../public/img/posts/lab-3/image.png)
+![alt text](../../img/posts/lab-3/image.png)
 
 ## Task 6: Restricting access to the image file to only our private network
 

@@ -14,4 +14,4 @@ isProject: true
 
 Mirror palace is the original game that lead to the development of [tentoban](/posts/Tentoban)
 
-![alt text](../public/img/posts/鏡之宮殿-mirror-palace/image.png)
+![alt text](../img/posts/鏡之宮殿-mirror-palace/image.png)

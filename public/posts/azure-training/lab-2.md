@@ -66,7 +66,7 @@
 
 ### Task 4: Create tasks
 
-![alt text](../../public/img/posts/lab-2/image-4.png)
+![alt text](../../img/posts/lab-2/image-4.png)
 
 1. On the Jobs page, select myJob.
 
@@ -86,7 +86,7 @@
 
 After you create each task, Batch queues it to run on the pool. Once a node is available, the task runs on the node. In the quickstart example, if the first task is still running on one node, Batch starts the second task on the other node in the pool.
 
-![alt text](../../public/img/posts/lab-2/image.png)
+![alt text](../../img/posts/lab-2/image.png)
 
 ### Task 5: View task output
 
@@ -98,10 +98,10 @@ After you create each task, Batch queues it to run on the pool. Once a node is a
 
 1. The standard output for this task shows the Azure Batch environment variables that are set on the node. As long as this node exists, you can refer to these environment variables in Batch job task command lines, and in the apps and scripts the command lines run.
 
-![alt text](../../public/img/posts/lab-2/image-3.png)
+![alt text](../../img/posts/lab-2/image-3.png)
 
-![alt text](../../public/img/posts/lab-2/image-1.png)
+![alt text](../../img/posts/lab-2/image-1.png)
 
-![alt text](../../public/img/posts/lab-2/image-2.png)
+![alt text](../../img/posts/lab-2/image-2.png)
 
 Initial runs of the batch task may take some time as resources are allocated. You may continue with other labs and return to see the output later if you wish.

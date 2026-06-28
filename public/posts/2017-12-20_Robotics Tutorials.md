@@ -15,6 +15,6 @@ isProject: true
 
 Training materials for 2017-2018 smart car. Includes project set up, C++, embedded system programming, algorithm design and git tutorials.
 
-![alt text](<../public/img/posts/Robotics Tutorials/capacitor.jpg>)
+![alt text](<../img/posts/Robotics Tutorials/capacitor.jpg>)
 
-![alt text](<../public/img/posts/Robotics Tutorials/senior play smart car.jpg>)
+![alt text](<../img/posts/Robotics Tutorials/senior play smart car.jpg>)

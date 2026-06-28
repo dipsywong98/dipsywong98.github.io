@@ -11,17 +11,25 @@ import { CardSection } from '@/components/CardSection'
 import { sanitizePath } from '@/lib/sanitizePath'
 import { WidgetsRoot } from '@/components/widgets/WidgetContext'
 
+const getPostSlugs = (post: Post) => {
+  const fullSlug = sanitizePath(post._raw.flattenedPath)
+  const withoutDatePrefix = fullSlug.replace(/^\d{4}-\d{2}-\d{2}_/, '')
+
+  return [
+    fullSlug,
+    fullSlug.toLocaleLowerCase(),
+    withoutDatePrefix,
+    withoutDatePrefix.toLocaleLowerCase(),
+  ].filter((slug, index, slugs) => slugs.indexOf(slug) === index)
+}
+
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: sanitizePath(post._raw.flattenedPath),
-  })).concat(allPosts.map((post) => ({
-    slug: sanitizePath(post._raw.flattenedPath).toLocaleLowerCase(),
-  })))
+  return allPosts.flatMap((post) => getPostSlugs(post).map((slug) => ({ slug })))
 }
 
 const findPost = (slug: string) => {
-  const post = allPosts.find((post) => sanitizePath(post._raw.flattenedPath).toLocaleLowerCase() === slug.toLocaleLowerCase())
-  return post
+  const normalizedSlug = slug.toLocaleLowerCase()
+  return allPosts.find((post) => getPostSlugs(post).some((candidate) => candidate.toLocaleLowerCase() === normalizedSlug))
 }
 
 export async function generateMetadata({

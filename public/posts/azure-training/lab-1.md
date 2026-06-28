@@ -9,13 +9,13 @@ In this task, you will create some resource that will then be used to demonstrat
 1. On the **Welcome to Microsoft Azure** dialogue box click **Maybe Later**.  If an Azure recommendations dialog box pops up click **X**.
 
 1. Select **Cloud Shell** from the Azure Portal tool bar
-    ![alt text](../../public/img/posts/lab-1/image.png)
+    ![alt text](../../img/posts/lab-1/image.png)
 
 1. Select **PowerShell** on the Welcome screen.
-    ![alt text](../../public/img/posts/lab-1/image-1.png)
+    ![alt text](../../img/posts/lab-1/image-1.png)
 
 1. Select subscription and apply
-    ![alt text](../../public/img/posts/lab-1/image-2.png)
+    ![alt text](../../img/posts/lab-1/image-2.png)
 
 1. From the PowerShell Cloud Shell pane, run the following to create 2 resource groups called **apple** and **pear** (make sure to hit return after the last command to execute it):
 
@@ -66,7 +66,7 @@ In this task, you will create some resource that will then be used to demonstrat
 1. Minimize Cloud Shell as you will need it again at a later stage.
 
 1. In the Azure portal, Navigate to **Resource groups** and open the resource group **apple**
-![alt text](../../public/img/posts/lab-1/image-3.png)
+![alt text](../../img/posts/lab-1/image-3.png)
 1. On the **Resource group** blade, click **Tags**.
 1. Enter the following values and click **Apply**.
    | Setting | Value |
@@ -74,7 +74,7 @@ In this task, you will create some resource that will then be used to demonstrat
    | Name    | Fruit |
    | Value   | Apple |
 
-    ![alt text](../../public/img/posts/lab-1/image-4.png)
+    ![alt text](../../img/posts/lab-1/image-4.png)
 1. In the Azure portal, Navigate to **Resource groups** and open the resource group **pear**.
 
 1. On the **Resource group** blade, click **Tags**.
@@ -152,8 +152,8 @@ In this task, you will create some resource that will then be used to demonstrat
 1. Click **Resource Groups**
 1. Here you can see your costs of your Azure resources by Resource group.
 
-    ![alt text](../../public/img/posts/lab-1/image-5.png)
-    ![alt text](../../public/img/posts/lab-1/image-6.png)
+    ![alt text](../../img/posts/lab-1/image-5.png)
+    ![alt text](../../img/posts/lab-1/image-6.png)
 
 1. Click the **Customize** button in this Resource Group list tab.
 1. Click **Convert to customizable view** button.

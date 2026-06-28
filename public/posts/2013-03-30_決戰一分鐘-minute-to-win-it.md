@@ -24,4 +24,4 @@ isProject: true
 1. bumper cars
 
 This is how the games are made
-![alt text](../public/img/posts/決戰一分鐘/image.png)
+![alt text](../img/posts/決戰一分鐘/image.png)

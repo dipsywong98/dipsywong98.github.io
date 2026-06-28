@@ -22,24 +22,24 @@ I was a senior member in HKUST Robotics team smart car subteam and we are traini
 
 ## Screenshot
 
-![alt text](../public/img/posts/Corner-Detection-Challenge/image-5.png)
-![alt text](../public/img/posts/Corner-Detection-Challenge/image-6.png)
+![alt text](../img/posts/Corner-Detection-Challenge/image-5.png)
+![alt text](../img/posts/Corner-Detection-Challenge/image-6.png)
 
 > Homepage, where users can login and submit their code
 
-![alt text](../public/img/posts/Corner-Detection-Challenge/image-1.png)
+![alt text](../img/posts/Corner-Detection-Challenge/image-1.png)
 
 > Leaderboard
 
-![alt text](../public/img/posts/Corner-Detection-Challenge/image.png)
+![alt text](../img/posts/Corner-Detection-Challenge/image.png)
 
 > Admin result browser
 
-![alt text](../public/img/posts/Corner-Detection-Challenge/image-2.png)
+![alt text](../img/posts/Corner-Detection-Challenge/image-2.png)
 
 > Test case preparation and result visualizer
 
-![alt text](../public/img/posts/Corner-Detection-Challenge/image-4.png)
+![alt text](../img/posts/Corner-Detection-Challenge/image-4.png)
 
 ## Technology
 
