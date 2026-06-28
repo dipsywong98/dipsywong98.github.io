@@ -39,7 +39,7 @@ ${meta}
 ---
 ${text.replace(/^---[\s\S]*?---/m, '')}
     `
-    await writeFileAsync(`posts/${work.title}.mdx`, reprocessedText)
+    await writeFileAsync(`posts/${work.title}.md`, reprocessedText)
   }
 }
 
@@ -54,7 +54,7 @@ ${meta}
 ---
 Story about ${work.title}
   `
-  await writeFileAsync(`posts/${work.title}.mdx`, reprocessedText)
+  await writeFileAsync(`posts/${work.title}.md`, reprocessedText)
 }
 
 export const syncContent = async (contentDir: string) => {
