@@ -1,4 +1,3 @@
-import { use } from "react";
 import { WEBSITE_HOST_URL } from '@/lib/constants'
 import { Post, allPosts } from 'contentlayer/generated'
 import { format, parseISO } from 'date-fns'
@@ -33,12 +32,11 @@ const findPost = (slug: string) => {
   return allPosts.find((post) => getPostSlugs(post).some((candidate) => candidate.toLocaleLowerCase() === normalizedSlug))
 }
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>
-  }
-): Promise<Metadata | undefined> {
-  const params = await props.params;
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata | undefined> {
   const post = await findPost(params.slug)
 
   if (!post) {
@@ -67,8 +65,7 @@ export async function generateMetadata(
   }
 }
 
-const PostLayout = (props: { params: Promise<{ slug: string }> }) => {
-  const params = use(props.params);
+const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = findPost(params.slug)
 
   if (!post) {

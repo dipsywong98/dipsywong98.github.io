@@ -39,4 +39,3 @@ next-env.d.ts
 /posts/_private/
 
 .obsidian/
-.yarn/install-state.gz

@@ -17,8 +17,6 @@ jobs:
         with:
           node-version: "20"
           cache: yarn
-      - name: Enable Corepack
-        run: corepack enable
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -29,7 +27,7 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-      - run: yarn install --immutable
+      - run: yarn install --frozenLockFile
       - run: yarn build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
