@@ -54,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className="min-h-[100vh] flex flex-col">
         <GoogleAnalytics gaId="G-2G457C66LH" />
         <ThemeProvider attribute="class" defaultTheme="dark">

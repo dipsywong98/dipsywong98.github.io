@@ -1,4 +1,3 @@
-'use client'
 import React, { forwardRef } from 'react'
 import { Tag } from './v2/Tag'
 import './v2/Work.scss'

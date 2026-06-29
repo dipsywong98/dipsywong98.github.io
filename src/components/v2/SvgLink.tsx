@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState, type ReactNode } from 'react'
+import React, { type ReactNode } from 'react'
 import { ToolTip } from './ToolTip'
 import NextImage from 'next/image'
 import { useTheme } from 'next-themes'
@@ -13,12 +13,8 @@ interface Props {
 }
 
 export const SvgLink = ({ title, href, icon }: Props): ReactNode => {
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-  const iconUrl = (mounted && resolvedTheme !== 'dark') ? `/svg/${icon}.svg` : `/svg/dark/${icon}.svg`
+  let { resolvedTheme } = useTheme()
+  const iconUrl = resolvedTheme !== 'dark' ? `/svg/${icon}.svg` : `/svg/dark/${icon}.svg`
   return (
     <ToolTip title={title}>
       <a href={href}>

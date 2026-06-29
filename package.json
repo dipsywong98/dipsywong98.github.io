@@ -29,7 +29,7 @@
     "date-fns": "^3.6.0",
     "eslint": "9.3.0",
     "eslint-config-next": "16.2.9",
-    "framer-motion": "^12.42.0",
+    "framer-motion": "^11.2.10",
     "gh-lang-colors": "^0.1.4",
     "js-yaml": "^4.1.0",
     "lodash.debounce": "^4.0.8",
