@@ -1,0 +1,24 @@
+---
+title: NFC Tuckshop
+githubLink: //github.com/hkust-smartcar/NFC-server
+brief: Touchscreen POS with NFC support for smart car team
+time: 2018 spring
+tags:
+  - JavaScript
+  - cpp
+  - Robotics
+  - NFC
+  - embedded system
+id: NFC%20Tuckshop
+date: 2018-02-02
+isProject: true
+---
+## Story
+
+We are setting up a internal tuckshop within robotics team, using k60 micro controller, nfc, bluetooth, rasp pi
+
+![alt text](<../img/posts/NFC Tuckshop/image.png>)
+
+![alt text](<../img/posts/NFC Tuckshop/image-1.png>)
+
+<video src="/vid/NFC-Tuckshop/tuckshop.mp4"/>

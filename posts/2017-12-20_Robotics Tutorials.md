@@ -1,0 +1,20 @@
+---
+title: Robotics Tutorials
+githubLink: //github.com/hkust-smartcar/tutorials
+brief: Tutorials and assignments for HKUST Robotics team
+time: 2018 winter
+tags:
+  - cpp
+  - Robotics
+  - embedded system
+  - Computer Vision
+id: Robotics%20Tutorials
+date: 2017-12-20
+isProject: true
+---
+
+Training materials for 2017-2018 smart car. Includes project set up, C++, embedded system programming, algorithm design and git tutorials.
+
+![alt text](<../img/posts/Robotics Tutorials/capacitor.jpg>)
+
+![alt text](<../img/posts/Robotics Tutorials/senior play smart car.jpg>)
