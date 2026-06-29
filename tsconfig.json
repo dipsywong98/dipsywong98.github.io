@@ -16,7 +16,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -38,8 +38,11 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated"
-, "contentlayer.config.ts", "mdx.config.mjs"  ],
+    ".contentlayer/generated",
+    "contentlayer.config.ts",
+    "mdx.config.mjs",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "bun*"
