@@ -15,9 +15,6 @@ date: 2021-06-19
 isProject: true
 ---
 
-
-# minesweeper
-
 A fork of [mines.now.sh](https://github.com/ShizukuIchi/minesweeper) that supports custom levels
 
 <img src="https://i.imgur.com/0orWrPH.jpg" title="RIP 精神，會長大佬我會懷念你，下世做個快樂的人，勇敢追自己的夢" />

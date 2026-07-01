@@ -6,7 +6,7 @@ tags:
 date: 2018-06-01
 ---
 
-### Download Electron
+## Download Electron
 
 ```bash
 # 複製 Quick Start 儲存庫
@@ -19,10 +19,10 @@ $ cd electron-quick-start
 $ npm install -g
 ```
 
-### Download Electron Live for Live testing (Optional)
+## Download Electron Live for Live testing (Optional)
 
 ```bash
-$ npm install electron-reload
+npm install electron-reload
 ```
 
 and choose one of the options to put in `main.js`
@@ -41,14 +41,14 @@ require('electron-reload')(__dirname, {
 ### Test / Debugging Electron App
 
 ```bash
-$ npm start
+npm start
 ```
 
 ### npm install more dependencies
 
 A very stupid thing of electron
 
-```
+```bash
 npm install --save-dev electron-rebuild
 ```
 
@@ -56,7 +56,7 @@ npm install --save-dev electron-rebuild
 
 It is stupid to let people download your raw code to run
 
-https://github.com/electron-userland/electron-forge
+<https://github.com/electron-userland/electron-forge>
 
 ### Developing on Windows
 
@@ -68,18 +68,18 @@ npm install --global --production windows-build-tools
 
 ### Integrate with React
 
-https://github.com/chentsulin/electron-react-boilerplate
+<https://github.com/chentsulin/electron-react-boilerplate>
 
 ### Source
 
-https://ourcodeworld.com/articles/read/524/how-to-use-live-reload-in-your-electron-project
+<https://ourcodeworld.com/articles/read/524/how-to-use-live-reload-in-your-electron-project>
 
-https://electronjs.org/
+<https://electronjs.org/>
 
-https://github.com/electron-userland/electron-forge
+<https://github.com/electron-userland/electron-forge>
 
-https://www.jianshu.com/p/696fbdeb5b8a
+<https://www.jianshu.com/p/696fbdeb5b8a>
 
-https://blog.csdn.net/cut001/article/details/68922780
+<https://blog.csdn.net/cut001/article/details/68922780>
 
-https://stackoverflow.com/questions/21658832/npm-install-error-msb3428-could-not-load-the-visual-c-component-vcbuild-ex
+<https://stackoverflow.com/questions/21658832/npm-install-error-msb3428-could-not-load-the-visual-c-component-vcbuild-ex>

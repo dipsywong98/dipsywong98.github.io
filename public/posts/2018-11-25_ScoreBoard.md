@@ -19,13 +19,9 @@ isProject: true
 ---
 
 
-
-# ScoreBoard
-
 > Score board for robot design contest 2018
-> Authors: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
-> Repo: https://github.com/dipsywong98/ScoreBoard
 > 
+> Authors: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
 
 ## Features
 
@@ -36,27 +32,15 @@ isProject: true
 5. [timer](https://scoreboard-d.firebaseapp.com/timer)
 
 ## Stack
+
 Vue, SCSS, firebase
 
 ## Screenshots
 
-![](https://i.imgur.com/ZLMm4v7.png)
+![Made by my partner, super beautiful](https://i.imgur.com/ZLMm4v7.png)
 
-> Made by my partner, super beautiful
+![Made by me, ugly yet functional](https://i.imgur.com/4IbX6YD.png)
 
-![](https://i.imgur.com/4IbX6YD.png)
+![Made by my partner, also very beautiful](https://i.imgur.com/oUhB2Pz.png)
 
-> Made by me, ugly yet functional
-> 
-
-![](https://i.imgur.com/oUhB2Pz.png)
-
-> Made by my partner, also very beautiful
-> 
-
-![](https://i.imgur.com/yxYJrxt.png)
-
-
-> Copy paste code from my partner, heavily polluted
-
-    
+![Copy paste code from my partner, heavily polluted](https://i.imgur.com/yxYJrxt.png)

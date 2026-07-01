@@ -16,8 +16,8 @@ date: 2020-10-20
 isProject: true
 ---
 
-# Mario Kart Tour Advisor
 > Little helper to analyse usefulnes of your drivers/karts/gliders and the performance of courses in Mario Kart Tour
+> 
 > Authors: [Dipsy Wong](//github.com/dipsywong98)
 
 Hey guys, I made a website to analyze the usefulness of your drivers/karts/gliders and the performance of courses in Mario Kart Tour.

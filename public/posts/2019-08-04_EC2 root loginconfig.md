@@ -10,7 +10,6 @@ tags:
 id: EC2%20root%20loginconfig
 date: 2019-08-04
 ---
-# Config root login for server
 
 1. add ssh public key to /root/.ssh/authorized_keys
 

@@ -10,8 +10,6 @@ date: 2020-01-03
 
 ---
 
-# Amazing way to use hackmd to manage blog
-
 Today I was trying to update my blog page. Originally it was using yaml in git repo to generate the listing of all articles and work, however I don't want to make updating blog content as a commit to my homepage, that is all commits to the homepage repo shall be related to the code base itself.
 
 I was considering using gist, however it will generate a lot of not code gist, and difficult to manage. Then I tried to use hackmd to manage all my yaml file and md which works perfectly fine.

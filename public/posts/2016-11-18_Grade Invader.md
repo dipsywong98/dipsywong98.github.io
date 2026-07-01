@@ -13,7 +13,7 @@ date: 2016-11-18
 isProject: true
 ---
 
-# Grade invader
+
 
 COMP1021 programming assignment
 

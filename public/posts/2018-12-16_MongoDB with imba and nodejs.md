@@ -7,15 +7,13 @@ tags:
 date: 2018-12-16
 ---
 
-# MongoDB with imba and nodejs
-
-### Introduction
+## Introduction
 
 I am going to make a new version of corner detection challenge judge, and I am trying to make it with imba in both client side and server side, in the middle we use restful API and socket for communication, while the database we are trying to use MongoDB.
 
 As for imba environment set up I have another note already, this time it is MongoDB which I am totally new with. MongoDB is a noSQL architecture that do database queries without SQL, looks like firebase, however, it seems there is no way to listen to changes like firebase ([stackoverflow](https://stackoverflow.com/questions/42565778/is-there-a-way-to-listen-to-a-mongodb-collection)).
 
-### Setup
+## Setup
 
 [Install MongoDB on computer](https://www.mongodb.com/download-center/community)
 
@@ -25,7 +23,7 @@ Follow the instructions so that MongoDB would be installed on your computer, and
 
 In your node project which uses MongoDB, run `npm i mongodb`
 
-### Connect
+## Connect
 
 ```js
 // javascript version
@@ -43,12 +41,12 @@ let MongoClient = require('mongodb').MongoClient
 let uri = "mongodb://localhost:27017"
 const client = MongoClient.new(uri, { useNewUrlParser: true })
 client.connect do |err|
-	console.log(err||'successfully connect to mongo')
+ console.log(err||'successfully connect to mongo')
 ```
 
 As for successful connection, the program will print out "successfully connect to mongo", and you can use the client object for further application
 
-#### Further: sequential initialization with Express
+### Further: sequential initialization with Express
 
 ```imba
 def initExpress client
@@ -57,24 +55,23 @@ def initExpress client
 
 
 def initMongo
-	let MongoClient = require('mongodb').MongoClient
-	let uri = "mongodb://localhost:27017"
-	const client = MongoClient.new(uri, { useNewUrlParser: true })
-	await Promise.new do |resolve,reject|
-		client.connect do |err|
-			console.log(err||'no error connecting mongo')
-			resolve client
-	return client
-	
+ let MongoClient = require('mongodb').MongoClient
+ let uri = "mongodb://localhost:27017"
+ const client = MongoClient.new(uri, { useNewUrlParser: true })
+ await Promise.new do |resolve,reject|
+  client.connect do |err|
+   console.log(err||'no error connecting mongo')
+   resolve client
+ return client
+ 
 def main
-	var client = await initMongo
-	initExpress client
-	
+ var client = await initMongo
+ initExpress client
+ 
 main
 ```
- 
 
-### Insert
+## Insert
 
 ```js
 client.db('my_db').collection('my_collection').insertOne({myField:'myValue'},(err,res)=>{
@@ -91,7 +88,8 @@ client.db('my_db').collection('my_collection').insertOne {myField:'myValue'} do 
 
 If `my_db` database or `my_collection` collection has not been created before insertion, mongo will create it first then create.
 
-### Query
+## Query
+
 ```js
 client.db('my_db').collection('my_collection').findOne({},(err,res)=>{
     console.log(res)
@@ -101,5 +99,5 @@ client.db('my_db').collection('my_collection').findOne({key:'value'},(err,res)=>
     console.log(res)//one result that its key matches value
 })
 ```
-The `{}` is an atomic operation which describes the items that you are going to query, for example `{age:{$gt:18}}` means you are going to query an item with attribute `age` greater than 18
 
+The `{}` is an atomic operation which describes the items that you are going to query, for example `{age:{$gt:18}}` means you are going to query an item with attribute `age` greater than 18

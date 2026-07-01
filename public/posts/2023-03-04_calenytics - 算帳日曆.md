@@ -1,5 +1,5 @@
 ---
-title: calenytics - 算帳日曆
+title: Calenytics - 算帳日曆
 githubLink: //github.com/dipsywong98/calenytics
 brief: >-
   Turn your Google Calendar into income balance spreadsheet. Set up once, synced forever.

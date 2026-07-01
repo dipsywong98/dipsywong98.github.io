@@ -18,8 +18,8 @@ date: 2020-10-12
 isProject: true
 ---
 
-# Photosynthesis
 > An online boardgame photosynthesis made for Katrin
+> 
 > Authors: [Dipsy Wong](//github.com/dipsywong98), [Daniel Cheung](//github.com/danvim)
 
 [![](https://i.imgur.com/1K9UV5b.png)](https://dipsywong98.github.io/photosynthesis/)

@@ -11,7 +11,6 @@ id: >-
   Installing%20Ubuntu%20on%20my%20Nvidia%20RTX2060%20Laptop%20(Lenovo%20Legion%20Y7000SE)
 date: 2019-10-03
 ---
-# Installing Ubuntu on my Nvidia RTX2060 Laptop (Lenovo Legion Y7000SE)
 
 Procrastinated for three years, I finally decided to buy my very first "first-hand" computer. ~~Now I am bankrupted.~~ I got it from the school's notebook ownership program which is rather worth it given the OP spec. With just 12000 HKD, I got 1TB SSD, Gen 9 i7 intel CPU core, Nvidia RTX 2060, 32GB RAM, HD screen, as well as a gigantic power supply yay~. As a ~~professional~~ IT dog, the very first thing I need to do is to install linux dual boot on it, but it has been cries and tears doing so. Took me several days TAT.
 

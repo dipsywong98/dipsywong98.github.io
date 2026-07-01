@@ -80,8 +80,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     notFound()
   }
 
-  const titleRegex = new RegExp(`"${post.title.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')}"`, 'igm')
-  const MDXContent = useMDXComponent(markdown.replace(titleRegex, '""'), {})
+  const MDXContent = useMDXComponent(markdown, {})
 
   return (
     <CardSection>

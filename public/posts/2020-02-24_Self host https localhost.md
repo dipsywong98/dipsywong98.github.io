@@ -8,8 +8,6 @@ date: 2020-02-24
 ---
 
 
-# Self host https localhost
-
 
 ```bash showLineNumbers
 openssl genrsa -out privatekey.pem 1024 
