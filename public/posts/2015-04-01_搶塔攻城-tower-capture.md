@@ -1,5 +1,5 @@
 ---
-title: 搶塔攻城 tower capture
+title: 搶塔攻城 Tower Capture
 titleLink: //drive.google.com/open?id=0B2wxG8U_9xycQ2themFZUDBXRHc
 liveLink: //youtu.be/wbbEV4_dFCA
 brief: Mixture of AOE and COC, real time multiplayer strategy

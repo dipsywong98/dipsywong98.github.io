@@ -6,8 +6,6 @@ tags:
 date: 2018-06-01
 ---
 
-# Build Desktop Serial App with Electron
-
 ### Download Electron
 
 ```bash

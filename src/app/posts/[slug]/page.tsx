@@ -13,13 +13,15 @@ import { WidgetsRoot } from '@/components/widgets/WidgetContext'
 
 const getPostSlugs = (post: Post) => {
   const fullSlug = sanitizePath(post._raw.flattenedPath)
+    // .replace(/^(\d{4}-\d{2}-\d{2}_)-/, '$1') // remove the leading "-" in "YYYY-MM-DD_-" prefix if it exists
   const withoutDatePrefix = fullSlug.replace(/^\d{4}-\d{2}-\d{2}_/, '')
 
   return [
-    fullSlug,
-    fullSlug.toLocaleLowerCase(),
+    // comment out because discussion module may require a consistent path
+    // fullSlug,
+    // fullSlug.toLocaleLowerCase(),
     withoutDatePrefix,
-    withoutDatePrefix.toLocaleLowerCase(),
+    // withoutDatePrefix.toLocaleLowerCase(),
   ].filter((slug, index, slugs) => slugs.indexOf(slug) === index)
 }
 

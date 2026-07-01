@@ -17,11 +17,8 @@ date: 2018-03-21
 isProject: true
 ---
 
-
-
-# Reimbursement System
-
-> Automate the reimbursement process of robotics team
+> Automate the reimbursement process of robotics team.
+> 
 > Authors: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
 > 
 

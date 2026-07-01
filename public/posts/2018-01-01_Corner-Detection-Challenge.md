@@ -1,5 +1,5 @@
 ---
-title: Corner-Detection-Challenge
+title: Corner Detection Challenge
 githubLink: //github.com/hkust-smartcar/Corner-Detection-Challenge
 liveLink: //hkust-smartcar.github.io/Corner-Detection-Challenge/
 brief: Corner Detection Challenge first generation judge

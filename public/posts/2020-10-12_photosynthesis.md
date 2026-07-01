@@ -1,5 +1,5 @@
 ---
-title: photosynthesis
+title: Photosynthesis
 brief: Online boardgame photosynthesis
 liveLink: //dipsywong98.github.io/photosynthesis
 time: 2020 fall

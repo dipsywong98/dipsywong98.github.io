@@ -6,7 +6,7 @@ tags:
   - JavaScript
   - Apollo
   - GraphQL
-id: Apollo_notes
+id: Apollo Notes
 date: 2019-08-17
 
 ---
