@@ -11,6 +11,7 @@ import { CardSection } from '@/components/CardSection'
 import { sanitizePath } from '@/lib/sanitizePath'
 import { WidgetsRoot } from '@/components/widgets/WidgetContext'
 import { Discussion } from '@/components/Dicussion'
+import { PostNavigationCard } from '@/components/PostNavigationCard'
 
 const getPostSlugs = (post: Post) => {
   const fullSlug = sanitizePath(post._raw.flattenedPath)
@@ -82,6 +83,14 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   }
 
   const MDXContent = useMDXComponent(markdown, {})
+  const sortedBlogPosts = allPosts
+    .filter((candidate) => candidate.isProject === post.isProject)
+    .sort((a, b) => (a.date > b.date ? -1 : 1))
+  const currentIndex = sortedBlogPosts.findIndex((candidate) => candidate._id === post._id)
+  const previousPost = currentIndex >= 0 ? sortedBlogPosts[currentIndex + 1] : undefined
+  const nextPost = currentIndex > 0 ? sortedBlogPosts[currentIndex - 1] : undefined
+  const previousLabel = post.isProject ? 'Previous work' : 'Previous article'
+  const nextLabel = post.isProject ? 'Next work' : 'Next article'
 
   return (
     <CardSection>
@@ -94,7 +103,23 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           <MDXContent components={mdxComponents} />
         </WidgetsRoot>
       </article>
-      <Discussion title={post.title} />
+      {(previousPost || nextPost) && (
+        <div className="mt-8 grid gap-4 border-t border-zinc-200 pt-6 dark:border-zinc-800 md:grid-cols-2">
+          {previousPost ? (
+            <PostNavigationCard href={previousPost.url} label={previousLabel} post={previousPost} />
+          ) : (
+            <div />
+          )}
+          {nextPost ? (
+            <PostNavigationCard href={nextPost.url} label={nextLabel} post={nextPost} align="right" />
+          ) : (
+            <div />
+          )}
+        </div>
+      )}
+      <div className="mt-8">
+        <Discussion title={post.title} />
+      </div>
     </CardSection>
   )
 }
