@@ -10,6 +10,7 @@ import { mdxComponents } from '@/components/mdxComponents'
 import { CardSection } from '@/components/CardSection'
 import { sanitizePath } from '@/lib/sanitizePath'
 import { WidgetsRoot } from '@/components/widgets/WidgetContext'
+import { Discussion } from '@/components/Dicussion'
 
 const getPostSlugs = (post: Post) => {
   const fullSlug = sanitizePath(post._raw.flattenedPath)
@@ -93,6 +94,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           <MDXContent components={mdxComponents} />
         </WidgetsRoot>
       </article>
+      <Discussion title={post.title} />
     </CardSection>
   )
 }
