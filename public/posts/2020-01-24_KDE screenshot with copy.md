@@ -35,5 +35,5 @@ spectacle -br -o ~/Pictures/Screenshots/copyshot.png
 
 ## Reference
 
-<https://gist.github.com/Xarkam/26d40e98dbad314423c11a27e35aab47>
-<https://www.reddit.com/r/kde/comments/5i4awm/how_to_make_spectacle_copy_to_clipboard_by_default/>
+[https://gist.github.com/Xarkam/26d40e98dbad314423c11a27e35aab47](https://gist.github.com/Xarkam/26d40e98dbad314423c11a27e35aab47)
+[https://www.reddit.com/r/kde/comments/5i4awm/how_to_make_spectacle_copy_to_clipboard_by_default/](https://www.reddit.com/r/kde/comments/5i4awm/how_to_make_spectacle_copy_to_clipboard_by_default/)

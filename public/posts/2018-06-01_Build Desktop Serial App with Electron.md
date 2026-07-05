@@ -56,7 +56,7 @@ npm install --save-dev electron-rebuild
 
 It is stupid to let people download your raw code to run
 
-<https://github.com/electron-userland/electron-forge>
+[https://github.com/electron-userland/electron-forge](https://github.com/electron-userland/electron-forge)
 
 ### Developing on Windows
 
@@ -68,18 +68,18 @@ npm install --global --production windows-build-tools
 
 ### Integrate with React
 
-<https://github.com/chentsulin/electron-react-boilerplate>
+[https://github.com/chentsulin/electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate)
 
 ### Source
 
-<https://ourcodeworld.com/articles/read/524/how-to-use-live-reload-in-your-electron-project>
+[https://ourcodeworld.com/articles/read/524/how-to-use-live-reload-in-your-electron-project](https://ourcodeworld.com/articles/read/524/how-to-use-live-reload-in-your-electron-project)
 
-<https://electronjs.org/>
+[https://electronjs.org/](https://electronjs.org/)
 
-<https://github.com/electron-userland/electron-forge>
+[https://github.com/electron-userland/electron-forge](https://github.com/electron-userland/electron-forge)
 
-<https://www.jianshu.com/p/696fbdeb5b8a>
+[https://www.jianshu.com/p/696fbdeb5b8a](https://www.jianshu.com/p/696fbdeb5b8a)
 
-<https://blog.csdn.net/cut001/article/details/68922780>
+[https://blog.csdn.net/cut001/article/details/68922780](https://blog.csdn.net/cut001/article/details/68922780)
 
-<https://stackoverflow.com/questions/21658832/npm-install-error-msb3428-could-not-load-the-visual-c-component-vcbuild-ex>
+[https://stackoverflow.com/questions/21658832/npm-install-error-msb3428-could-not-load-the-visual-c-component-vcbuild-ex](https://stackoverflow.com/questions/21658832/npm-install-error-msb3428-could-not-load-the-visual-c-component-vcbuild-ex)

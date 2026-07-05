@@ -126,4 +126,4 @@ Here we give a simple demonstration of our project.
 
 ## References
 
-1: <https://github.com/aws-samples/lambda-refarch-imagerecognition>
+1: [https://github.com/aws-samples/lambda-refarch-imagerecognition](https://github.com/aws-samples/lambda-refarch-imagerecognition)

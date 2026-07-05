@@ -21,7 +21,7 @@ It is taking a lot of time to research how to properly test websocket in Actix f
 
 So i dig the source code to see if there exists test cases on ws written definitely by Actix developers and i am not disappointed. There is! Source code digging is always the last resort if googling doesnt help. If source code digging didnt work, probably it is impossible to do it in the way you want currently...
 
-So i found the original code in <https://github.com/actix/actix-web/blob/master/actix-web-actors/tests/test_ws.rs> and i kept only the crutial ones here to demostrate how the test works.
+So i found the original code in [https://github.com/actix/actix-web/blob/master/actix-web-actors/tests/test_ws.rs](https://github.com/actix/actix-web/blob/master/actix-web-actors/tests/test_ws.rs) and i kept only the crutial ones here to demostrate how the test works.
 
 ```rust
 //test_ws.rs
@@ -56,7 +56,7 @@ mod tests_main {
 }
 ```
 
-As for the actual server impl, it is just ordinary websocket implementation available in actix official documentation. <https://actix.rs/docs/websockets/> The only twist is that i extracted the `create_app` method so that  we can use the same server factory in our test cases.
+As for the actual server impl, it is just ordinary websocket implementation available in actix official documentation. [https://actix.rs/docs/websockets/](https://actix.rs/docs/websockets/) The only twist is that i extracted the `create_app` method so that  we can use the same server factory in our test cases.
 
 ```rust showLineNumbers
 // main.rs
@@ -118,4 +118,4 @@ mod test_ws;
 
 I hope this write up can help with your project. Good luck!
 
-A full working repo is here, it also includes test case for ordinary restful endpoints, CI, pre-commit-hooks and more. Check it out if you are interested! <https://github.com/dipsywong98/actix-test>
+A full working repo is here, it also includes test case for ordinary restful endpoints, CI, pre-commit-hooks and more. Check it out if you are interested! [https://github.com/dipsywong98/actix-test](https://github.com/dipsywong98/actix-test)
