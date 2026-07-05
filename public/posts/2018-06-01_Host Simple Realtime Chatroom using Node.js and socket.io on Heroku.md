@@ -7,8 +7,6 @@ tags:
 date: 2018-06-01
 ---
 
-# Host Simple Real time Chatroom using Node.js and socket.io on Heroku
-
 This will show you how to make a real time chatroom and make it public for usage (wohoo)
 
 ### Why socket

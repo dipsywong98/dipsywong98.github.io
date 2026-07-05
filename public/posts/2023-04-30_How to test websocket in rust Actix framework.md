@@ -11,19 +11,17 @@ id: How%20to%20test%20websocket%20in%20rust%20Actix%20framework
 date: 2023-04-30
 
 ---
-# How to test websocket in rust Actix framework
 
 It is taking a lot of time to research how to properly test websocket in Actix framework, because their docs, googling and ChatGPT didnt give me answers that works for me. I am not sure is it my googling skill problem or not many people are not asking the same problem as what i did, anyway i found the solution inside actix's source code. I didnt find that in actix's documentation page so i think i better write my findings down and hopefully this can help others who are facing the same problem. First let me share what I have found and what are their problem. Please correct me if my findings are not accurate as I am just a beginner to Rust and Actix.
 
 1. Some are like spinning up a separate server and separete process to test against the server, this will work but not as clean, breakpointing at the server doesnt imply breakpointing in the testing process, there might be side effect for example timeout logic in test etc. And need spin up the server before running test and close the server after that is also a bit cumbersome. But yeah at least most of time just i am not feeling satified yet.
 2. Some are like spinning up a server inside the test case functions. Seems spinning up the server is blocking, so need to spin up the server in separate thread. Then the tests and the server are running concurrently, how ever what if the test started opening the websocket before the server starts accepting connection? This part is a bit tricky and i would rather use the first method. It is because if the test set up is too complicated, when it fails I cannot tell is it the set up failing or server implementation is failing.
 
-
 ## How i found the method i wanted
 
 So i dig the source code to see if there exists test cases on ws written definitely by Actix developers and i am not disappointed. There is! Source code digging is always the last resort if googling doesnt help. If source code digging didnt work, probably it is impossible to do it in the way you want currently...
 
-So i found the original code in https://github.com/actix/actix-web/blob/master/actix-web-actors/tests/test_ws.rs and i kept only the crutial ones here to demostrate how the test works.
+So i found the original code in [https://github.com/actix/actix-web/blob/master/actix-web-actors/tests/test_ws.rs](https://github.com/actix/actix-web/blob/master/actix-web-actors/tests/test_ws.rs) and i kept only the crutial ones here to demostrate how the test works.
 
 ```rust
 //test_ws.rs
@@ -58,7 +56,7 @@ mod tests_main {
 }
 ```
 
-As for the actual server impl, it is just ordinary websocket implementation available in actix official documentation. https://actix.rs/docs/websockets/ The only twist is that i extracted the `create_app` method so that  we can use the same server factory in our test cases.
+As for the actual server impl, it is just ordinary websocket implementation available in actix official documentation. [https://actix.rs/docs/websockets/](https://actix.rs/docs/websockets/) The only twist is that i extracted the `create_app` method so that  we can use the same server factory in our test cases.
 
 ```rust showLineNumbers
 // main.rs
@@ -120,6 +118,4 @@ mod test_ws;
 
 I hope this write up can help with your project. Good luck!
 
-A full working repo is here, it also includes test case for ordinary restful endpoints, CI, pre-commit-hooks and more. Check it out if you are interested! https://github.com/dipsywong98/actix-test
-
-    
+A full working repo is here, it also includes test case for ordinary restful endpoints, CI, pre-commit-hooks and more. Check it out if you are interested! [https://github.com/dipsywong98/actix-test](https://github.com/dipsywong98/actix-test)

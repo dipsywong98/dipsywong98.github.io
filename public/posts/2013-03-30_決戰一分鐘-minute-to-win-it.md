@@ -1,5 +1,5 @@
 ---
-title: 決戰一分鐘 minute to win it
+title: 決戰一分鐘 Minute to win it
 brief: Series of minigames made in twf
 time: '2013'
 tags:
@@ -9,6 +9,8 @@ id: '%E9%8F%A1%E4%B9%8B%E5%AE%AE%E6%AE%BF'
 date: 2013-03-30
 isProject: true
 ---
+
+Very first game series I made using twf (the in-game mission editor of Twilight Wars the Taiwanese third person shooting game). Players from Twilight Wars started recognises me because of this game series.
 
 1. dancing machine
 1. gold fish

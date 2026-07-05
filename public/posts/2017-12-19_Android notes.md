@@ -1,11 +1,11 @@
 ---
-title: Android notes
+title: Android Notes
 tags:
   - Android
 date: 2017-12-19
 ---
 
-# Android notes
+
 
 ### Use XML as layout
 

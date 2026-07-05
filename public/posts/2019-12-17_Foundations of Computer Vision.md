@@ -16,11 +16,9 @@ date: 2019-12-17
 isProject: true
 ---
 
-# Foundations of Computer Vision
-
 > Course project of COMP4901L - a clone of CMU 16-385 course
+> 
 > Team: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
-> Repo: https://github.com/dipsywong98/COMP4901L
 > 
 
 One of the hardest and most intensive UG Computer Science course in HKUST, 7 programming projects in 13 weeks. ~~Thanks god our super difficult final is cancelled~~.

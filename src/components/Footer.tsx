@@ -6,7 +6,7 @@ export const Footer = () => {
     <footer className="bg-background/30 text-foreground backgrop-satuate-100 backdrop-blur-sm shadow py-8">
       <div className="flex flex-col-reverse space-y-reverse space-y-3 md:space-y-0 md:flex-row justify-between container py-8 items-center">
         <div className='flex flex-col space-y-2'>
-          Make with love by Dipsy, Copyright© 2024 All Right Reserved
+          Make with love by Dipsy, Copyright© 2026 All Right Reserved
         </div>
         <div className="flex space-x-4">
           {my.media.map(medium => <SvgLink key={medium.title} href={medium.href} icon={medium.icon} color={medium.color} title={medium.title}></SvgLink>)}

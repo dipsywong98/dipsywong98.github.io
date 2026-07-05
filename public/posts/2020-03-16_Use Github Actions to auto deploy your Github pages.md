@@ -8,8 +8,6 @@ id: Use%20Github%20Actions%20to%20auto%20deploy%20your%20Github%20pages
 date: 2020-03-16
 ---
 
-# Use Github Actions to auto deploy your Github pages
-
 Today I received some security update on my [SpyFall](https://github.com/dipsywong98/SpyFall/) project from dependabot. I merged the pull request. Then I want to deploy this update to gh-pages branch, where my github page of SpyFall is deployed. However, this app is written in react js, I need to build it before I can deploy it to github Pages. Before I will just git pull and build and push the build to gh-pages branch manually,  but now I can use github action to automate this, and in the future I can just push to master and Github will build and deploy to gh-pages automatically.
 
 (This method also applicable for other javascript framework like Vue.js)

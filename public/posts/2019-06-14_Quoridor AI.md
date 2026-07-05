@@ -18,10 +18,8 @@ isProject: true
 ---
 
 
-# Quoridor
 
 > Quoridor game with AI
-> Repo: https://github.com/dipsywong98/Quoridor
 > 
 
 

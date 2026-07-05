@@ -1,11 +1,11 @@
 ---
-title: python_note
+title: Python Note
 tags:
   - python
 date: 2017-11-11
 ---
 
-# Python Guide 
+
 #### By Dipsy Wong
 
 

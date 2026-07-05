@@ -5,7 +5,6 @@ tags:
 - Laravel
 date: 2017-02-25
 ---
-# Laravel Note
 
 copy and pasted from https://scotch.io/tutorials/a-guide-to-using-eloquent-orm-in-laravel
 

@@ -19,15 +19,17 @@ isProject: true
 
 ---
 
-# AI Rebellion
 > Game inspired by the Tone Rebellion
+> 
 > Authors: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
+> 
 > Repos: [Core](//github.com/danvim/tone-core), [Server](//github.com/danvim/tone-server), [Frontend](//github.com/danvim/tone-vue)
 > Readme file: https://hackmd.io/Xwm4E6LzTciB95ovlmtZ_g?view
 
 ![](https://i.imgur.com/Kr3qbuA.png)
 
 ## Stack
+
 - TypeScript
 - WebRTC + Protobuf
 - Vue

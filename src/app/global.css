@@ -113,6 +113,18 @@
     @apply leading-7 [&:not(:first-child)]:mt-6;
   }
 
+  .prose blockquote {
+    quotes: none;
+    & p {
+      @apply m-0;
+    }
+  }
+
+  .prose blockquote p:first-of-type::before,
+  .prose blockquote p:last-of-type::after {
+    content: none;
+  }
+
   .link {
     @apply text-primary hover:text-primary/90;
   }

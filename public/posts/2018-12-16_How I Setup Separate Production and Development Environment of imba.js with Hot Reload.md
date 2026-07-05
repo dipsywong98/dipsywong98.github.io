@@ -8,8 +8,6 @@ tags:
 date: 2018-12-16
 ---
 
-# How I Setup Separate Production and Development Environment of imba.js with Hot Reload
-
 ![img](https://cdn-images-1.medium.com/max/800/1*1yz2pBMIinMSU9ArRZsKeQ.png)
 
 imba icon from imba, reload icon from https://www.freeiconspng.com/img/16893, webpack icon from webpack

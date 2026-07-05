@@ -17,13 +17,12 @@ isProject: true
 
 ---
 
-# Impressionist
 > Graphics project on photo editing software, CSE457 of University of
 Washington
 > 42.5 b/w (full 41)
-> Authors: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
-> Repo: https://github.com/dipsywong98/COMP4411-impressionist/
 > 
+> Authors: [Daniel Cheung](//github.com/danvim), [Dipsy Wong](//github.com/dipsywong98)
+
 ## Bonus
 
 > W: Whistle, B: Bell, 2W = 1B
@@ -82,5 +81,3 @@ Washington
 P.S: TBH we were really crazy in this course project, we completed the basic requirements before we officially registered into the course, or more accurately the start of the semester, and completed more than half of the bonus before the end of add drop. 
 
 For me the bayesian matting is really interesting which took me four days to do it, and I need to read a math paper to implement it (at last I found a working python code then I can understand the paper). I heard that the genius in our class done this in 1 day what the fuck
-
-    
