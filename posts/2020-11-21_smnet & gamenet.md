@@ -18,11 +18,10 @@ id: smnet%20%26%20gamenet
 date: 2020-11-21
 isProject: true
 ---
-# Make multiplayer board game with react and frontend libraries only - no backend code nor database
 
 [toc]
 
-## TLDR;
+## TLDR
 
 [end product](//dipsywong98.github.io/poker99)
 
@@ -247,15 +246,15 @@ import { Deck } from './types'
 export class Poker99State extends GenericBoardGameState {
   maxPlayer = 4
   minPlayer = 4
-  turn = 0	// to determine it's whose turn
-  direction = 1	// +1 or -1 to denote clockwise or anticlockwise
-  points = 0	// the bomb point, 99 => explode
-  dead: Record<number, true> = {}	// store who is dead
-  drawDeck: Deck = []	// all cards available to draw
-  trashDeck: Deck = []	// all played cards
-  playerDeck: Deck[] = []	// cards that on each players' hand
-  winner = null  		// winner's playerId
-  logs: string[] = []	// all the events happened in the game
+  turn = 0 // to determine it's whose turn
+  direction = 1 // +1 or -1 to denote clockwise or anticlockwise
+  points = 0 // the bomb point, 99 => explode
+  dead: Record<number, true> = {} // store who is dead
+  drawDeck: Deck = [] // all cards available to draw
+  trashDeck: Deck = [] // all played cards
+  playerDeck: Deck[] = [] // cards that on each players' hand
+  winner = null    // winner's playerId
+  logs: string[] = [] // all the events happened in the game
 }
 
 ```
@@ -353,7 +352,7 @@ add three types to `types.ts`
 
 1. StateMapper are functions that can map previous state to next state
 2. IsCard are functions to determine whether a card is a specialized card, like whether is it a spade A
-3. PlayCard are functions that accept the playCardAction payload and the playerId, and return a StateMapper that can map the previous state to new state accordingly. 
+3. PlayCard are functions that accept the playCardAction payload and the playerId, and return a StateMapper that can map the previous state to new state accordingly.
 
 (This is a very functional approach, try your best not to alter the value of parameter passed)
 
@@ -936,20 +935,17 @@ then supply the aiAction to the useBoardGameNetwork in `withPoker99Network.tsx`
 const network = useBoardGameNetwork(Poker99Reducer, new Poker99State(), aiAction)
 ```
 
-
-
 ### 5. Support local hot seat
 
 obtain `myLocals,
     hideDeck,
     setHideDeck, renderedDeckId` from `usePoker99`
-    
+
 `myLocals` contains the name of all hotseat players you can control,
 
 `hideDeck` is the flag to tell whether deck should be hidden, to prevent your friend next to you can see your deck, and `setHideDeck` essentially let you to toggle this flag, to reveal your card
 
 `renderedDeckId` tell you which player's deck should you render
-
 
 ```tsx
 // Game.tsx
@@ -1062,4 +1058,3 @@ REACT_APP_PEER_PATH=
 REACT_APP_PEER_SECURE=
 REACT_APP_PEER_CONFIG=
 ```
-    

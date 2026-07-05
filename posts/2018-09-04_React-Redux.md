@@ -8,8 +8,6 @@ tags:
 date: 2018-09-04
 ---
 
-# React-Redux
-
 ### 為什麼Redux
 
 我在自製React i18n(多語言支援)的時候，想有一個Global variable儲存用家的language preference，稱它為lang，但又不想一層層的通過props傳下去，同時又要pass setter讓children可以改它的值，因為有時parent不需要lang，但children又需要lang，這樣的話parent 有lang這個props是無意義且混淆視聽，又要浪費功夫手動pass props。後來我在某檔直接儲存lang這個值，然後弄一個decorator function 去把lang這個值塞給有需要的component

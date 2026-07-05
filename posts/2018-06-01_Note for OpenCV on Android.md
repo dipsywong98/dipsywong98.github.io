@@ -6,8 +6,6 @@ tags:
 date: 2018-06-01
 ---
 
-# Note for OpenCV on Android
-
 ### 1. Get Start and Install
 
 https://medium.com/@sukritipaul005/a-beginners-guide-to-installing-opencv-android-in-android-studio-ea46a7b4f2d3

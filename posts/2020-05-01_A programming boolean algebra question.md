@@ -10,8 +10,6 @@ date: 2020-05-01
 ---
 
 
-# A programming boolean algebra question
-
 ## The question
 
 For all integers $a,b$ between $[-2^{31}, 2^{31}]$, with the operators $+,-,\times, a^b,/,\setminus,\div$ are defined as follows:

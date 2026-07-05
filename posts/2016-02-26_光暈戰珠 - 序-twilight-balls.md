@@ -1,5 +1,5 @@
 ---
-title: 光暈戰珠 - 序 twilight balls
+title: 光暈戰珠 - 序 Twilight Balls
 titleLink: //drive.google.com/open?id=1qyAnxdjDvDGX4lCBuAaNN1SKohF6yeBi
 liveLink: //youtu.be/LOzIH5Vv-m8
 brief: orb-matching game
@@ -14,7 +14,7 @@ isProject: true
 
 During study leave for HKDSE, I reproduce puzzle and drangon using the mission customization tools inside Twilight Wars.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LOzIH5Vv-m8?si=nWYOXWREP66QBLNM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LOzIH5Vv-m8?si=nWYOXWREP66QBLNM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
 ![alt text](<../img/posts/光暈戰珠 - 序-twilight-balls/image-1.png>)
 

@@ -7,8 +7,6 @@ tags:
 date: 2018-12-16
 ---
 
-# Passport.js for OpenID Authentication on Express.js Server
-
 Actually I am just copying the implementation from wiki.js YO
 
 ### Required node modules

@@ -1,16 +1,16 @@
 ---
-title: Apollo_notes
+title: Apollo Notes
 story: >-
   //gist.githubusercontent.com/dipsywong98/a8c63a36ea41ad7cb05f81a34eb89239/raw/Apollo_notes.md
 tags:
   - JavaScript
   - Apollo
   - GraphQL
-id: Apollo_notes
+id: Apollo Notes
 date: 2019-08-17
 
 ---
-# Apollo Notes
+
 ## Resolver
 ```js
 fieldName: (parent, args, context, info) => data;
