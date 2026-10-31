@@ -40,3 +40,4 @@ jobs:
           publish_dir: ./out
           cname: dipsy.me
           publish_branch: staging
+          keep_files: true
