@@ -44,20 +44,18 @@ const Post = defineDocumentType(() => ({
       }
     },
     story: {
-      type: 'string'
+      type: 'string',
+      description: 'deprecated'
     },
     id: {
       type: 'string'
     },
     more: {
-      type: 'boolean'
+      type: 'boolean',
+      description: 'deprecated'
     },
   },
   computedFields: {
-    urlAlias: {
-      type: 'string',
-      resolve: (doc) => `/posts/${sanitizePath(doc._raw.flattenedPath)}`,
-    },
     url: {
       type: 'string',
       resolve: (doc) => `/posts/${sanitizePath(doc._raw.flattenedPath.replace(/^\d{4}-\d{2}-\d{2}_/, ''))}`,
